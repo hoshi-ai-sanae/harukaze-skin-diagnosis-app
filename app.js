@@ -1,0 +1,345 @@
+const seasons = {
+  spring: {
+    banner: "./assets/spring-banner.png",
+    alt: "春のお肌診断バナー",
+    title: "春風のお肌診断",
+    lead: "花粉・乾燥・季節のゆらぎに寄り添い、毎日の石けんケアや保湿ケアのヒントをお届けします。",
+  },
+  summer: {
+    banner: "./assets/summer-banner.png",
+    alt: "夏のお肌診断バナー",
+    title: "夏のお肌診断",
+    lead: "汗ばむ季節のうるおい不足、紫外線を浴びた肌、毛穴まわりの気分に合わせてケアを見直しましょう。",
+  },
+  autumn: {
+    banner: "./assets/autumn-banner.png",
+    alt: "秋のお肌診断バナー",
+    title: "秋のお肌診断",
+    lead: "夏を過ごした肌をいたわりながら、乾燥・くすみ感・ハリ不足が気になる季節のケアを整えます。",
+  },
+  winter: {
+    banner: "./assets/winter-banner.png",
+    alt: "冬のお肌診断バナー",
+    title: "冬のお肌診断",
+    lead: "冷えや乾燥が気になる季節に、やさしい洗顔と保湿を中心にしたケアのヒントをお届けします。",
+  },
+};
+
+const scale3 = (key) => [
+  { label: "気にならない", score: { balance: 1 } },
+  { label: "少し気になる", score: { [key]: 2 } },
+  { label: "とても気になる", score: { [key]: 3 } },
+];
+
+const scaleOften = (key) => [
+  { label: "ほとんどない", score: { balance: 1 } },
+  { label: "時々ある", score: { [key]: 2 } },
+  { label: "よくある", score: { [key]: 3 } },
+];
+
+const questionsBySeason = {
+  summer: [
+    { text: "日中、肌のベタつきが気になりますか？", answers: scale3("oil") },
+    { text: "朝と比べて、夕方のテカリはどの程度ですか？", answers: scale3("oil") },
+    { text: "毛穴の開きや黒ずみが目立つと感じますか？", answers: scale3("pore") },
+    { text: "日差しを浴びた後に、赤みやヒリつきを感じることがありますか？", answers: scaleOften("uv") },
+    { text: "エアコンの効いた室内に長時間いることが多いですか？", answers: scaleOften("innerDry") },
+    { text: "夏でも肌の乾燥を感じることはありますか？", answers: scaleOften("innerDry") },
+    { text: "洗顔後、肌トラブルが起こりやすいですか？", answers: scaleOften("sensitive") },
+    { text: "紫外線対策をどの程度行っていますか？", answers: [
+      { label: "ほとんどしない", score: { uv: 3 } },
+      { label: "外出時のみ", score: { uv: 2 } },
+      { label: "毎日しっかり", score: { balance: 2 } },
+    ] },
+    { text: "最近、くすみ感や透明感の低下を感じますか？", answers: scale3("turnover") },
+    { text: "スキンケア後の肌状態に満足していますか？", answers: [
+      { label: "満足している", score: { balance: 2 } },
+      { label: "普通", score: { balance: 1 } },
+      { label: "あまり満足していない", score: { innerDry: 1, sensitive: 1 } },
+    ] },
+  ],
+  autumn: [
+    { text: "夏の終わり頃から、肌の調子が不安定だと感じますか？", answers: scale3("sensitive") },
+    { text: "肌の乾燥や軽いつっぱり感を感じ始めていますか？", answers: scaleOften("innerDry") },
+    { text: "化粧のりが以前より悪くなったと感じますか？", answers: scale3("turnover") },
+    { text: "肌のくすみ感や透明感の低下が気になりますか？", answers: scale3("turnover") },
+    { text: "夏に受けた紫外線ダメージが気になりますか？", answers: scale3("uv") },
+    { text: "季節の変わり目に、肌が敏感になることがありますか？", answers: scaleOften("sensitive") },
+    { text: "毛穴の開きやざらつきが気になりますか？", answers: scale3("pore") },
+    { text: "スキンケア後でも乾燥が気になることがありますか？", answers: scaleOften("innerDry") },
+    { text: "肌のハリや弾力が低下したと感じますか？", answers: scale3("turnover") },
+    { text: "保湿やダメージケアを意識的に行っていますか？", answers: [
+      { label: "あまりしていない", score: { uv: 2, innerDry: 1 } },
+      { label: "普通", score: { balance: 1 } },
+      { label: "しっかりしている", score: { balance: 2 } },
+    ] },
+  ],
+  winter: [
+    { text: "肌の乾燥やつっぱり感を感じることはありますか？", answers: [
+      { label: "感じない", score: { balance: 1 } },
+      { label: "時々感じる", score: { dryness: 2 } },
+      { label: "常に感じる", score: { dryness: 3 } },
+    ] },
+    { text: "洗顔後、すぐに保湿しないと不快に感じますか？", answers: scale3("dryness") },
+    { text: "粉ふきや皮むけが気になることはありますか？", answers: scaleOften("dryness") },
+    { text: "暖房の効いた室内に長時間いることが多いですか？", answers: scaleOften("innerDry") },
+    { text: "肌が赤くなったり、敏感に感じることはありますか？", answers: scaleOften("sensitive") },
+    { text: "冬になると化粧のりが悪くなると感じますか？", answers: scale3("turnover") },
+    { text: "頬や目元など、特定の部位の乾燥が特に気になりますか？", answers: scale3("dryness") },
+    { text: "手足の冷えなど、巡りの悪さを感じることがありますか？", answers: scale3("turnover") },
+    { text: "睡眠不足によるくすみや顔色の暗さを感じますか？", answers: scale3("turnover") },
+    { text: "保湿ケアをどの程度行っていますか？", answers: [
+      { label: "最低限", score: { dryness: 3 } },
+      { label: "普通", score: { balance: 1 } },
+      { label: "意識して行っている", score: { balance: 2 } },
+    ] },
+  ],
+  spring: [
+    { text: "季節の変わり目に、肌トラブルが起こりやすいですか？", answers: scaleOften("sensitive") },
+    { text: "花粉の季節に肌が敏感になると感じますか？", answers: scale3("sensitive") },
+    { text: "最近、肌のかゆみやヒリつきを感じることがありますか？", answers: scaleOften("sensitive") },
+    { text: "Tゾーンのテカリが気になりますか？", answers: scale3("oil") },
+    { text: "ニキビが気になることがありますか？", answers: scaleOften("oil") },
+    { text: "肌のバリア機能が乱れていると感じることがありますか？", answers: scale3("sensitive") },
+    { text: "新しいスキンケアや環境の変化で肌が反応しやすいですか？", answers: [
+      { label: "反応しない", score: { balance: 1 } },
+      { label: "少し反応しやすい", score: { sensitive: 2 } },
+      { label: "かなり反応しやすい", score: { sensitive: 3 } },
+    ] },
+    { text: "紫外線対策を意識していますか？", answers: [
+      { label: "していない", score: { uv: 2 } },
+      { label: "外出時のみ", score: { uv: 1, balance: 1 } },
+      { label: "毎日している", score: { balance: 2 } },
+    ] },
+    { text: "現在のスキンケアに満足していますか？", answers: [
+      { label: "満足している", score: { balance: 2 } },
+      { label: "普通", score: { balance: 1 } },
+      { label: "あまり満足していない", score: { sensitive: 1, innerDry: 1 } },
+    ] },
+    { text: "春の肌でいちばん整えたいことはどれですか？", answers: [
+      { label: "赤み・かゆみ", score: { sensitive: 3 } },
+      { label: "テカリ・ニキビ", score: { oil: 3 } },
+      { label: "乾燥", score: { innerDry: 3 } },
+      { label: "紫外線対策", score: { uv: 3 } },
+    ] },
+  ],
+};
+
+const productLinks = {
+  "はるほのか お茶せっけん": "https://haru-honoka.com/shop/products/ocha-sekken",
+  "はるほのか 萩椿美人せっけん": "https://haru-honoka.com/shop/products/tsubaki-sekken",
+  "はるほのか ピュアエッセンスローション": "https://haru-honoka.com/shop/products/pure-essence-lotion",
+  "はるほのか EXモイスチャークリーム": "https://haru-honoka.com/shop/products/ex-moisture-cream",
+  "はるほのか 美肌エッセンス": "https://haru-honoka.com/shop/products/bihada-essence",
+  "はるほのか 萩椿美人BBクリーム": "https://haru-honoka.com/shop/products/tsubaki-bb-cream",
+  "はるほのか ナチュラルフェイスパウダー": "https://haru-honoka.com/shop/products/natural-face-powder",
+  "トライアルセット": "https://haru-honoka.com/shop/products/trial-set",
+};
+
+const resultTypes = {
+  oil: {
+    title: "過剰皮脂・テカリタイプ",
+    summary:
+      "ベタつき、テカリ、毛穴の目立ちが気になりやすい傾向です。取りすぎるケアではなく、やさしく洗ってうるおいのバランスを整えることを大切にしましょう。",
+    points: [
+      "洗顔は1日1から2回を目安にし、泡でやさしく包むように洗う",
+      "タオルでこすらず、軽く押さえるように水分を取る",
+      "保湿を省かず、軽めの質感で肌をすこやかに整える",
+    ],
+    products: ["はるほのか お茶せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 萩椿美人BBクリーム", "はるほのか ナチュラルフェイスパウダー"],
+  },
+  innerDry: {
+    title: "インナードライタイプ",
+    summary:
+      "表面はベタつくのに、内側の乾きが気になりやすい傾向です。水分を補い、保湿を重ね、肌をすこやかに保つケアを意識しましょう。",
+    points: [
+      "洗いすぎを避け、洗顔後は時間を空けずに保湿する",
+      "化粧水、保湿クリームを組み合わせてうるおいを守る",
+      "室内の乾燥、水分補給、睡眠リズムも見直す",
+    ],
+    products: ["はるほのか 萩椿美人せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 美肌エッセンス"],
+  },
+  sensitive: {
+    title: "敏感・バリア低下タイプ",
+    summary:
+      "赤み、かゆみ、ヒリつきなど、外部刺激に反応しやすい傾向です。まずは触れすぎない、増やしすぎない、やさしいケアを中心に整えましょう。",
+    points: [
+      "洗顔温度はぬるめにし、衣類やマスク、タオルの摩擦も避ける",
+      "新しいアイテムを一度に増やさず、基本ケアをシンプルにする",
+      "気になる状態が続く場合は、専門機関へ相談する",
+    ],
+    products: ["はるほのか 萩椿美人せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 美肌エッセンス"],
+  },
+  uv: {
+    title: "UVダメージ・くすみタイプ",
+    summary:
+      "紫外線を浴びた後の乾燥、くすみ感、ごわつきが気になりやすい傾向です。肌を清浄に保ち、うるおいを与え、日中の紫外線対策も続けましょう。",
+    points: [
+      "日差しを浴びた日は、冷やして落ち着かせてから保湿する",
+      "ローションを重ね、仕上げに美容エッセンスをなじませる",
+      "日中はBBクリームやフェイスパウダーで肌を守る意識を持つ",
+    ],
+    products: ["はるほのか お茶せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 美肌エッセンス", "はるほのか 萩椿美人BBクリーム", "はるほのか ナチュラルフェイスパウダー"],
+  },
+  turnover: {
+    title: "ターンオーバー乱れタイプ",
+    summary:
+      "ざらつき、くすみ感、肌リズムの乱れが気になりやすい傾向です。無理に角質を取るより、肌を整えながら正常な周期へ戻す意識が大切です。",
+    points: [
+      "基本の洗顔と保湿を丁寧に続ける",
+      "睡眠、食事、巡りを整える生活リズムも見直す",
+      "ごわつきが気になる日は、保湿を重ねてなめらかな印象を目指す",
+    ],
+    products: ["はるほのか お茶せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 萩椿美人BBクリーム", "はるほのか ナチュラルフェイスパウダー"],
+  },
+  dryness: {
+    title: "強い乾燥タイプ",
+    summary:
+      "粉ふき、つっぱり感、皮むけが気になりやすい傾向です。補うよりも、まず守ることを意識し、肌のうるおいを奪いすぎないケアを心がけましょう。",
+    points: [
+      "洗顔回数を見直し、ぬるま湯中心でやさしく洗う",
+      "入浴後や洗顔後は時間を空けずに保湿する",
+      "乾燥が強い日は、オイルパックやローションパックを検討する",
+    ],
+    products: ["はるほのか 萩椿美人せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "トライアルセット"],
+  },
+  balance: {
+    title: "バランス移行タイプ",
+    summary:
+      "部分的なテカリや乾燥があり、季節や環境で状態が変わりやすい傾向です。結果ごとに無理に調整するより、全体を安定させる意識を持ちましょう。",
+    points: [
+      "洗顔と保湿をシンプルに統一する",
+      "過度なコントロールを避け、肌の変化を観察する",
+      "食事、睡眠、環境変化に振り回されにくい土台づくりを意識する",
+    ],
+    products: ["はるほのか 萩椿美人せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 美肌エッセンス"],
+  },
+};
+
+let currentSeason = "spring";
+let currentQuestion = 0;
+let scores = {};
+
+const seasonBanner = document.querySelector("#seasonBanner");
+const heroTitle = document.querySelector("#hero-title");
+const lead = document.querySelector(".lead");
+const startButton = document.querySelector("#startButton");
+const diagnosis = document.querySelector("#diagnosis");
+const result = document.querySelector("#result");
+const questionTitle = document.querySelector("#questionTitle");
+const questionText = document.querySelector("#questionText");
+const answerGrid = document.querySelector("#answerGrid");
+const progressLabel = document.querySelector("#progressLabel");
+const progressBar = document.querySelector("#progressBar");
+const resultTitle = document.querySelector("#resultTitle");
+const resultSummary = document.querySelector("#resultSummary");
+const carePoints = document.querySelector("#carePoints");
+const recipeText = document.querySelector("#recipeText");
+const retryButton = document.querySelector("#retryButton");
+
+document.querySelectorAll(".season-tab").forEach((button) => {
+  button.addEventListener("click", () => {
+    currentSeason = button.dataset.season;
+    document.querySelectorAll(".season-tab").forEach((tab) => tab.classList.remove("active"));
+    button.classList.add("active");
+    updateSeason();
+  });
+});
+
+startButton.addEventListener("click", () => {
+  currentQuestion = 0;
+  scores = {};
+  result.classList.add("hidden");
+  diagnosis.classList.remove("hidden");
+  renderQuestion();
+  diagnosis.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+retryButton.addEventListener("click", () => {
+  currentQuestion = 0;
+  scores = {};
+  result.classList.add("hidden");
+  diagnosis.classList.remove("hidden");
+  renderQuestion();
+  diagnosis.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+function updateSeason() {
+  const season = seasons[currentSeason];
+  seasonBanner.src = season.banner;
+  seasonBanner.alt = season.alt;
+  heroTitle.textContent = season.title;
+  lead.textContent = season.lead;
+}
+
+function renderQuestion() {
+  const questions = getCurrentQuestions();
+  const question = questions[currentQuestion];
+  questionTitle.textContent = `質問 ${currentQuestion + 1}`;
+  questionText.textContent = question.text;
+  progressLabel.textContent = `${currentQuestion + 1} / ${questions.length}`;
+  progressBar.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+  answerGrid.innerHTML = "";
+
+  question.answers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.className = "answer-button";
+    button.type = "button";
+    button.textContent = answer.label;
+    button.addEventListener("click", () => selectAnswer(answer.score));
+    answerGrid.appendChild(button);
+  });
+}
+
+function selectAnswer(score) {
+  Object.entries(score).forEach(([key, value]) => {
+    scores[key] = (scores[key] || 0) + value;
+  });
+
+  currentQuestion += 1;
+  const questions = getCurrentQuestions();
+  if (currentQuestion < questions.length) {
+    renderQuestion();
+    return;
+  }
+
+  showResult();
+}
+
+function showResult() {
+  const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0]?.[0] || "balance";
+  const detail = resultTypes[winner] || resultTypes.balance;
+
+  resultTitle.textContent = detail.title;
+  resultSummary.textContent = detail.summary;
+  carePoints.innerHTML = "";
+  detail.points.forEach((point) => {
+    const item = document.createElement("li");
+    item.textContent = point;
+    carePoints.appendChild(item);
+  });
+  recipeText.innerHTML = `
+    <span class="recipe-status">途中版レシピ案</span>
+    <span class="product-links">${renderProductLinks(detail.products)}</span>
+    <span>正式なレシピ、写真、商品説明が揃い次第、この枠を結果タイプ別の詳しい提案に差し替えます。</span>
+  `;
+
+  diagnosis.classList.add("hidden");
+  result.classList.remove("hidden");
+  result.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function getCurrentQuestions() {
+  return questionsBySeason[currentSeason] || questionsBySeason.spring;
+}
+
+function renderProductLinks(products) {
+  return products
+    .map((name) => {
+      const href = productLinks[name] || "https://haru-honoka.com/shop/products";
+      return `<a href="${href}" target="_blank" rel="noreferrer">${name}</a>`;
+    })
+    .join("");
+}
+
+updateSeason();
