@@ -66,16 +66,26 @@ a {
 .hero-panel {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 18px;
-  padding: clamp(28px, 4vw, 52px);
+  align-items: center;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 44px) clamp(22px, 4vw, 52px) 22px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 244, 0.94)),
     radial-gradient(circle at 92% 8%, rgba(200, 145, 171, 0.14), transparent 12rem);
+  text-align: center;
+}
+
+.hero-actions {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  padding: 24px clamp(22px, 4vw, 52px) clamp(26px, 4vw, 44px);
+  background: rgba(255, 250, 244, 0.94);
+  text-align: center;
 }
 
 .brand-logo {
-  width: min(190px, 58%);
+  width: min(170px, 48%);
   height: auto;
   display: block;
   border-radius: 8px;
@@ -99,14 +109,15 @@ p {
 
 h1 {
   margin-bottom: 0;
-  font-size: clamp(2.15rem, 5vw, 4.3rem);
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
   line-height: 1.08;
   font-weight: 500;
   color: #5b433a;
 }
 
 .lead {
-  margin-bottom: 4px;
+  max-width: 620px;
+  margin-bottom: 0;
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.9;
@@ -117,6 +128,10 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.season-tabs {
+  justify-content: center;
 }
 
 .season-message {
