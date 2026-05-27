@@ -216,6 +216,16 @@ const resultTypes = {
   },
 };
 
+const recipeTagRules = {
+  oil: ["むくみ対策", "腸内環境", "腸内環境サポート", "抗酸化ケア", "食欲サポート"],
+  innerDry: ["乾燥対策", "うるおいサポート", "肌のうるおい維持", "たんぱく質補給", "肌の材料補給"],
+  sensitive: ["肌荒れ予防", "胃腸にやさしい", "腸内環境", "腸内環境サポート", "抗酸化ケア"],
+  uv: ["紫外線対策", "抗酸化ケア", "ビタミンC補給", "肌コンディション維持", "肌の透明感"],
+  turnover: ["代謝サポート", "血行サポート", "巡りサポート", "血流・巡りサポート", "疲労回復サポート"],
+  dryness: ["乾燥対策", "冷え対策", "温活", "体を温める", "肌のハリ", "うるおいサポート"],
+  balance: ["腸内環境", "腸内環境サポート", "むくみ対策", "肌コンディション維持", "たんぱく質補給"],
+};
+
 let currentSeason = "spring";
 let currentQuestion = 0;
 let scores = {};
@@ -235,6 +245,7 @@ const resultTitle = document.querySelector("#resultTitle");
 const resultSummary = document.querySelector("#resultSummary");
 const carePoints = document.querySelector("#carePoints");
 const recipeText = document.querySelector("#recipeText");
+const foodRecipes = document.querySelector("#foodRecipes");
 const retryButton = document.querySelector("#retryButton");
 
 document.querySelectorAll(".season-tab").forEach((button) => {
@@ -320,10 +331,11 @@ function showResult() {
     carePoints.appendChild(item);
   });
   recipeText.innerHTML = `
-    <span class="recipe-status">途中版レシピ案</span>
+    <span class="recipe-status">春風おすすめ商品</span>
     <span class="product-links">${renderProductLinks(detail.products)}</span>
-    <span>正式なレシピ、写真、商品説明が揃い次第、この枠を結果タイプ別の詳しい提案に差し替えます。</span>
+    <span>診断結果に合わせて、石けん・保湿・メイクまわりの商品ページへ移動できます。</span>
   `;
+  renderFoodRecipes(winner);
 
   diagnosis.classList.add("hidden");
   result.classList.remove("hidden");
@@ -341,6 +353,82 @@ function renderProductLinks(products) {
       return `<a href="${href}" target="_blank" rel="noreferrer">${name}</a>`;
     })
     .join("");
+}
+
+function renderFoodRecipes(type) {
+  const recipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
+  const recommended = pickRecipes(type, recipes);
+
+  if (!foodRecipes) {
+    return;
+  }
+
+  if (!recommended.length) {
+    foodRecipes.innerHTML = `
+      <article class="food-card">
+        <p class="food-card-empty">該当するレシピは準備中です。スプレッドシートに追加後、こちらへ表示します。</p>
+      </article>
+    `;
+    return;
+  }
+
+  foodRecipes.innerHTML = recommended.map(renderFoodRecipeCard).join("");
+}
+
+function pickRecipes(type, recipes) {
+  const preferredTags = recipeTagRules[type] || recipeTagRules.balance;
+
+  return recipes
+    .map((recipe, index) => {
+      const seasonScore = recipe.seasons?.includes(currentSeason) ? 6 : 0;
+      const tagScore = preferredTags.reduce((score, tag) => {
+        const inTags = recipe.tags?.some((recipeTag) => recipeTag.includes(tag) || tag.includes(recipeTag));
+        const inScene = recipe.scene?.includes(tag);
+        return score + (inTags ? 3 : 0) + (inScene ? 1 : 0);
+      }, 0);
+
+      return { recipe, score: seasonScore + tagScore, index };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, 6)
+    .map((item) => item.recipe);
+}
+
+function renderFoodRecipeCard(recipe) {
+  const tagChips = (recipe.tags || [])
+    .slice(0, 4)
+    .map((tag) => `<span class="tag-chip">${escapeHtml(tag)}</span>`)
+    .join("");
+  const seasonLabels = (recipe.seasonLabels || []).map(escapeHtml).join("・");
+  const link = recipe.pdfUrl
+    ? `<a class="recipe-link" href="${escapeAttribute(recipe.pdfUrl)}" target="_blank" rel="noreferrer">レシピを見る</a>`
+    : `<span class="recipe-link disabled">PDF準備中</span>`;
+
+  return `
+    <article class="food-card">
+      <div class="food-card-main">
+        <p class="recipe-season">${seasonLabels}</p>
+        <h4>${escapeHtml(recipe.title)}</h4>
+        <p>${escapeHtml(recipe.scene || "季節の食事のヒントとしてご覧ください。")}</p>
+      </div>
+      <div class="tag-list">${tagChips}</div>
+      ${link}
+    </article>
+  `;
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function escapeAttribute(value) {
+  return escapeHtml(value).replace(/`/g, "&#096;");
 }
 
 updateSeason();

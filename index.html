@@ -64,12 +64,21 @@
             <ul id="carePoints"></ul>
           </article>
           <article class="care-card recipe-card">
-            <h3>レシピ・商品提案</h3>
+            <h3>商品提案</h3>
             <p id="recipeText">
               現在レシピは準備中です。正式なレシピ・商品情報のご提出後、診断結果ごとに差し替えます。
             </p>
           </article>
         </div>
+
+        <section class="food-recipes" aria-labelledby="foodRecipesTitle">
+          <div class="food-recipes-heading">
+            <p class="eyebrow">Seasonal Recipes</p>
+            <h3 id="foodRecipesTitle">おすすめ料理レシピ</h3>
+            <p>診断結果と季節に合わせて、食事のヒントになるレシピを表示します。</p>
+          </div>
+          <div class="recipe-list" id="foodRecipes"></div>
+        </section>
 
         <div class="cta-band">
           <a class="primary-link" href="https://haru-honoka.com/" target="_blank" rel="noreferrer">
@@ -91,6 +100,10 @@
             化粧品・石けん等のご案内は、肌を清浄にする、うるおいを与える、肌をすこやかに保つなど、
             化粧品の範囲内の表現に限定します。肌トラブルがある場合は専門機関へご相談ください。
           </p>
+          <p>
+            料理レシピは一般的な食生活の参考情報であり、疾病の治療・予防・改善を目的とするものではありません。
+            体調やアレルギーに不安がある場合は、医師などの専門家へご相談ください。
+          </p>
         </aside>
       </section>
 
@@ -99,6 +112,7 @@
         <span>診断結果は生活習慣や季節によって変わることがあります。</span>
       </footer>
     </main>
+    <script src="./recipes-data.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

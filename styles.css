@@ -325,6 +325,116 @@ h1 {
   font-weight: 700;
 }
 
+.food-recipes {
+  margin: 10px 0 24px;
+}
+
+.food-recipes-heading {
+  max-width: 760px;
+  margin-bottom: 16px;
+}
+
+.food-recipes-heading h3 {
+  margin-bottom: 8px;
+  color: #5b433a;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-weight: 500;
+}
+
+.food-recipes-heading p:not(.eyebrow) {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.food-card {
+  display: flex;
+  min-height: 270px;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.food-card-main {
+  flex: 1 1 auto;
+}
+
+.food-card h4 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 1.12rem;
+  line-height: 1.45;
+}
+
+.food-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.recipe-season {
+  width: fit-content;
+  margin-bottom: 10px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #fff8fb;
+  color: #8b5f73;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 8px;
+  border: 1px solid rgba(120, 148, 34, 0.24);
+  border-radius: 999px;
+  background: #fbfdf4;
+  color: var(--leaf-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.recipe-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.recipe-link.disabled {
+  background: #eee7df;
+  color: var(--muted);
+}
+
+.food-card-empty {
+  color: var(--muted);
+}
+
 .legal-note {
   margin-top: 24px;
   background: #fffdf8;
@@ -391,7 +501,8 @@ h1 {
   }
 
   .answer-grid,
-  .result-layout {
+  .result-layout,
+  .recipe-list {
     grid-template-columns: 1fr;
   }
 
