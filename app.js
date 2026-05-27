@@ -226,6 +226,11 @@ const recipeTagRules = {
   balance: ["腸内環境", "腸内環境サポート", "むくみ対策", "肌コンディション維持", "たんぱく質補給"],
 };
 
+const recipeSheet = {
+  id: "1hBSj2vgTit_B9fgUp1gSDD8mBprdwhQd7Te2G3D5L3Y",
+  name: "harukaze-recipe-management",
+};
+
 let currentSeason = "spring";
 let currentQuestion = 0;
 let scores = {};
@@ -355,6 +360,99 @@ function renderProductLinks(products) {
     .join("");
 }
 
+function loadRecipesFromSheet() {
+  const callbackName = `harukazeRecipeCallback_${Date.now()}`;
+  const query = new URLSearchParams({
+    tqx: `responseHandler:${callbackName}`,
+    sheet: recipeSheet.name,
+    tq: "select A,B,C,D,E,F,G,H",
+  });
+  const url = `https://docs.google.com/spreadsheets/d/${recipeSheet.id}/gviz/tq?${query.toString()}`;
+
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    let settled = false;
+
+    window[callbackName] = (response) => {
+      settled = true;
+      cleanup();
+      if (response?.status !== "ok") {
+        resolve([]);
+        return;
+      }
+      resolve(parseRecipeSheetRows(response.table?.rows || []));
+    };
+
+    script.onerror = () => {
+      if (settled) {
+        return;
+      }
+      settled = true;
+      cleanup();
+      resolve([]);
+    };
+
+    function cleanup() {
+      delete window[callbackName];
+      script.remove();
+    }
+
+    script.src = url;
+    document.head.appendChild(script);
+  });
+}
+
+function parseRecipeSheetRows(rows) {
+  return rows
+    .map((row, index) => {
+      if (index === 0) {
+        return null;
+      }
+
+      const cells = row.c || [];
+      const status = readSheetCell(cells[5]);
+      const url = readSheetCell(cells[4]);
+
+      if (status !== "公開" || !url) {
+        return null;
+      }
+
+      return {
+        title: readSheetCell(cells[0]),
+        seasons: splitSheetList(readSheetCell(cells[1])).map(normalizeSeason),
+        seasonLabels: splitSheetList(readSheetCell(cells[1])),
+        tags: splitSheetList(readSheetCell(cells[2])),
+        scene: readSheetCell(cells[3]),
+        pdfUrl: url,
+        priority: Number(readSheetCell(cells[6])) || 9999,
+        memo: readSheetCell(cells[7]),
+      };
+    })
+    .filter((recipe) => recipe?.title);
+}
+
+function readSheetCell(cell) {
+  return String(cell?.v ?? cell?.f ?? "").trim();
+}
+
+function splitSheetList(value) {
+  return String(value || "")
+    .split(/[、,]/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function normalizeSeason(value) {
+  const seasonMap = {
+    春: "spring",
+    初夏: "summer",
+    夏: "summer",
+    秋: "autumn",
+    冬: "winter",
+  };
+  return seasonMap[value] || value;
+}
+
 function renderFoodRecipes(type) {
   const recipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
   const recommended = pickRecipes(type, recipes);
@@ -387,7 +485,9 @@ function pickRecipes(type, recipes) {
         return score + (inTags ? 3 : 0) + (inScene ? 1 : 0);
       }, 0);
 
-      return { recipe, score: seasonScore + tagScore, index };
+      const priorityScore = Math.max(0, 1000 - (Number(recipe.priority) || index + 1)) / 1000;
+
+      return { recipe, score: seasonScore + tagScore + priorityScore, index };
     })
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score || a.index - b.index)
@@ -430,5 +530,11 @@ function escapeHtml(value) {
 function escapeAttribute(value) {
   return escapeHtml(value).replace(/`/g, "&#096;");
 }
+
+loadRecipesFromSheet().then((recipes) => {
+  if (recipes.length) {
+    window.harukazeRecipes = recipes;
+  }
+});
 
 updateSeason();
