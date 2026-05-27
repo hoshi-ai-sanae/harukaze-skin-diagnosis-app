@@ -2,25 +2,25 @@ const seasons = {
   spring: {
     banner: "./assets/spring-banner.png",
     alt: "春のお肌診断バナー",
-    title: "春風のお肌診断",
+    label: "春",
     lead: "花粉・乾燥・季節のゆらぎに寄り添い、毎日の石けんケアや保湿ケアのヒントをお届けします。",
   },
   summer: {
     banner: "./assets/summer-banner.png",
     alt: "夏のお肌診断バナー",
-    title: "夏のお肌診断",
+    label: "夏",
     lead: "汗ばむ季節のうるおい不足、紫外線を浴びた肌、毛穴まわりの気分に合わせてケアを見直しましょう。",
   },
   autumn: {
     banner: "./assets/autumn-banner.png",
     alt: "秋のお肌診断バナー",
-    title: "秋のお肌診断",
+    label: "秋",
     lead: "夏を過ごした肌をいたわりながら、乾燥・くすみ感・ハリ不足が気になる季節のケアを整えます。",
   },
   winter: {
     banner: "./assets/winter-banner.png",
     alt: "冬のお肌診断バナー",
-    title: "冬のお肌診断",
+    label: "冬",
     lead: "冷えや乾燥が気になる季節に、やさしい洗顔と保湿を中心にしたケアのヒントをお届けします。",
   },
 };
@@ -208,7 +208,7 @@ const resultTypes = {
     summary:
       "部分的なテカリや乾燥があり、季節や環境で状態が変わりやすい傾向です。結果ごとに無理に調整するより、全体を安定させる意識を持ちましょう。",
     points: [
-      "洗顔と保湿をシンプルに統一する",
+      "洗顔はこすらず短時間で行い、洗顔後は化粧水と保湿クリームを基本にして、使う順番と量を毎日できるだけ同じにする",
       "過度なコントロールを避け、肌の変化を観察する",
       "食事、睡眠、環境変化に振り回されにくい土台づくりを意識する",
     ],
@@ -221,8 +221,8 @@ let currentQuestion = 0;
 let scores = {};
 
 const seasonBanner = document.querySelector("#seasonBanner");
-const heroTitle = document.querySelector("#hero-title");
 const lead = document.querySelector(".lead");
+const seasonMessage = document.querySelector("#seasonMessage");
 const startButton = document.querySelector("#startButton");
 const diagnosis = document.querySelector("#diagnosis");
 const result = document.querySelector("#result");
@@ -268,14 +268,15 @@ function updateSeason() {
   const season = seasons[currentSeason];
   seasonBanner.src = season.banner;
   seasonBanner.alt = season.alt;
-  heroTitle.textContent = season.title;
   lead.textContent = season.lead;
+  seasonMessage.textContent = `${season.label}のお肌診断を選択中です。`;
+  startButton.textContent = `${season.label}の診断をはじめる`;
 }
 
 function renderQuestion() {
   const questions = getCurrentQuestions();
   const question = questions[currentQuestion];
-  questionTitle.textContent = `質問 ${currentQuestion + 1}`;
+  questionTitle.textContent = `${seasons[currentSeason].label}の質問 ${currentQuestion + 1}`;
   questionText.textContent = question.text;
   progressLabel.textContent = `${currentQuestion + 1} / ${questions.length}`;
   progressBar.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;

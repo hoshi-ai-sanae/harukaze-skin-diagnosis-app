@@ -119,6 +119,13 @@ h1 {
   gap: 10px;
 }
 
+.season-message {
+  margin: -6px 0 0;
+  color: var(--leaf-deep);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
 .season-tab {
   min-width: 54px;
   min-height: 42px;
