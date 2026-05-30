@@ -126,13 +126,15 @@ const questionsBySeason = {
 };
 
 const productLinks = {
-  "はるほのか お茶せっけん": "https://haru-honoka.com/shop/products/ocha-sekken",
-  "はるほのか 萩椿美人せっけん": "https://haru-honoka.com/shop/products/tsubaki-sekken",
-  "はるほのか ピュアエッセンスローション": "https://haru-honoka.com/shop/products/pure-essence-lotion",
-  "はるほのか EXモイスチャークリーム": "https://haru-honoka.com/shop/products/ex-moisture-cream",
-  "はるほのか 美肌エッセンス": "https://haru-honoka.com/shop/products/bihada-essence",
-  "はるほのか 萩椿美人BBクリーム": "https://haru-honoka.com/shop/products/tsubaki-bb-cream",
-  "はるほのか ナチュラルフェイスパウダー": "https://haru-honoka.com/shop/products/natural-face-powder",
+  "お茶せっけん": "https://haru-honoka.com/shop/products/ocha-sekken",
+  "萩椿美人せっけん": "https://haru-honoka.com/shop/products/tsubaki-sekken",
+  "ピュアエッセンスローション": "https://haru-honoka.com/shop/products/pure-essence-lotion",
+  "EXモイスチャークリーム": "https://haru-honoka.com/shop/products/ex-moisture-cream",
+  "美肌エッセンス": "https://haru-honoka.com/shop/products/bihada-essence",
+  "萩椿美人BBクリーム": "https://haru-honoka.com/shop/products/tsubaki-bb-cream",
+  "ナチュラルフェイスパウダー": "https://haru-honoka.com/shop/products/natural-face-powder",
+  "お茶シャンプー": "https://haru-honoka.com/shop/products/ocha-shampoo",
+  "緑茶小町": "https://haru-honoka.com/shop/products/ryokucha-komachi",
   "トライアルセット": "https://haru-honoka.com/shop/products/trial-set",
 };
 
@@ -146,7 +148,7 @@ const resultTypes = {
       "タオルでこすらず、軽く押さえるように水分を取る",
       "保湿を省かず、軽めの質感で肌をすこやかに整える",
     ],
-    products: ["はるほのか お茶せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 萩椿美人BBクリーム", "はるほのか ナチュラルフェイスパウダー"],
+    products: ["お茶せっけん", "ピュアエッセンスローション", "EXモイスチャークリーム", "萩椿美人BBクリーム", "ナチュラルフェイスパウダー"],
   },
   innerDry: {
     title: "インナードライタイプ",
@@ -157,7 +159,7 @@ const resultTypes = {
       "化粧水、保湿クリームを組み合わせてうるおいを守る",
       "室内の乾燥、水分補給、睡眠リズムも見直す",
     ],
-    products: ["はるほのか 萩椿美人せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 美肌エッセンス"],
+    products: ["萩椿美人せっけん", "ピュアエッセンスローション", "EXモイスチャークリーム", "美肌エッセンス"],
   },
   sensitive: {
     title: "敏感・バリア低下タイプ",
@@ -168,7 +170,7 @@ const resultTypes = {
       "新しいアイテムを一度に増やさず、基本ケアをシンプルにする",
       "気になる状態が続く場合は、専門機関へ相談する",
     ],
-    products: ["はるほのか 萩椿美人せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 美肌エッセンス"],
+    products: ["萩椿美人せっけん", "ピュアエッセンスローション", "EXモイスチャークリーム", "美肌エッセンス"],
   },
   uv: {
     title: "UVダメージ・くすみタイプ",
@@ -179,7 +181,7 @@ const resultTypes = {
       "ローションを重ね、仕上げに美容エッセンスをなじませる",
       "日中はBBクリームやフェイスパウダーで肌を守る意識を持つ",
     ],
-    products: ["はるほのか お茶せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 美肌エッセンス", "はるほのか 萩椿美人BBクリーム", "はるほのか ナチュラルフェイスパウダー"],
+    products: ["お茶せっけん", "ピュアエッセンスローション", "EXモイスチャークリーム", "美肌エッセンス", "萩椿美人BBクリーム", "ナチュラルフェイスパウダー"],
   },
   turnover: {
     title: "ターンオーバー乱れタイプ",
@@ -190,7 +192,7 @@ const resultTypes = {
       "睡眠、食事、巡りを整える生活リズムも見直す",
       "ごわつきが気になる日は、保湿を重ねてなめらかな印象を目指す",
     ],
-    products: ["はるほのか お茶せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 萩椿美人BBクリーム", "はるほのか ナチュラルフェイスパウダー"],
+    products: ["お茶せっけん", "ピュアエッセンスローション", "EXモイスチャークリーム", "萩椿美人BBクリーム", "ナチュラルフェイスパウダー"],
   },
   dryness: {
     title: "強い乾燥タイプ",
@@ -201,7 +203,7 @@ const resultTypes = {
       "入浴後や洗顔後は時間を空けずに保湿する",
       "乾燥が強い日は、オイルパックやローションパックを検討する",
     ],
-    products: ["はるほのか 萩椿美人せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "トライアルセット"],
+    products: ["萩椿美人せっけん", "ピュアエッセンスローション", "EXモイスチャークリーム", "トライアルセット"],
   },
   balance: {
     title: "バランス移行タイプ",
@@ -212,7 +214,7 @@ const resultTypes = {
       "過度なコントロールを避け、肌の変化を観察する",
       "食事、睡眠、環境変化に振り回されにくい土台づくりを意識する",
     ],
-    products: ["はるほのか 萩椿美人せっけん", "はるほのか ピュアエッセンスローション", "はるほのか EXモイスチャークリーム", "はるほのか 美肌エッセンス"],
+    products: ["萩椿美人せっけん", "ピュアエッセンスローション", "EXモイスチャークリーム", "美肌エッセンス"],
   },
 };
 
