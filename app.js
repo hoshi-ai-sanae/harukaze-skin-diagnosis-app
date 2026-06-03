@@ -533,10 +533,37 @@ function escapeAttribute(value) {
   return escapeHtml(value).replace(/`/g, "&#096;");
 }
 
+function mergeRecipes(...recipeGroups) {
+  const seen = new Set();
+
+  return recipeGroups
+    .flat()
+    .filter((recipe) => {
+      if (!recipe?.title || !recipe?.pdfUrl) {
+        return false;
+      }
+
+      const key = `${recipe.title}::${recipe.pdfUrl}`;
+      if (seen.has(key)) {
+        return false;
+      }
+
+      seen.add(key);
+      return true;
+    });
+}
+
+window.harukazeRecipes = mergeRecipes(
+  Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [],
+  Array.isArray(window.harukazeFormattedRecipes) ? window.harukazeFormattedRecipes : []
+);
+
 loadRecipesFromSheet().then((recipes) => {
-  if (recipes.length) {
-    window.harukazeRecipes = recipes;
-  }
+  window.harukazeRecipes = mergeRecipes(
+    Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [],
+    Array.isArray(window.harukazeFormattedRecipes) ? window.harukazeFormattedRecipes : [],
+    recipes
+  );
 });
 
 updateSeason();
