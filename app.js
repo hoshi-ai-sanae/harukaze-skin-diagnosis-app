@@ -514,15 +514,15 @@ function renderFoodRecipeCard(recipe) {
     .map((tag) => `<span class="tag-chip">${escapeHtml(tag)}</span>`)
     .join("");
   const seasonLabels = (recipe.seasonLabels || []).map(escapeHtml).join("・");
-  const link = recipe.pdfUrl
-    ? `<a class="recipe-link" href="${escapeAttribute(recipe.pdfUrl)}" target="_blank" rel="noreferrer">レシピを見る</a>`
+  const recipeUrl = getRecipeViewerUrl(recipe);
+  const link = recipeUrl
+    ? `<a class="recipe-link" href="${escapeAttribute(recipeUrl)}" target="_blank" rel="noreferrer">レシピを見る</a>`
     : `<span class="recipe-link disabled">PDF準備中</span>`;
-  const sourceLabel = isHarunaRecipe(recipe) ? `<span class="recipe-source">春奈さんのレシピ</span>` : "";
 
   return `
     <article class="food-card">
       <div class="food-card-main">
-        <p class="recipe-season">${seasonLabels}${sourceLabel}</p>
+        <p class="recipe-season">${seasonLabels}</p>
         <h4>${escapeHtml(recipe.title)}</h4>
         <p>${escapeHtml(recipe.scene || "季節の食事のヒントとしてご覧ください。")}</p>
       </div>
@@ -543,6 +543,18 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
   return escapeHtml(value).replace(/`/g, "&#096;");
+}
+
+function getRecipeViewerUrl(recipe) {
+  if (!recipe?.pdfUrl) {
+    return "";
+  }
+
+  if (isHarunaRecipe(recipe)) {
+    return `https://docs.google.com/viewer?url=${encodeURIComponent(recipe.pdfUrl)}`;
+  }
+
+  return recipe.pdfUrl;
 }
 
 function isHarunaRecipe(recipe) {

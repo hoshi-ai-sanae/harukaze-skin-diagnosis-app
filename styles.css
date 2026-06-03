@@ -383,11 +383,7 @@ h1 {
 }
 
 .recipe-season {
-  display: inline-flex;
   width: fit-content;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
   margin-bottom: 10px;
   padding: 4px 9px;
   border-radius: 999px;
@@ -395,12 +391,6 @@ h1 {
   color: #8b5f73;
   font-size: 0.78rem;
   font-weight: 700;
-}
-
-.recipe-source {
-  padding-left: 6px;
-  border-left: 1px solid rgba(139, 95, 115, 0.28);
-  color: var(--leaf-deep);
 }
 
 .tag-list {
