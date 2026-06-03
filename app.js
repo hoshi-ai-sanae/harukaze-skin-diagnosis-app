@@ -478,7 +478,7 @@ function renderFoodRecipes(type) {
 function pickRecipes(type, recipes) {
   const preferredTags = recipeTagRules[type] || recipeTagRules.balance;
 
-  return recipes
+  const ranked = recipes
     .map((recipe, index) => {
       const seasonScore = recipe.seasons?.includes(currentSeason) ? 6 : 0;
       const tagScore = preferredTags.reduce((score, tag) => {
@@ -492,9 +492,20 @@ function pickRecipes(type, recipes) {
       return { recipe, score: seasonScore + tagScore + priorityScore, index };
     })
     .filter((item) => item.score > 0)
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .slice(0, 6)
-    .map((item) => item.recipe);
+    .sort((a, b) => b.score - a.score || a.index - b.index);
+  const selected = ranked.filter((item) => isHarunaRecipe(item.recipe)).slice(0, 3);
+
+  ranked.forEach((item) => {
+    if (selected.length >= 6) {
+      return;
+    }
+
+    if (!selected.some((selectedItem) => selectedItem.recipe.pdfUrl === item.recipe.pdfUrl)) {
+      selected.push(item);
+    }
+  });
+
+  return selected.map((item) => item.recipe);
 }
 
 function renderFoodRecipeCard(recipe) {
@@ -506,11 +517,12 @@ function renderFoodRecipeCard(recipe) {
   const link = recipe.pdfUrl
     ? `<a class="recipe-link" href="${escapeAttribute(recipe.pdfUrl)}" target="_blank" rel="noreferrer">レシピを見る</a>`
     : `<span class="recipe-link disabled">PDF準備中</span>`;
+  const sourceLabel = isHarunaRecipe(recipe) ? `<span class="recipe-source">春奈さんのレシピ</span>` : "";
 
   return `
     <article class="food-card">
       <div class="food-card-main">
-        <p class="recipe-season">${seasonLabels}</p>
+        <p class="recipe-season">${seasonLabels}${sourceLabel}</p>
         <h4>${escapeHtml(recipe.title)}</h4>
         <p>${escapeHtml(recipe.scene || "季節の食事のヒントとしてご覧ください。")}</p>
       </div>
@@ -531,6 +543,10 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
   return escapeHtml(value).replace(/`/g, "&#096;");
+}
+
+function isHarunaRecipe(recipe) {
+  return recipe?.pdfUrl?.includes("/assets/recipes/formatted/") || recipe?.memo?.includes("Word形式から統一PDF化");
 }
 
 function mergeRecipes(...recipeGroups) {
