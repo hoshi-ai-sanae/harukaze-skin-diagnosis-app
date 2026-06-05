@@ -253,7 +253,12 @@ const resultSummary = document.querySelector("#resultSummary");
 const carePoints = document.querySelector("#carePoints");
 const recipeText = document.querySelector("#recipeText");
 const foodRecipes = document.querySelector("#foodRecipes");
+const recipeSearchInput = document.querySelector("#recipeSearchInput");
+const recipeTagCloud = document.querySelector("#recipeTagCloud");
+const recipeSearchStatus = document.querySelector("#recipeSearchStatus");
+const recipeSearchResults = document.querySelector("#recipeSearchResults");
 const retryButton = document.querySelector("#retryButton");
+let selectedRecipeTag = "";
 
 document.querySelectorAll(".season-tab").forEach((button) => {
   button.addEventListener("click", () => {
@@ -343,6 +348,8 @@ function showResult() {
     <span>診断結果に合わせて、石けん・保湿・メイクまわりの商品ページへ移動できます。</span>
   `;
   renderFoodRecipes(winner);
+  selectedRecipeTag = "";
+  renderRecipeTagSearch(winner);
 
   diagnosis.classList.add("hidden");
   result.classList.remove("hidden");
@@ -475,6 +482,122 @@ function renderFoodRecipes(type) {
   foodRecipes.innerHTML = recommended.map(renderFoodRecipeCard).join("");
 }
 
+function renderRecipeTagSearch(type = "balance") {
+  const recipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
+  const tags = buildRecipeTags(recipes);
+  const preferredTags = recipeTagRules[type] || recipeTagRules.balance;
+  const initialTag = tags.find((tag) => preferredTags.some((preferred) => isKeywordMatch(tag, preferred))) || tags[0] || "";
+
+  if (!recipeTagCloud || !recipeSearchResults) {
+    return;
+  }
+
+  selectedRecipeTag = selectedRecipeTag || initialTag;
+  if (recipeSearchInput) {
+    recipeSearchInput.value = selectedRecipeTag;
+  }
+  renderRecipeTagButtons(tags);
+  renderRecipeSearchResults(selectedRecipeTag);
+}
+
+function buildRecipeTags(recipes) {
+  const tagCounts = new Map();
+  const manualTags = ["タンパク質", "シミ", "乾燥", "くすみ", "紫外線", "うるおい", "冷え", "温活", "野菜", "主食", "スイーツ"];
+
+  [...manualTags, ...recipes.flatMap((recipe) => recipe.tags || [])].forEach((tag) => {
+    const cleanTag = String(tag || "").trim();
+    if (!cleanTag) {
+      return;
+    }
+
+    tagCounts.set(cleanTag, (tagCounts.get(cleanTag) || 0) + 1);
+  });
+
+  return [...tagCounts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ja"))
+    .map(([tag]) => tag)
+    .slice(0, 36);
+}
+
+function renderRecipeTagButtons(tags) {
+  recipeTagCloud.innerHTML = tags
+    .map((tag) => {
+      const activeClass = tag === selectedRecipeTag ? " active" : "";
+      return `<button class="recipe-tag-button${activeClass}" type="button" data-tag="${escapeAttribute(tag)}">${escapeHtml(tag)}</button>`;
+    })
+    .join("");
+
+  recipeTagCloud.querySelectorAll(".recipe-tag-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedRecipeTag = button.dataset.tag || "";
+      if (recipeSearchInput) {
+        recipeSearchInput.value = selectedRecipeTag;
+      }
+      renderRecipeTagButtons(tags);
+      renderRecipeSearchResults(selectedRecipeTag);
+    });
+  });
+}
+
+function renderRecipeSearchResults(keyword) {
+  const recipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
+  const searchKeyword = String(keyword || "").trim();
+  const results = searchKeyword ? searchRecipesByKeyword(recipes, searchKeyword).slice(0, 9) : [];
+
+  if (recipeSearchStatus) {
+    recipeSearchStatus.textContent = searchKeyword
+      ? `「${searchKeyword}」に関連するレシピ ${results.length}件`
+      : "キーワードを入力するかタグを選んでください。";
+  }
+
+  recipeSearchResults.innerHTML = results.length
+    ? results.map(renderFoodRecipeCard).join("")
+    : `<article class="food-card"><p class="food-card-empty">該当するレシピが見つかりませんでした。別のタグや言葉で検索してください。</p></article>`;
+}
+
+function searchRecipesByKeyword(recipes, keyword) {
+  const keywords = expandRecipeKeyword(keyword);
+
+  return recipes
+    .map((recipe, index) => {
+      const text = [
+        recipe.title,
+        recipe.scene,
+        ...(recipe.tags || []),
+        ...(recipe.seasonLabels || []),
+        recipe.memo,
+      ]
+        .join(" ")
+        .toLowerCase();
+      const score = keywords.reduce((total, item) => total + (text.includes(item.toLowerCase()) ? 1 : 0), 0);
+      const priorityScore = Math.max(0, 1000 - (Number(recipe.priority) || index + 1)) / 1000;
+      return { recipe, score: score + priorityScore, index };
+    })
+    .filter((item) => item.score >= 1)
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .map((item) => item.recipe);
+}
+
+function expandRecipeKeyword(keyword) {
+  const value = String(keyword || "").trim();
+  const aliases = {
+    シミ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
+    しみ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
+    タンパク質: ["タンパク質", "たんぱく質", "蛋白質", "肉", "魚", "卵", "豆腐", "豆乳", "大豆"],
+    たんぱく質: ["タンパク質", "たんぱく質", "蛋白質", "肉", "魚", "卵", "豆腐", "豆乳", "大豆"],
+    乾燥: ["乾燥", "うるおい", "保湿"],
+    くすみ: ["くすみ", "シミ", "しみ", "巡り", "抗酸化", "紫外線"],
+    冷え: ["冷え", "温活", "体を温める", "巡り"],
+  };
+
+  return [...new Set([value, ...(aliases[value] || [])])].filter(Boolean);
+}
+
+function isKeywordMatch(value, keyword) {
+  const valueText = String(value || "").toLowerCase();
+  return expandRecipeKeyword(keyword).some((item) => valueText.includes(item.toLowerCase()) || item.toLowerCase().includes(valueText));
+}
+
 function pickRecipes(type, recipes) {
   const preferredTags = recipeTagRules[type] || recipeTagRules.balance;
 
@@ -592,6 +715,17 @@ loadRecipesFromSheet().then((recipes) => {
     Array.isArray(window.harukazeFormattedRecipes) ? window.harukazeFormattedRecipes : [],
     recipes
   );
+
+  if (!result.classList.contains("hidden")) {
+    renderRecipeTagSearch();
+  }
 });
+
+if (recipeSearchInput) {
+  recipeSearchInput.addEventListener("input", () => {
+    selectedRecipeTag = recipeSearchInput.value.trim();
+    renderRecipeSearchResults(selectedRecipeTag);
+  });
+}
 
 updateSeason();

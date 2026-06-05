@@ -80,6 +80,27 @@
           <div class="recipe-list" id="foodRecipes"></div>
         </section>
 
+        <section class="recipe-search" aria-labelledby="recipeSearchTitle">
+          <div class="food-recipes-heading">
+            <p class="eyebrow">Recipe Tags</p>
+            <h3 id="recipeSearchTitle">タグからレシピを探す</h3>
+            <p>気になる言葉を入力するか、タグを選ぶと、その内容に合うレシピを表示します。</p>
+          </div>
+          <div class="recipe-search-panel">
+            <label class="recipe-search-label" for="recipeSearchInput">キーワード検索</label>
+            <input
+              id="recipeSearchInput"
+              class="recipe-search-input"
+              type="search"
+              placeholder="例：タンパク質、シミ、乾燥"
+              autocomplete="off"
+            />
+            <div class="recipe-tag-cloud" id="recipeTagCloud" aria-label="レシピタグ一覧"></div>
+          </div>
+          <div class="recipe-search-status" id="recipeSearchStatus"></div>
+          <div class="recipe-list recipe-search-results" id="recipeSearchResults"></div>
+        </section>
+
         <div class="cta-band">
           <a class="primary-link" href="https://haru-honoka.com/" target="_blank" rel="noreferrer">
             石けん工房 春風ホームページへ
