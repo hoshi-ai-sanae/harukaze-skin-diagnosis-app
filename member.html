@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>石けん工房 春風 | 定期購入者限定ページ</title>
+    <meta
+      name="description"
+      content="石けん工房 春風の定期購入者様だけがご覧いただける、季節のお手入れメッセージと限定コンテンツです。"
+    />
+    <link rel="stylesheet" href="./member.css" />
+  </head>
+  <body>
+    <main>
+      <section class="lock-screen" id="lockScreen" aria-labelledby="lockTitle">
+        <div class="lock-media">
+          <img src="./assets/spring-banner.png" alt="春のお肌診断イメージ" />
+        </div>
+        <div class="lock-panel">
+          <img class="brand-logo" src="./assets/logo.jpg" alt="Sekken-kobo Harukaze" />
+          <p class="eyebrow">定期購入者様 限定</p>
+          <h1 id="lockTitle">石けん工房 春風 季節のお肌だより</h1>
+          <p class="lead">
+            季節のメッセージ、商品のやさしい使い方、限定レシピやお肌診断への入口をお届けします。
+          </p>
+
+          <form class="password-form" id="passwordForm">
+            <label for="passwordInput">今月のパスワード</label>
+            <div class="password-row">
+              <input
+                id="passwordInput"
+                type="password"
+                autocomplete="current-password"
+                placeholder="パスワードを入力"
+                required
+              />
+              <button type="submit">入室する</button>
+            </div>
+            <p class="form-message" id="formMessage" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="member-site hidden" id="memberSite" aria-live="polite">
+        <header class="member-header">
+          <div>
+            <p class="eyebrow">Monthly Members</p>
+            <h1>石けん工房 春風 定期便のお客様へ</h1>
+            <p>
+              いつものお手入れが少し楽しみになるように、季節に合わせたメッセージと使い方のヒントをまとめました。
+            </p>
+          </div>
+          <button class="logout-button" type="button" id="logoutButton">退出</button>
+        </header>
+
+        <section class="season-message">
+          <div class="season-copy">
+            <p class="eyebrow">Season Message</p>
+            <h2>今月の肌を、やさしく整える</h2>
+            <p>
+              気温や湿度が変わる時期は、肌の感じ方も少しずつ変わります。洗いすぎず、与えすぎず、肌の声を見ながら
+              「落とす・うるおす・守る」を丁寧に続けていきましょう。
+            </p>
+            <p class="note">ここに代表者様からの季節メッセージを毎月差し替えて掲載できます。</p>
+          </div>
+          <img src="./assets/summer-banner.png" alt="季節のお肌ケアイメージ" />
+        </section>
+
+        <section class="content-grid" aria-label="限定コンテンツ">
+          <article class="member-card feature-card">
+            <p class="eyebrow">Skin Check</p>
+            <h2>季節のお肌診断</h2>
+            <p>今のお肌状態に合わせて、ケアのヒント・おすすめ商品・レシピを確認できます。</p>
+            <a href="./index.html">お肌診断を開く</a>
+          </article>
+
+          <article class="member-card">
+            <p class="eyebrow">How to Use</p>
+            <h2>今月のおすすめの使い方</h2>
+            <ul>
+              <li>洗顔は泡を転がすように、こすらず短時間で行う</li>
+              <li>化粧水は肌が乾ききる前に、手のひらでやさしくなじませる</li>
+              <li>乾燥を感じる日は、クリームを薄く重ねてうるおいを守る</li>
+            </ul>
+            <a href="https://haru-honoka.com/shop/products" target="_blank" rel="noreferrer">商品ページを見る</a>
+          </article>
+
+          <article class="member-card">
+            <p class="eyebrow">Recipe</p>
+            <h2>季節のレシピ</h2>
+            <p>肌づくりを食生活から支える、季節のレシピを診断結果やタグから探せます。</p>
+            <a href="./index.html#result">レシピを見る</a>
+          </article>
+
+          <article class="member-card">
+            <p class="eyebrow">Contact</p>
+            <h2>お肌のお悩み相談</h2>
+            <p>気になることがある方は、春風様のホームページ窓口からご相談いただけます。</p>
+            <a href="https://haru-honoka.com/shop/contact/draft" target="_blank" rel="noreferrer">お問い合わせへ</a>
+          </article>
+        </section>
+
+        <section class="monthly-area">
+          <div class="monthly-heading">
+            <p class="eyebrow">This Month</p>
+            <h2>今月のお知らせ</h2>
+          </div>
+          <div class="news-list">
+            <article>
+              <span>01</span>
+              <h3>定期便のお客様限定コンテンツを準備中です</h3>
+              <p>代表者様のメッセージ、商品活用のコツ、季節のレシピをここに追加していきます。</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>パスワードは毎月変更できます</h3>
+              <p>定期購入を継続されているお客様へ、新しいパスワードをメールやLINEでご案内する運用ができます。</p>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./member.js"></script>
+  </body>
+</html>

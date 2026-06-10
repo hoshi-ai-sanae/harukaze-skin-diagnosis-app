@@ -1,0 +1,375 @@
+:root {
+  color-scheme: light;
+  --leaf: #789422;
+  --leaf-deep: #526c18;
+  --petal: #c891ab;
+  --petal-soft: #f8e3ea;
+  --cream: #fffaf4;
+  --paper: #ffffff;
+  --ink: #3d332e;
+  --muted: #776c66;
+  --line: #eadfd4;
+  --shadow: 0 18px 50px rgba(82, 108, 24, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 8% 2%, rgba(200, 145, 171, 0.2), transparent 28rem),
+    linear-gradient(145deg, #fff8fb 0%, #f8fbef 54%, #fffdf8 100%);
+  color: var(--ink);
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, system-ui, sans-serif;
+}
+
+button,
+a,
+input {
+  font: inherit;
+}
+
+main {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 34px;
+}
+
+.lock-screen,
+.member-header,
+.season-message,
+.member-card,
+.monthly-area {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.lock-screen {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  overflow: hidden;
+  min-height: calc(100vh - 56px);
+}
+
+.lock-media {
+  background: #fff8fb;
+}
+
+.lock-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lock-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.brand-logo {
+  width: min(180px, 56%);
+  height: auto;
+  margin-bottom: 22px;
+  border-radius: 8px;
+  mix-blend-mode: multiply;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--leaf-deep);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 16px;
+  color: #5b433a;
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  line-height: 1.12;
+  font-weight: 500;
+}
+
+h2 {
+  margin-bottom: 12px;
+  color: #5b433a;
+  font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+h3 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.lead,
+.member-header p,
+.season-copy p,
+.member-card p,
+.news-list p {
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.password-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.password-form label {
+  color: var(--leaf-deep);
+  font-weight: 700;
+}
+
+.password-row {
+  display: flex;
+  gap: 10px;
+}
+
+.password-row input {
+  width: 100%;
+  min-height: 52px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.password-row input:focus {
+  outline: 3px solid rgba(120, 148, 34, 0.18);
+  border-color: var(--leaf);
+}
+
+.password-row button,
+.member-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.form-message {
+  min-height: 1.6em;
+  margin: 0;
+  color: #9b4968;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.member-site {
+  display: grid;
+  gap: 22px;
+}
+
+.member-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: flex-start;
+  padding: clamp(26px, 4vw, 44px);
+}
+
+.member-header p {
+  max-width: 760px;
+  margin-bottom: 0;
+}
+
+.logout-button {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.season-message {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+}
+
+.season-copy {
+  padding: clamp(24px, 4vw, 42px);
+  align-self: center;
+}
+
+.season-copy .note {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-left: 4px solid var(--petal);
+  background: #fff8fb;
+  color: #7d5667;
+  font-size: 0.92rem;
+}
+
+.season-message img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.member-card {
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.feature-card {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 248, 251, 0.94)),
+    radial-gradient(circle at 100% 0%, rgba(200, 145, 171, 0.18), transparent 18rem);
+}
+
+.member-card p,
+.member-card ul {
+  flex: 1;
+}
+
+.member-card ul {
+  margin: 0 0 18px;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.monthly-area {
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.monthly-heading {
+  margin-bottom: 16px;
+}
+
+.news-list {
+  display: grid;
+  gap: 12px;
+}
+
+.news-list article {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 12px 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.news-list span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: #eff5dc;
+  color: var(--leaf-deep);
+  font-weight: 700;
+}
+
+.news-list h3,
+.news-list p {
+  grid-column: 2;
+  margin-bottom: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  main {
+    width: min(100% - 20px, 720px);
+    padding-top: 10px;
+  }
+
+  .lock-screen,
+  .season-message,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lock-screen {
+    min-height: auto;
+  }
+
+  .lock-media {
+    aspect-ratio: 1448 / 1086;
+  }
+
+  .lock-media img,
+  .season-message img {
+    object-fit: contain;
+  }
+
+  .member-header,
+  .password-row {
+    flex-direction: column;
+  }
+
+  .password-row button,
+  .member-card a,
+  .logout-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  main {
+    width: min(100% - 16px, 480px);
+  }
+
+  .lock-panel,
+  .member-header,
+  .season-copy,
+  .member-card,
+  .monthly-area {
+    padding: 22px;
+  }
+
+  .news-list article {
+    grid-template-columns: 1fr;
+  }
+
+  .news-list h3,
+  .news-list p {
+    grid-column: 1;
+  }
+}
