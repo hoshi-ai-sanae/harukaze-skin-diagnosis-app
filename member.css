@@ -271,12 +271,131 @@ h3 {
   line-height: 1.8;
 }
 
+.monthly-recipes,
 .monthly-area {
   padding: clamp(24px, 4vw, 42px);
 }
 
+.monthly-recipes {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+}
+
 .monthly-heading {
   margin-bottom: 16px;
+}
+
+.monthly-heading p {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.recipe-season-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.recipe-season-tab {
+  min-width: 54px;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.recipe-season-tab.active {
+  border-color: var(--leaf);
+  background: #eff5dc;
+  color: var(--leaf-deep);
+  font-weight: 700;
+}
+
+.member-recipe-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.member-recipe-card {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.member-recipe-card h3 {
+  margin-bottom: 0;
+  color: var(--ink);
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.member-recipe-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.member-recipe-card .recipe-season-label {
+  width: fit-content;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #fff8fb;
+  color: #8b5f73;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.recipe-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 8px;
+  border: 1px solid rgba(120, 148, 34, 0.24);
+  border-radius: 999px;
+  background: #fbfdf4;
+  color: var(--leaf-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.member-recipe-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.empty-message {
+  color: var(--muted);
 }
 
 .news-list {
@@ -322,7 +441,8 @@ h3 {
 
   .lock-screen,
   .season-message,
-  .content-grid {
+  .content-grid,
+  .member-recipe-list {
     grid-template-columns: 1fr;
   }
 
@@ -360,6 +480,7 @@ h3 {
   .member-header,
   .season-copy,
   .member-card,
+  .monthly-recipes,
   .monthly-area {
     padding: 22px;
   }

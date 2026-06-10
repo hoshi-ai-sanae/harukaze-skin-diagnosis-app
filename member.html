@@ -88,8 +88,8 @@
           <article class="member-card">
             <p class="eyebrow">Recipe</p>
             <h2>季節のレシピ</h2>
-            <p>肌づくりを食生活から支える、季節のレシピを診断結果やタグから探せます。</p>
-            <a href="./index.html#result">レシピを見る</a>
+            <p>春なら春、夏なら夏のように、季節に合わせたレシピをこのページ内で確認できます。</p>
+            <a href="#monthlyRecipes">今月のレシピを見る</a>
           </article>
 
           <article class="member-card">
@@ -98,6 +98,21 @@
             <p>気になることがある方は、春風様のホームページ窓口からご相談いただけます。</p>
             <a href="https://haru-honoka.com/shop/contact/draft" target="_blank" rel="noreferrer">お問い合わせへ</a>
           </article>
+        </section>
+
+        <section class="monthly-recipes" id="monthlyRecipes" aria-labelledby="monthlyRecipesTitle">
+          <div class="monthly-heading">
+            <p class="eyebrow">Seasonal Recipes</p>
+            <h2 id="monthlyRecipesTitle">今月のレシピ</h2>
+            <p>季節を選ぶと、その季節に合うレシピが表示されます。</p>
+          </div>
+          <div class="recipe-season-tabs" role="tablist" aria-label="レシピの季節を選択">
+            <button class="recipe-season-tab active" type="button" data-recipe-season="spring">春</button>
+            <button class="recipe-season-tab" type="button" data-recipe-season="summer">夏</button>
+            <button class="recipe-season-tab" type="button" data-recipe-season="autumn">秋</button>
+            <button class="recipe-season-tab" type="button" data-recipe-season="winter">冬</button>
+          </div>
+          <div class="member-recipe-list" id="memberRecipeList"></div>
         </section>
 
         <section class="monthly-area">
@@ -121,6 +136,8 @@
       </section>
     </main>
 
+    <script src="./recipes-data.js"></script>
+    <script src="./formatted-recipes-data.js"></script>
     <script src="./member.js"></script>
   </body>
 </html>
