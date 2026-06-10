@@ -7,10 +7,13 @@ const lockScreen = document.querySelector("#lockScreen");
 const memberSite = document.querySelector("#memberSite");
 const passwordForm = document.querySelector("#passwordForm");
 const passwordInput = document.querySelector("#passwordInput");
+const passwordToggle = document.querySelector("#passwordToggle");
 const formMessage = document.querySelector("#formMessage");
 const logoutButton = document.querySelector("#logoutButton");
 const memberRecipeList = document.querySelector("#memberRecipeList");
 const recipeSeasonTabs = document.querySelectorAll(".recipe-season-tab");
+const currentMonthLabel = document.querySelector("#currentMonthLabel");
+const seasonDiagnosisLink = document.querySelector("#seasonDiagnosisLink");
 
 const seasonLabels = {
   spring: "春",
@@ -151,6 +154,7 @@ const fallbackRecipesBySeason = {
 };
 
 function showMemberSite() {
+  updateMonthlyContent();
   lockScreen.classList.add("hidden");
   memberSite.classList.remove("hidden");
   renderMemberRecipes(getCurrentCalendarSeason());
@@ -182,10 +186,21 @@ passwordForm.addEventListener("submit", (event) => {
   formMessage.textContent = "パスワードが違います。今月のご案内をご確認ください。";
 });
 
-logoutButton.addEventListener("click", () => {
-  localStorage.removeItem(memberConfig.storageKey);
-  showLockScreen();
-});
+if (logoutButton) {
+  logoutButton.addEventListener("click", () => {
+    localStorage.removeItem(memberConfig.storageKey);
+    showLockScreen();
+  });
+}
+
+if (passwordToggle) {
+  passwordToggle.addEventListener("click", () => {
+    const isVisible = passwordInput.type === "text";
+    passwordInput.type = isVisible ? "password" : "text";
+    passwordToggle.classList.toggle("is-visible", !isVisible);
+    passwordToggle.setAttribute("aria-label", isVisible ? "パスワードを表示" : "パスワードを非表示");
+  });
+}
 
 recipeSeasonTabs.forEach((button) => {
   button.addEventListener("click", () => {
@@ -202,6 +217,20 @@ function getCurrentCalendarSeason() {
   if (month >= 6 && month <= 8) return "summer";
   if (month >= 9 && month <= 11) return "autumn";
   return "winter";
+}
+
+function updateMonthlyContent() {
+  const month = new Date().getMonth() + 1;
+  const season = getCurrentCalendarSeason();
+  const label = seasonLabels[season] || "";
+
+  if (currentMonthLabel) {
+    currentMonthLabel.textContent = `${month}月の会員ページ・${label}のお手入れ`;
+  }
+
+  if (seasonDiagnosisLink) {
+    seasonDiagnosisLink.href = `./index.html?season=${season}`;
+  }
 }
 
 function getAllRecipes() {

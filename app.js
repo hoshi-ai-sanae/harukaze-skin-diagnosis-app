@@ -233,7 +233,7 @@ const recipeSheet = {
   name: "harukaze-recipe-management",
 };
 
-let currentSeason = "spring";
+let currentSeason = getInitialSeason();
 let currentQuestion = 0;
 let scores = {};
 
@@ -263,8 +263,7 @@ let selectedRecipeTag = "";
 document.querySelectorAll(".season-tab").forEach((button) => {
   button.addEventListener("click", () => {
     currentSeason = button.dataset.season;
-    document.querySelectorAll(".season-tab").forEach((tab) => tab.classList.remove("active"));
-    button.classList.add("active");
+    syncSeasonTabs();
     updateSeason();
   });
 });
@@ -287,7 +286,20 @@ retryButton.addEventListener("click", () => {
   diagnosis.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
+function getInitialSeason() {
+  const params = new URLSearchParams(window.location.search);
+  const season = params.get("season");
+  return seasons[season] ? season : "spring";
+}
+
+function syncSeasonTabs() {
+  document.querySelectorAll(".season-tab").forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.season === currentSeason);
+  });
+}
+
 function updateSeason() {
+  syncSeasonTabs();
   const season = seasons[currentSeason];
   seasonBanner.src = season.banner;
   seasonBanner.alt = season.alt;

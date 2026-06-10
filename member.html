@@ -14,7 +14,7 @@
     <main>
       <section class="lock-screen" id="lockScreen" aria-labelledby="lockTitle">
         <div class="lock-media">
-          <img src="./assets/spring-banner.png" alt="春のお肌診断イメージ" />
+          <img src="./assets/member-hero.png" alt="石けん工房 春風 会員限定サイト" />
         </div>
         <div class="lock-panel">
           <img class="brand-logo" src="./assets/logo.jpg" alt="Sekken-kobo Harukaze" />
@@ -27,13 +27,21 @@
           <form class="password-form" id="passwordForm">
             <label for="passwordInput">今月のパスワード</label>
             <div class="password-row">
-              <input
-                id="passwordInput"
-                type="password"
-                autocomplete="current-password"
-                placeholder="パスワードを入力"
-                required
-              />
+              <div class="password-input-wrap">
+                <input
+                  id="passwordInput"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="パスワードを入力"
+                  required
+                />
+                <button class="password-toggle" type="button" id="passwordToggle" aria-label="パスワードを表示">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
               <button type="submit">入室する</button>
             </div>
             <p class="form-message" id="formMessage" aria-live="polite"></p>
@@ -45,12 +53,12 @@
         <header class="member-header">
           <div>
             <p class="eyebrow">Monthly Members</p>
+            <p class="month-badge" id="currentMonthLabel">今月の会員ページ</p>
             <h1>石けん工房 春風 定期便のお客様へ</h1>
             <p>
               いつものお手入れが少し楽しみになるように、季節に合わせたメッセージと使い方のヒントをまとめました。
             </p>
           </div>
-          <button class="logout-button" type="button" id="logoutButton">退出</button>
         </header>
 
         <section class="season-message">
@@ -71,7 +79,7 @@
             <p class="eyebrow">Skin Check</p>
             <h2>季節のお肌診断</h2>
             <p>今のお肌状態に合わせて、ケアのヒント・おすすめ商品・レシピを確認できます。</p>
-            <a href="./index.html">お肌診断を開く</a>
+            <a id="seasonDiagnosisLink" href="./index.html">お肌診断を開く</a>
           </article>
 
           <article class="member-card">
@@ -133,6 +141,10 @@
             </article>
           </div>
         </section>
+
+        <div class="member-footer-actions">
+          <button class="logout-button" type="button" id="logoutButton">退出する</button>
+        </div>
       </section>
     </main>
 
