@@ -51,9 +51,10 @@ main {
 
 .lock-screen {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(390px, 0.95fr);
+  align-items: center;
   overflow: hidden;
-  min-height: calc(100vh - 56px);
+  min-height: min(760px, calc(100vh - 56px));
 }
 
 .lock-media {
@@ -65,7 +66,8 @@ main {
 
 .lock-media img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: min(760px, calc(100vh - 56px));
   object-fit: contain;
   display: block;
 }
@@ -103,9 +105,17 @@ p {
 h1 {
   margin-bottom: 16px;
   color: #5b433a;
-  font-size: clamp(2rem, 4vw, 3.7rem);
+  font-size: clamp(2rem, 3.55vw, 3.35rem);
   line-height: 1.12;
   font-weight: 500;
+}
+
+h1 span {
+  display: block;
+}
+
+.brand-title {
+  white-space: nowrap;
 }
 
 h2 {
