@@ -9,6 +9,7 @@ const memberSite = document.querySelector("#memberSite");
 const passwordForm = document.querySelector("#passwordForm");
 const passwordInput = document.querySelector("#passwordInput");
 const passwordToggle = document.querySelector("#passwordToggle");
+const passwordToggleText = document.querySelector("#passwordToggleText");
 const formMessage = document.querySelector("#formMessage");
 const logoutButton = document.querySelector("#logoutButton");
 const memberRecipeList = document.querySelector("#memberRecipeList");
@@ -200,6 +201,9 @@ if (passwordToggle) {
     passwordInput.type = isVisible ? "password" : "text";
     passwordToggle.classList.toggle("is-visible", !isVisible);
     passwordToggle.setAttribute("aria-label", isVisible ? "パスワードを表示" : "パスワードを非表示");
+    if (passwordToggleText) {
+      passwordToggleText.textContent = isVisible ? "表示" : "非表示";
+    }
   });
 }
 
@@ -230,7 +234,7 @@ function updateMonthlyContent() {
   }
 
   if (seasonDiagnosisLink) {
-    seasonDiagnosisLink.href = `./index.html?season=${season}&v=20260610b`;
+    seasonDiagnosisLink.href = `./index.html?season=${season}&v=20260611a`;
   }
 }
 

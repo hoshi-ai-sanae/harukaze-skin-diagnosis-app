@@ -57,13 +57,16 @@ main {
 }
 
 .lock-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff8fb;
 }
 
 .lock-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -151,7 +154,7 @@ h3 {
 .password-input-wrap input {
   width: 100%;
   min-height: 52px;
-  padding: 10px 54px 10px 14px;
+  padding: 10px 94px 10px 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
@@ -170,9 +173,10 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
+  width: 82px;
   height: 38px;
-  padding: 0;
+  gap: 4px;
+  padding: 0 9px;
   border: 0;
   border-radius: 999px;
   background: transparent;
@@ -182,13 +186,18 @@ h3 {
 }
 
 .password-toggle svg {
-  width: 22px;
-  height: 22px;
+  width: 17px;
+  height: 17px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.password-toggle span {
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
 .password-toggle.is-visible {
