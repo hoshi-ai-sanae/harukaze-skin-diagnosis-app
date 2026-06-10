@@ -502,7 +502,7 @@ function renderRecipeTagSearch(type = "balance") {
 
 function buildRecipeTags(recipes) {
   const tagCounts = new Map();
-  const manualTags = ["タンパク質", "シミ", "乾燥", "くすみ", "紫外線", "うるおい", "冷え", "温活", "野菜", "主食", "スイーツ"];
+  const manualTags = ["春奈さん", "GOUさん", "タンパク質", "シミ", "乾燥", "くすみ", "紫外線", "うるおい", "冷え", "温活", "野菜", "主食", "スイーツ"];
 
   [...manualTags, ...recipes.flatMap((recipe) => recipe.tags || [])].forEach((tag) => {
     const cleanTag = String(tag || "").trim();
@@ -514,8 +514,10 @@ function buildRecipeTags(recipes) {
   });
 
   return [...tagCounts.entries()]
+    .filter(([tag]) => !manualTags.includes(tag))
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ja"))
     .map(([tag]) => tag)
+    .reduce((tags, tag) => [...tags, tag], manualTags)
     .slice(0, 36);
 }
 
@@ -563,6 +565,7 @@ function searchRecipesByKeyword(recipes, keyword) {
       const text = [
         recipe.title,
         recipe.scene,
+        getRecipeSourceLabel(recipe),
         ...(recipe.tags || []),
         ...(recipe.seasonLabels || []),
         recipe.memo,
@@ -581,6 +584,10 @@ function searchRecipesByKeyword(recipes, keyword) {
 function expandRecipeKeyword(keyword) {
   const value = String(keyword || "").trim();
   const aliases = {
+    春奈さん: ["春奈さん", "春奈", "Word形式から統一PDF化"],
+    春奈: ["春奈さん", "春奈", "Word形式から統一PDF化"],
+    GOUさん: ["GOUさん", "Gouさん", "GOU", "Gou", "菜園男子GOU", "菜園男子Gou"],
+    GOU: ["GOUさん", "Gouさん", "GOU", "Gou", "菜園男子GOU", "菜園男子Gou"],
     シミ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
     しみ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
     タンパク質: ["タンパク質", "たんぱく質", "蛋白質", "肉", "魚", "卵", "豆腐", "豆乳", "大豆"],
@@ -596,6 +603,10 @@ function expandRecipeKeyword(keyword) {
 function isKeywordMatch(value, keyword) {
   const valueText = String(value || "").toLowerCase();
   return expandRecipeKeyword(keyword).some((item) => valueText.includes(item.toLowerCase()) || item.toLowerCase().includes(valueText));
+}
+
+function getRecipeSourceLabel(recipe) {
+  return isHarunaRecipe(recipe) ? "春奈さん" : "GOUさん";
 }
 
 function pickRecipes(type, recipes) {
