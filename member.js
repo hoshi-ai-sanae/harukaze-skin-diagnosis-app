@@ -1,6 +1,7 @@
 const memberConfig = {
   currentPassword: "harukaze2026",
   storageKey: "harukaze-member-access-2026-06",
+  displayMonth: 7,
 };
 
 const lockScreen = document.querySelector("#lockScreen");
@@ -212,7 +213,7 @@ recipeSeasonTabs.forEach((button) => {
 });
 
 function getCurrentCalendarSeason() {
-  const month = new Date().getMonth() + 1;
+  const month = getDisplayMonth();
   if (month >= 3 && month <= 5) return "spring";
   if (month >= 6 && month <= 8) return "summer";
   if (month >= 9 && month <= 11) return "autumn";
@@ -220,7 +221,7 @@ function getCurrentCalendarSeason() {
 }
 
 function updateMonthlyContent() {
-  const month = new Date().getMonth() + 1;
+  const month = getDisplayMonth();
   const season = getCurrentCalendarSeason();
   const label = seasonLabels[season] || "";
 
@@ -231,6 +232,10 @@ function updateMonthlyContent() {
   if (seasonDiagnosisLink) {
     seasonDiagnosisLink.href = `./index.html?season=${season}&v=20260610a`;
   }
+}
+
+function getDisplayMonth() {
+  return memberConfig.displayMonth || new Date().getMonth() + 1;
 }
 
 function getAllRecipes() {
