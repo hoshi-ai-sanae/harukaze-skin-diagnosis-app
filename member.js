@@ -19,6 +19,137 @@ const seasonLabels = {
   winter: "冬",
 };
 
+const fallbackRecipesBySeason = {
+  spring: [
+    {
+      title: "豆乳と甘酒のプリン いちごとクコの実ソースがけ",
+      seasons: ["spring"],
+      seasonLabels: ["春"],
+      tags: ["春", "デトックス", "ゆらぎ", "スイーツ"],
+      scene: "春の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/03.pdf",
+      priority: 102,
+      memo: "Word形式から統一PDF化",
+    },
+    {
+      title: "〜菜の花チャンプルー〜",
+      seasons: ["spring"],
+      seasonLabels: ["春"],
+      tags: ["春", "デトックス", "ゆらぎ", "野菜"],
+      scene: "春の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/04.pdf",
+      priority: 103,
+      memo: "Word形式から統一PDF化",
+    },
+    {
+      title: "いちごの食べるスムージー",
+      seasons: ["spring"],
+      seasonLabels: ["春"],
+      tags: ["春", "デトックス", "スイーツ", "うるおい"],
+      scene: "春の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/11.pdf",
+      priority: 110,
+      memo: "Word形式から統一PDF化",
+    },
+  ],
+  summer: [
+    {
+      title: "〜夏のピリ辛チャーハン〜",
+      seasons: ["summer"],
+      seasonLabels: ["夏"],
+      tags: ["夏", "紫外線", "うるおい", "主食"],
+      scene: "夏の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/01.pdf",
+      priority: 100,
+      memo: "Word形式から統一PDF化",
+    },
+    {
+      title: "具たくさんサンラータン麺",
+      seasons: ["summer"],
+      seasonLabels: ["夏"],
+      tags: ["夏", "紫外線", "うるおい", "主食"],
+      scene: "夏の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/02.pdf",
+      priority: 101,
+      memo: "Word形式から統一PDF化",
+    },
+    {
+      title: "夏野菜たっぷりチャーハン",
+      seasons: ["summer"],
+      seasonLabels: ["夏"],
+      tags: ["夏", "紫外線", "うるおい", "主食"],
+      scene: "夏の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/17.pdf",
+      priority: 116,
+      memo: "Word形式から統一PDF化",
+    },
+  ],
+  autumn: [
+    {
+      title: "あったかスイートパンプキン",
+      seasons: ["autumn"],
+      seasonLabels: ["秋"],
+      tags: ["秋", "乾燥", "巡り", "スイーツ"],
+      scene: "秋の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/07.pdf",
+      priority: 106,
+      memo: "Word形式から統一PDF化",
+    },
+    {
+      title: "体ぽかぽか 鶏団子と野菜のお味噌汁",
+      seasons: ["autumn"],
+      seasonLabels: ["秋"],
+      tags: ["秋", "乾燥", "巡り", "温活"],
+      scene: "秋の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/08.pdf",
+      priority: 107,
+      memo: "Word形式から統一PDF化",
+    },
+    {
+      title: "黒キクラゲ入り蓮根ボール",
+      seasons: ["autumn"],
+      seasonLabels: ["秋"],
+      tags: ["秋", "乾燥", "巡り", "野菜"],
+      scene: "秋の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/09.pdf",
+      priority: 108,
+      memo: "Word形式から統一PDF化",
+    },
+  ],
+  winter: [
+    {
+      title: "いちごとアボカドのクミン和え",
+      seasons: ["winter"],
+      seasonLabels: ["冬"],
+      tags: ["冬", "冷え", "乾燥", "野菜"],
+      scene: "冬の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/05.pdf",
+      priority: 104,
+      memo: "Word形式から統一PDF化",
+    },
+    {
+      title: "かぶと鶏肉の豆乳スープ",
+      seasons: ["winter"],
+      seasonLabels: ["冬"],
+      tags: ["冬", "冷え", "乾燥", "温活"],
+      scene: "冬の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/06.pdf",
+      priority: 105,
+      memo: "Word形式から統一PDF化",
+    },
+    {
+      title: "体ポカポカ 鮭と野菜のグラタン",
+      seasons: ["winter"],
+      seasonLabels: ["冬"],
+      tags: ["冬", "冷え", "乾燥", "温活"],
+      scene: "冬の季節に合わせた、春奈さんのレシピです。",
+      pdfUrl: "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/15.pdf",
+      priority: 114,
+      memo: "Word形式から統一PDF化",
+    },
+  ],
+};
+
 function showMemberSite() {
   lockScreen.classList.add("hidden");
   memberSite.classList.remove("hidden");
@@ -76,9 +207,12 @@ function getCurrentCalendarSeason() {
 function getAllRecipes() {
   const existingRecipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
   const formattedRecipes = Array.isArray(window.harukazeFormattedRecipes) ? window.harukazeFormattedRecipes : [];
+  const fallbackRecipes = Object.values(fallbackRecipesBySeason).flat();
   const seen = new Set();
+  const primaryRecipes = [...formattedRecipes, ...existingRecipes];
+  const sourceRecipes = primaryRecipes.length ? primaryRecipes : fallbackRecipes;
 
-  return [...formattedRecipes, ...existingRecipes].filter((recipe) => {
+  return sourceRecipes.filter((recipe) => {
     if (!recipe?.title || !recipe?.pdfUrl) return false;
     const key = `${recipe.title}::${recipe.pdfUrl}`;
     if (seen.has(key)) return false;
