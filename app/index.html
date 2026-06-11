@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>石けん工房 春風 | 会員限定 お肌診断</title>
+    <meta
+      name="description"
+      content="石けん工房 春風の会員限定お肌診断。季節や肌状態に合わせたケアのヒントをご案内します。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-panel">
+          <p class="eyebrow">会員限定 肌チェック</p>
+          <h1 id="hero-title">石けん工房 春風のお肌診断</h1>
+          <div class="season-tabs" role="tablist" aria-label="季節を選択">
+            <button class="season-tab active" type="button" data-season="spring">春</button>
+            <button class="season-tab" type="button" data-season="summer">夏</button>
+            <button class="season-tab" type="button" data-season="autumn">秋</button>
+            <button class="season-tab" type="button" data-season="winter">冬</button>
+          </div>
+          <p class="season-message" id="seasonMessage">春のお肌診断を選択中です。</p>
+        </div>
+        <div class="hero-media">
+          <img id="seasonBanner" src="../assets/spring-banner.png" alt="春のお肌診断バナー" />
+        </div>
+        <div class="hero-actions">
+          <img class="brand-logo" src="../assets/logo.jpg" alt="Sekken-kobo Harukaze" />
+          <p class="lead">
+            季節を選んで、いまのお肌の様子に合わせたケアのヒントをお届けします。
+          </p>
+          <button class="primary-action" type="button" id="startButton">春の診断をはじめる</button>
+        </div>
+      </section>
+
+      <section class="diagnosis hidden" id="diagnosis" aria-live="polite">
+        <div class="diagnosis-top">
+          <div>
+            <p class="eyebrow">Question</p>
+            <h2 id="questionTitle">質問</h2>
+          </div>
+          <div class="progress-label" id="progressLabel">1 / 10</div>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <span id="progressBar"></span>
+        </div>
+        <p class="question-text" id="questionText"></p>
+        <div class="answer-grid" id="answerGrid"></div>
+      </section>
+
+      <section class="result hidden" id="result" aria-live="polite">
+        <div class="result-heading">
+          <p class="eyebrow">Diagnosis Result</p>
+          <h2 id="resultTitle"></h2>
+          <p id="resultSummary"></p>
+        </div>
+
+        <div class="result-layout">
+          <article class="care-card">
+            <h3>今日からのケアポイント</h3>
+            <ul id="carePoints"></ul>
+          </article>
+          <article class="care-card recipe-card">
+            <h3>商品提案</h3>
+            <p id="recipeText">
+              現在レシピは準備中です。正式なレシピ・商品情報のご提出後、診断結果ごとに差し替えます。
+            </p>
+          </article>
+        </div>
+
+        <section class="food-recipes" aria-labelledby="foodRecipesTitle">
+          <div class="food-recipes-heading">
+            <p class="eyebrow">Seasonal Recipes</p>
+            <h3 id="foodRecipesTitle">おすすめ料理レシピ</h3>
+            <p>診断結果と季節に合わせて、食事のヒントになるレシピを表示します。</p>
+          </div>
+          <div class="recipe-list" id="foodRecipes"></div>
+        </section>
+
+        <section class="recipe-search" aria-labelledby="recipeSearchTitle">
+          <div class="food-recipes-heading">
+            <p class="eyebrow">Recipe Tags</p>
+            <h3 id="recipeSearchTitle">タグからレシピを探す</h3>
+            <p>気になる言葉を入力するか、タグを選ぶと、その内容に合うレシピを表示します。</p>
+          </div>
+          <div class="recipe-search-panel">
+            <label class="recipe-search-label" for="recipeSearchInput">キーワード検索</label>
+            <input
+              id="recipeSearchInput"
+              class="recipe-search-input"
+              type="search"
+              placeholder="例：タンパク質、シミ、乾燥"
+              autocomplete="off"
+            />
+            <div class="recipe-tag-cloud" id="recipeTagCloud" aria-label="レシピタグ一覧"></div>
+          </div>
+          <div class="recipe-search-status" id="recipeSearchStatus"></div>
+          <div class="recipe-list recipe-search-results" id="recipeSearchResults"></div>
+        </section>
+
+        <div class="cta-band">
+          <a class="primary-link" href="https://haru-honoka.com/" target="_blank" rel="noreferrer">
+            石けん工房 春風ホームページへ
+          </a>
+          <a class="secondary-link" href="https://haru-honoka.com/shop/contact/draft" target="_blank" rel="noreferrer">
+            相談・お問い合わせ
+          </a>
+          <button class="ghost-action" type="button" id="retryButton">もう一度診断する</button>
+        </div>
+
+        <aside class="legal-note" aria-label="薬機法および注意事項">
+          <h3>薬機法・診断に関するご案内</h3>
+          <p>
+            本診断は、お客様の回答に基づき一般的なスキンケアの参考情報をお届けするものです。
+            医師による診断、治療、予防、改善効果を保証するものではありません。
+          </p>
+          <p>
+            化粧品・石けん等のご案内は、肌を清浄にする、うるおいを与える、肌をすこやかに保つなど、
+            化粧品の範囲内の表現に限定します。肌トラブルがある場合は専門機関へご相談ください。
+          </p>
+          <p>
+            料理レシピは一般的な食生活の参考情報であり、疾病の治療・予防・改善を目的とするものではありません。
+            体調やアレルギーに不安がある場合は、医師などの専門家へご相談ください。
+          </p>
+        </aside>
+      </section>
+
+      <footer class="footer-note">
+        <span>石けん工房 春風</span>
+        <span>診断結果は生活習慣や季節によって変わることがあります。</span>
+      </footer>
+    </main>
+    <script src="./recipes-data.js?v=20260612a"></script>
+    <script src="./formatted-recipes-data.js?v=20260612a"></script>
+    <script src="./app.js?v=20260612a"></script>
+  </body>
+</html>

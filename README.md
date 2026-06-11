@@ -1,24 +1,34 @@
-# 石けん工房 春風 会員限定お肌診断アプリ
+# 石けん工房 春風 アプリ・会員サイト
 
-静的HTML/CSS/JavaScriptで作成した診断アプリの初期版です。
+石けん工房 春風様向けの診断アプリと定期購入者限定サイトです。
 
-## 内容
+## フォルダ構成
 
-- 春風様らしい明るく親しみやすいトーン
-- 季節別トップバナー切り替え
-- 季節別10問の肌チェック
-- Word途中版をもとにした診断結果タイプ
-- 途中版レシピ・商品提案の表示
-- 薬機法・診断に関する注意書き
-- 春風ホームページ、お問い合わせへの導線
+- `app/`
+  - お肌診断アプリ本体
+  - 診断画面、診断結果、商品リンク、レシピ検索を管理します。
+- `member-site/`
+  - 定期購入者様向けの会員サイト
+  - パスワード入口、月別メッセージ、今月のレシピ、診断アプリへの導線を管理します。
+- `assets/`
+  - 共通画像、季節バナー、ロゴ、レシピPDF、OGP画像を管理します。
+- `index.html`
+  - 古いトップURLから `app/` へ案内する入口です。
+- `member.html`
+  - 古い会員サイトURLから `member-site/` へ案内する入口です。
 
-## 今後差し替える場所
+## 主な編集場所
 
-- 質問文と選択肢: `app.js` の `questionsBySeason`
-- 診断結果文: `app.js` の `resultTypes`
-- レシピ・商品提案: `app.js` の `resultTypes[].products`
-- 誘導先URL: `index.html` の CTA リンク
+- 診断アプリの質問や結果文: `app/app.js`
+- 診断アプリの見た目: `app/styles.css`
+- レシピデータ: `app/recipes-data.js` / `app/formatted-recipes-data.js`
+- 会員サイトの本文: `member-site/index.html`
+- 会員サイトのパスワードや月表示: `member-site/member.js`
+- 会員サイトの見た目: `member-site/member.css`
 
-## 確認方法
+## 公開URL
 
-`index.html` をブラウザで開くと動作します。
+- 診断アプリ: `https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/app/`
+- 会員サイト: `https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/member-site/`
+
+古いURLも入口ページとして残しているため、既存リンクからも移動できます。

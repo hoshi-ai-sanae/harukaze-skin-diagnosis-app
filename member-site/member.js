@@ -234,7 +234,7 @@ function updateMonthlyContent() {
   }
 
   if (seasonDiagnosisLink) {
-    seasonDiagnosisLink.href = `./index.html?season=${season}&v=20260611b`;
+    seasonDiagnosisLink.href = `../app/?season=${season}&v=20260612a`;
   }
 }
 

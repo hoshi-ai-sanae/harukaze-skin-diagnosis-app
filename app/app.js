@@ -1,24 +1,24 @@
 const seasons = {
   spring: {
-    banner: "./assets/spring-banner.png",
+    banner: "../assets/spring-banner.png",
     alt: "春のお肌診断バナー",
     label: "春",
     lead: "花粉・乾燥・季節のゆらぎに寄り添い、毎日の石けんケアや保湿ケアのヒントをお届けします。",
   },
   summer: {
-    banner: "./assets/summer-banner.png",
+    banner: "../assets/summer-banner.png",
     alt: "夏のお肌診断バナー",
     label: "夏",
     lead: "汗ばむ季節のうるおい不足、紫外線を浴びた肌、毛穴まわりの気分に合わせてケアを見直しましょう。",
   },
   autumn: {
-    banner: "./assets/autumn-banner.png",
+    banner: "../assets/autumn-banner.png",
     alt: "秋のお肌診断バナー",
     label: "秋",
     lead: "夏を過ごした肌をいたわりながら、乾燥・くすみ感・ハリ不足が気になる季節のケアを整えます。",
   },
   winter: {
-    banner: "./assets/winter-banner.png",
+    banner: "../assets/winter-banner.png",
     alt: "冬のお肌診断バナー",
     label: "冬",
     lead: "冷えや乾燥が気になる季節に、やさしい洗顔と保湿を中心にしたケアのヒントをお届けします。",
