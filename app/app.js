@@ -329,7 +329,8 @@ function renderQuestion() {
   progressBar.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
   answerGrid.innerHTML = "";
   if (backButton) {
-    backButton.disabled = currentQuestion === 0;
+    backButton.disabled = false;
+    backButton.textContent = currentQuestion === 0 ? "前の画面に戻る" : "前の質問に戻る";
   }
 
   question.answers.forEach((answer) => {
@@ -360,6 +361,10 @@ function selectAnswer(score) {
 
 function goBackQuestion() {
   if (currentQuestion === 0) {
+    resetDiagnosis();
+    diagnosis.classList.add("hidden");
+    result.classList.add("hidden");
+    startButton.scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
 
