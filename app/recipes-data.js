@@ -849,24 +849,6 @@ window.harukazeRecipes = [
     "pdfUrl": "https://drive.google.com/file/d/1LfbmpUq24zMg3o6N5B3VYTH3jDaBW3uQ/view?usp=sharing"
   },
   {
-    "title": "イチゴの食べるスムージー",
-    "seasons": [
-      "spring"
-    ],
-    "seasonLabels": [
-      "春"
-    ],
-    "tags": [
-      "腸内環境サポート",
-      "美肌サポート",
-      "発酵食品",
-      "抗酸化ケア",
-      "女性の美容サポート"
-    ],
-    "scene": "朝食に軽く整える、食欲がない時、春の肌ケア、疲れた日の甘い補給、胃腸にやさしい",
-    "pdfUrl": ""
-  },
-  {
     "title": "カラフル野菜のフライパンパエリア",
     "seasons": [
       "spring",

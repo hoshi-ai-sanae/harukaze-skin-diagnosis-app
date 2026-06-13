@@ -38,7 +38,7 @@
         "memo":  "Word形式から統一PDF化。元ファイル: 2022年7月春風通信　具たくさんサンラータン麺.docx"
     },
     {
-        "title":  "豆乳と甘酒のプリン いちごとクコの実ソースがけ",
+        "title":  "豆乳と甘酒のプリン いちごとクコの実のソースがけ",
         "seasons":  [
                         "spring"
                     ],
@@ -52,7 +52,7 @@
                      "スイーツ",
                      "うるおい"
                  ],
-        "scene":  "春の季節に合わせた、春奈さんのレシピ「豆乳と甘酒のプリン いちごとクコの実ソースがけ」です。",
+        "scene":  "春の季節に合わせた、春奈さんのレシピ「豆乳と甘酒のプリン いちごとクコの実のソースがけ」です。",
         "pdfUrl":  "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/03.pdf",
         "priority":  102,
         "memo":  "Word形式から統一PDF化。元ファイル: 2022年4月春風通信「豆乳と甘酒のプリン～いちごとクコの実ソースがけ～」.docx"
@@ -331,7 +331,7 @@
         "memo":  "Word形式から統一PDF化。元ファイル: 2020年8月レシピ.docx"
     },
     {
-        "title":  "きゅうりのポタージュ",
+        "title":  "きゅうりと豆乳の夏ポタージュ",
         "seasons":  [
                         "summer"
                     ],
@@ -344,7 +344,7 @@
                      "うるおい",
                      "温活"
                  ],
-        "scene":  "夏の季節に合わせた、春奈さんのレシピ「きゅうりのポタージュ」です。",
+        "scene":  "夏の季節に合わせた、春奈さんのレシピ「きゅうりと豆乳の夏ポタージュ」です。",
         "pdfUrl":  "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/18.pdf",
         "priority":  117,
         "memo":  "Word形式から統一PDF化。元ファイル: 2020年7月レシピ.docx"
@@ -563,7 +563,7 @@
         "memo":  "Word形式から統一PDF化。元ファイル: 2019年10月レシピ「キャロットラぺ」.docx"
     },
     {
-        "title":  "鶏肉と野菜の豆乳スープ",
+        "title":  "鶏肉と根菜の豆乳カレースープ",
         "seasons":  [
                         "autumn"
                     ],
@@ -578,7 +578,7 @@
                      "うるおい",
                      "温活"
                  ],
-        "scene":  "秋の季節に合わせた、春奈さんのレシピ「鶏肉と野菜の豆乳スープ」です。",
+        "scene":  "秋の季節に合わせた、春奈さんのレシピ「鶏肉と根菜の豆乳カレースープ」です。",
         "pdfUrl":  "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/30.pdf",
         "priority":  129,
         "memo":  "Word形式から統一PDF化。元ファイル: 2019年春風通信10月分レシピ「肉と野菜の豆乳スープ」.docx"
@@ -600,5 +600,25 @@
         "pdfUrl":  "https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/assets/recipes/formatted/31.pdf",
         "priority":  130,
         "memo":  "Word形式から統一PDF化。元ファイル: 2019年9月レシピ「プルプル杏仁豆腐 白ごまソース添え」.docx"
+    },
+    {
+        "title":  "切り干し大根とキュウリのお手軽サラダ",
+        "seasons":  [
+                        "summer"
+                    ],
+        "seasonLabels":  [
+                             "夏"
+                         ],
+        "tags":  [
+                     "むくみ対策",
+                     "腸内環境サポート",
+                     "ミネラル補給",
+                     "巡りサポート",
+                     "夏のすっきり副菜"
+                 ],
+        "scene":  "体の重だるさ対策、便秘対策、むくみケア、食欲がない時、暑い日の副菜、野菜不足対策に合わせた春奈さんのレシピです。",
+        "pdfUrl":  "",
+        "priority":  131,
+        "memo":  "レシピチェック「春奈さんのレシピ のコピー」2行目。PDF URL未設定。"
     }
 ];

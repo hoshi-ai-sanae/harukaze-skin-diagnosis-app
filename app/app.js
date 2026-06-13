@@ -258,7 +258,9 @@ const recipeTagCloud = document.querySelector("#recipeTagCloud");
 const recipeSearchStatus = document.querySelector("#recipeSearchStatus");
 const recipeSearchResults = document.querySelector("#recipeSearchResults");
 const retryButton = document.querySelector("#retryButton");
-let selectedRecipeTag = "";
+const backButton = document.querySelector("#backButton");
+let selectedRecipeTags = [];
+let answerHistory = [];
 
 document.querySelectorAll(".season-tab").forEach((button) => {
   button.addEventListener("click", () => {
@@ -269,8 +271,7 @@ document.querySelectorAll(".season-tab").forEach((button) => {
 });
 
 startButton.addEventListener("click", () => {
-  currentQuestion = 0;
-  scores = {};
+  resetDiagnosis();
   result.classList.add("hidden");
   diagnosis.classList.remove("hidden");
   renderQuestion();
@@ -278,13 +279,24 @@ startButton.addEventListener("click", () => {
 });
 
 retryButton.addEventListener("click", () => {
-  currentQuestion = 0;
-  scores = {};
+  resetDiagnosis();
   result.classList.add("hidden");
   diagnosis.classList.remove("hidden");
   renderQuestion();
   diagnosis.scrollIntoView({ behavior: "smooth", block: "start" });
 });
+
+if (backButton) {
+  backButton.addEventListener("click", () => {
+    goBackQuestion();
+  });
+}
+
+function resetDiagnosis() {
+  currentQuestion = 0;
+  scores = {};
+  answerHistory = [];
+}
 
 function getInitialSeason() {
   const params = new URLSearchParams(window.location.search);
@@ -316,6 +328,9 @@ function renderQuestion() {
   progressLabel.textContent = `${currentQuestion + 1} / ${questions.length}`;
   progressBar.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
   answerGrid.innerHTML = "";
+  if (backButton) {
+    backButton.disabled = currentQuestion === 0;
+  }
 
   question.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -328,6 +343,7 @@ function renderQuestion() {
 }
 
 function selectAnswer(score) {
+  answerHistory[currentQuestion] = score;
   Object.entries(score).forEach(([key, value]) => {
     scores[key] = (scores[key] || 0) + value;
   });
@@ -340,6 +356,24 @@ function selectAnswer(score) {
   }
 
   showResult();
+}
+
+function goBackQuestion() {
+  if (currentQuestion === 0) {
+    return;
+  }
+
+  const previousScore = answerHistory[currentQuestion - 1] || {};
+  Object.entries(previousScore).forEach(([key, value]) => {
+    scores[key] = Math.max(0, (scores[key] || 0) - value);
+    if (scores[key] === 0) {
+      delete scores[key];
+    }
+  });
+
+  answerHistory.splice(currentQuestion - 1);
+  currentQuestion -= 1;
+  renderQuestion();
 }
 
 function showResult() {
@@ -360,7 +394,7 @@ function showResult() {
     <span>診断結果に合わせて、石けん・保湿・メイクまわりの商品ページへ移動できます。</span>
   `;
   renderFoodRecipes(winner);
-  selectedRecipeTag = "";
+  selectedRecipeTags = [];
   renderRecipeTagSearch(winner);
 
   diagnosis.classList.add("hidden");
@@ -494,7 +528,7 @@ function renderFoodRecipes(type) {
   foodRecipes.innerHTML = recommended.map(renderFoodRecipeCard).join("");
 }
 
-function renderRecipeTagSearch(type = "balance") {
+function renderRecipeTagSearch(type = "balance", useInitialTag = true) {
   const recipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
   const tags = buildRecipeTags(recipes);
   const preferredTags = recipeTagRules[type] || recipeTagRules.balance;
@@ -504,18 +538,31 @@ function renderRecipeTagSearch(type = "balance") {
     return;
   }
 
-  selectedRecipeTag = selectedRecipeTag || initialTag;
+  selectedRecipeTags = selectedRecipeTags.length ? selectedRecipeTags : (useInitialTag ? [initialTag].filter(Boolean) : []);
   if (recipeSearchInput) {
-    recipeSearchInput.value = selectedRecipeTag;
+    recipeSearchInput.value = selectedRecipeTags.join(" ");
   }
   renderRecipeTagButtons(tags);
-  renderRecipeSearchResults(selectedRecipeTag);
+  renderRecipeSearchResults(selectedRecipeTags);
 }
 
 function buildRecipeTags(recipes) {
   const tagCounts = new Map();
-  const manualTags = ["春奈さん", "GOUさん", "タンパク質", "シミ", "乾燥", "くすみ", "紫外線", "うるおい", "冷え", "温活", "野菜", "主食", "スイーツ"];
-
+  const manualTags = [
+    "春奈さん",
+    "GOUさん",
+    "タンパク質",
+    "シミ",
+    "乾燥",
+    "くすみ",
+    "紫外線",
+    "うるおい",
+    "冷え",
+    "温活",
+    "野菜",
+    "主食",
+    "スイーツ",
+  ];
   [...manualTags, ...recipes.flatMap((recipe) => recipe.tags || [])].forEach((tag) => {
     const cleanTag = String(tag || "").trim();
     if (!cleanTag) {
@@ -536,31 +583,37 @@ function buildRecipeTags(recipes) {
 function renderRecipeTagButtons(tags) {
   recipeTagCloud.innerHTML = tags
     .map((tag) => {
-      const activeClass = tag === selectedRecipeTag ? " active" : "";
-      return `<button class="recipe-tag-button${activeClass}" type="button" data-tag="${escapeAttribute(tag)}">${escapeHtml(tag)}</button>`;
+      const isActive = selectedRecipeTags.includes(tag);
+      const activeClass = isActive ? " active" : "";
+      const pressed = isActive ? "true" : "false";
+      return `<button class="recipe-tag-button${activeClass}" type="button" data-tag="${escapeAttribute(tag)}" aria-pressed="${pressed}">${escapeHtml(tag)}</button>`;
     })
     .join("");
 
   recipeTagCloud.querySelectorAll(".recipe-tag-button").forEach((button) => {
     button.addEventListener("click", () => {
-      selectedRecipeTag = button.dataset.tag || "";
+      const tag = button.dataset.tag || "";
+      selectedRecipeTags = selectedRecipeTags.includes(tag)
+        ? selectedRecipeTags.filter((selectedTag) => selectedTag !== tag)
+        : [...selectedRecipeTags, tag];
       if (recipeSearchInput) {
-        recipeSearchInput.value = selectedRecipeTag;
+        recipeSearchInput.value = selectedRecipeTags.join(" ");
       }
       renderRecipeTagButtons(tags);
-      renderRecipeSearchResults(selectedRecipeTag);
+      renderRecipeSearchResults(selectedRecipeTags);
     });
   });
 }
 
-function renderRecipeSearchResults(keyword) {
+function renderRecipeSearchResults(keywords) {
   const recipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
-  const searchKeyword = String(keyword || "").trim();
-  const results = searchKeyword ? searchRecipesByKeyword(recipes, searchKeyword).slice(0, 9) : [];
+  const searchKeywords = normalizeSearchKeywords(keywords);
+  const searchLabel = searchKeywords.join(" / ");
+  const results = searchKeywords.length ? searchRecipesByKeywords(recipes, searchKeywords).slice(0, 9) : [];
 
   if (recipeSearchStatus) {
-    recipeSearchStatus.textContent = searchKeyword
-      ? `「${searchKeyword}」に関連するレシピ ${results.length}件`
+    recipeSearchStatus.textContent = searchKeywords.length
+      ? `「${searchLabel}」に関連するレシピ ${results.length}件`
       : "キーワードを入力するかタグを選んでください。";
   }
 
@@ -569,8 +622,19 @@ function renderRecipeSearchResults(keyword) {
     : `<article class="food-card"><p class="food-card-empty">該当するレシピが見つかりませんでした。別のタグや言葉で検索してください。</p></article>`;
 }
 
-function searchRecipesByKeyword(recipes, keyword) {
-  const keywords = expandRecipeKeyword(keyword);
+function normalizeSearchKeywords(keywords) {
+  if (Array.isArray(keywords)) {
+    return keywords.map((keyword) => String(keyword || "").trim()).filter(Boolean);
+  }
+
+  return String(keywords || "")
+    .split(/[、,\s]+/)
+    .map((keyword) => keyword.trim())
+    .filter(Boolean);
+}
+
+function searchRecipesByKeywords(recipes, selectedKeywords) {
+  const expandedKeywordGroups = selectedKeywords.map(expandRecipeKeyword).filter((items) => items.length);
 
   return recipes
     .map((recipe, index) => {
@@ -584,11 +648,14 @@ function searchRecipesByKeyword(recipes, keyword) {
       ]
         .join(" ")
         .toLowerCase();
-      const score = keywords.reduce((total, item) => total + (text.includes(item.toLowerCase()) ? 1 : 0), 0);
+      const matchedGroups = expandedKeywordGroups.filter((keywords) =>
+        keywords.some((item) => text.includes(item.toLowerCase()))
+      );
+      const score = matchedGroups.length * 3;
       const priorityScore = Math.max(0, 1000 - (Number(recipe.priority) || index + 1)) / 1000;
       return { recipe, score: score + priorityScore, index };
     })
-    .filter((item) => item.score >= 1)
+    .filter((item) => item.score >= 3)
     .sort((a, b) => b.score - a.score || a.index - b.index)
     .map((item) => item.recipe);
 }
@@ -602,8 +669,8 @@ function expandRecipeKeyword(keyword) {
     GOU: ["GOUさん", "Gouさん", "GOU", "Gou", "菜園男子GOU", "菜園男子Gou"],
     シミ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
     しみ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
-    タンパク質: ["タンパク質", "たんぱく質", "蛋白質", "肉", "魚", "卵", "豆腐", "豆乳", "大豆"],
-    たんぱく質: ["タンパク質", "たんぱく質", "蛋白質", "肉", "魚", "卵", "豆腐", "豆乳", "大豆"],
+    タンパク質: ["タンパク質", "たんぱく質", "蛋白質"],
+    たんぱく質: ["タンパク質", "たんぱく質", "蛋白質"],
     乾燥: ["乾燥", "うるおい", "保湿"],
     くすみ: ["くすみ", "シミ", "しみ", "巡り", "抗酸化", "紫外線"],
     冷え: ["冷え", "温活", "体を温める", "巡り"],
@@ -692,19 +759,36 @@ function escapeAttribute(value) {
 }
 
 function getRecipeViewerUrl(recipe) {
-  if (!recipe?.pdfUrl) {
+  const pdfUrl = recipe?.pdfUrl || findRecipePdfUrlByTitle(recipe?.title);
+
+  if (!pdfUrl) {
     return "";
   }
 
-  if (isHarunaRecipe(recipe)) {
-    return `https://docs.google.com/viewer?url=${encodeURIComponent(recipe.pdfUrl)}`;
+  if (isHarunaRecipe({ ...recipe, pdfUrl })) {
+    return `https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}`;
   }
 
-  return recipe.pdfUrl;
+  return pdfUrl;
 }
 
 function isHarunaRecipe(recipe) {
   return recipe?.pdfUrl?.includes("/assets/recipes/formatted/") || recipe?.memo?.includes("Word形式から統一PDF化");
+}
+
+function findRecipePdfUrlByTitle(title) {
+  const lookupTitle = normalizeRecipeTitle(title);
+  const recipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
+  const fallback = recipes.find((recipe) => recipe?.pdfUrl && normalizeRecipeTitle(recipe.title) === lookupTitle);
+
+  return fallback?.pdfUrl || "";
+}
+
+function normalizeRecipeTitle(title) {
+  return String(title || "")
+    .replace(/[☆★〜～−–—!！&＆\s]/g, "")
+    .replace(/[\u30a1-\u30f6]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0x60))
+    .toLowerCase();
 }
 
 function mergeRecipes(...recipeGroups) {
@@ -713,11 +797,11 @@ function mergeRecipes(...recipeGroups) {
   return recipeGroups
     .flat()
     .filter((recipe) => {
-      if (!recipe?.title || !recipe?.pdfUrl) {
+      if (!recipe?.title) {
         return false;
       }
 
-      const key = `${recipe.title}::${recipe.pdfUrl}`;
+      const key = `${recipe.title}::${recipe.pdfUrl || "pending"}`;
       if (seen.has(key)) {
         return false;
       }
@@ -746,8 +830,8 @@ loadRecipesFromSheet().then((recipes) => {
 
 if (recipeSearchInput) {
   recipeSearchInput.addEventListener("input", () => {
-    selectedRecipeTag = recipeSearchInput.value.trim();
-    renderRecipeSearchResults(selectedRecipeTag);
+    selectedRecipeTags = normalizeSearchKeywords(recipeSearchInput.value);
+    renderRecipeTagSearch("balance", false);
   });
 }
 
