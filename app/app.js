@@ -639,9 +639,12 @@ function normalizeSearchKeywords(keywords) {
 }
 
 function searchRecipesByKeywords(recipes, selectedKeywords) {
-  const expandedKeywordGroups = selectedKeywords.map(expandRecipeKeyword).filter((items) => items.length);
+  const sourceFilter = getRecipeSourceFilter(selectedKeywords);
+  const searchKeywords = removeRecipeSourceKeywords(selectedKeywords);
+  const expandedKeywordGroups = searchKeywords.map(expandSearchKeyword).filter((items) => items.length);
 
   return recipes
+    .filter((recipe) => matchesRecipeSourceFilter(recipe, sourceFilter))
     .map((recipe, index) => {
       const text = [
         recipe.title,
@@ -656,13 +659,79 @@ function searchRecipesByKeywords(recipes, selectedKeywords) {
       const matchedGroups = expandedKeywordGroups.filter((keywords) =>
         keywords.some((item) => text.includes(item.toLowerCase()))
       );
-      const score = matchedGroups.length * 3;
+      const score = expandedKeywordGroups.length ? matchedGroups.length * 3 : 3;
       const priorityScore = Math.max(0, 1000 - (Number(recipe.priority) || index + 1)) / 1000;
       return { recipe, score: score + priorityScore, index };
     })
     .filter((item) => item.score >= 3)
     .sort((a, b) => b.score - a.score || a.index - b.index)
     .map((item) => item.recipe);
+}
+
+function getRecipeSourceFilter(keywords) {
+  const sourceKeywords = keywords.map(normalizeRecipeSourceKeyword).filter(Boolean);
+  const wantsHaruna = sourceKeywords.includes("haruna");
+  const wantsGou = sourceKeywords.includes("gou");
+
+  if (wantsHaruna === wantsGou) {
+    return "";
+  }
+
+  return wantsHaruna ? "haruna" : "gou";
+}
+
+function removeRecipeSourceKeywords(keywords) {
+  return keywords.filter((keyword) => !normalizeRecipeSourceKeyword(keyword));
+}
+
+function expandSearchKeyword(keyword) {
+  return [...new Set([...expandRecipeKeyword(keyword), ...expandNutritionKeyword(keyword)])].filter(Boolean);
+}
+
+function expandNutritionKeyword(keyword) {
+  const value = String(keyword || "").trim();
+  const proteinKeywords = ["\u30bf\u30f3\u30d1\u30af\u8cea", "\u305f\u3093\u3071\u304f\u8cea", "\u86cb\u767d\u8cea"];
+
+  if (!proteinKeywords.includes(value)) {
+    return [];
+  }
+
+  return [
+    "\u8089",
+    "\u9b5a",
+    "\u5375",
+    "\u8c46\u8150",
+    "\u8c46\u4e73",
+    "\u5927\u8c46",
+    "\u9d8f",
+    "\u8c5a",
+    "\u30c1\u30ad\u30f3",
+  ];
+}
+
+function normalizeRecipeSourceKeyword(keyword) {
+  const value = String(keyword || "")
+    .trim()
+    .replace(/\s+/g, "")
+    .toLowerCase();
+
+  if (["\u6625\u5948\u3055\u3093", "\u6625\u5948", "\u6625\u83dc\u3055\u3093", "\u6625\u83dc"].includes(value)) {
+    return "haruna";
+  }
+
+  if (["gou\u3055\u3093", "gou"].includes(value)) {
+    return "gou";
+  }
+
+  return "";
+}
+
+function matchesRecipeSourceFilter(recipe, sourceFilter) {
+  if (!sourceFilter) {
+    return true;
+  }
+
+  return sourceFilter === "haruna" ? isHarunaRecipe(recipe) : !isHarunaRecipe(recipe);
 }
 
 function expandRecipeKeyword(keyword) {
