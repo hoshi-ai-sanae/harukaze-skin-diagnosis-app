@@ -518,7 +518,7 @@ h3 {
 @media (max-width: 900px) {
   main {
     width: min(100% - 20px, 720px);
-    padding-top: 10px;
+    padding-top: max(18px, env(safe-area-inset-top));
   }
 
   .lock-screen,
@@ -538,6 +538,8 @@ h3 {
 
   .lock-media img,
   .season-message img {
+    height: auto;
+    min-height: 0;
     object-fit: contain;
   }
 
