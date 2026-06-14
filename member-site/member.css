@@ -215,7 +215,7 @@ h3 {
   background: #eff5dc;
 }
 
-.password-row button,
+.password-row > button,
 .member-card a {
   display: inline-flex;
   align-items: center;
@@ -546,7 +546,7 @@ h3 {
     flex-direction: column;
   }
 
-  .password-row button,
+  .password-row > button,
   .member-card a,
   .logout-button {
     width: 100%;
