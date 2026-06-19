@@ -42,6 +42,7 @@ main {
 .member-header,
 .season-message,
 .member-card,
+.monthly-guests,
 .monthly-area {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -313,6 +314,11 @@ h3 {
   font-size: 0.92rem;
 }
 
+.season-copy .note a {
+  color: #7d5667;
+  font-weight: 700;
+}
+
 .season-message img {
   width: 100%;
   height: 100%;
@@ -354,11 +360,13 @@ h3 {
 }
 
 .monthly-recipes,
+.monthly-guests,
 .monthly-area {
   padding: clamp(24px, 4vw, 42px);
 }
 
-.monthly-recipes {
+.monthly-recipes,
+.monthly-guests {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.9);
@@ -476,6 +484,62 @@ h3 {
   text-decoration: none;
 }
 
+.guest-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.guest-card {
+  display: grid;
+  align-items: start;
+  gap: 16px;
+  min-height: 260px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.guest-card-with-photo {
+  grid-template-columns: minmax(96px, 0.32fr) minmax(0, 0.68fr);
+}
+
+.guest-card img {
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.guest-card h3 {
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.guest-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.guest-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  margin-top: 18px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .empty-message {
   color: var(--muted);
 }
@@ -524,6 +588,8 @@ h3 {
   .lock-screen,
   .season-message,
   .content-grid,
+  .guest-list,
+  .guest-card-with-photo,
   .member-recipe-list {
     grid-template-columns: 1fr;
   }
