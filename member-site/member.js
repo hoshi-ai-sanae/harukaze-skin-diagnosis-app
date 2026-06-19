@@ -1,6 +1,6 @@
 const memberConfig = {
   currentPassword: "harukaze2026",
-  storageKey: "harukaze-member-access-2026-06",
+  storageKey: "harukaze-member-access-2026-07",
   displayMonth: 7,
 };
 
