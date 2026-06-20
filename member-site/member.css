@@ -516,6 +516,10 @@ h3 {
   object-position: center;
 }
 
+.guest-card-with-photo img {
+  content: url("../assets/monthly/haruna-profile-webp-20260620.svg");
+}
+
 .guest-card h3 {
   color: var(--ink);
   line-height: 1.45;
