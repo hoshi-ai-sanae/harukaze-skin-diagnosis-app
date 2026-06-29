@@ -367,6 +367,16 @@ h3 {
   padding: clamp(24px, 4vw, 42px);
 }
 
+.content-rights p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.content-rights p:last-child {
+  margin-bottom: 0;
+}
+
 .monthly-recipes,
 .monthly-guests {
   border: 1px solid var(--line);

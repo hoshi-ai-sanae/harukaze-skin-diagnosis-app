@@ -298,7 +298,8 @@ h1 {
 }
 
 .care-card,
-.legal-note {
+.legal-note,
+.content-rights-note {
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -306,7 +307,8 @@ h1 {
 }
 
 .care-card h3,
-.legal-note h3 {
+.legal-note h3,
+.content-rights-note h3 {
   margin-bottom: 12px;
   color: var(--leaf-deep);
   font-size: 1.05rem;
@@ -531,6 +533,23 @@ h1 {
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.85;
+}
+
+.content-rights-note {
+  margin-top: 16px;
+  border-top: 4px solid #b69a67;
+  background: #fffaf1;
+}
+
+.content-rights-note p {
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
+.content-rights-note p:last-child {
+  margin-bottom: 0;
 }
 
 .footer-note {
