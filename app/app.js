@@ -228,11 +228,6 @@ const recipeTagRules = {
   balance: ["腸内環境", "腸内環境サポート", "むくみ対策", "肌コンディション維持", "たんぱく質補給"],
 };
 
-const recipeSheet = {
-  id: "1hBSj2vgTit_B9fgUp1gSDD8mBprdwhQd7Te2G3D5L3Y",
-  name: "harukaze-recipe-management",
-};
-
 let currentSeason = getInitialSeason();
 let currentQuestion = 0;
 let scores = {};
@@ -420,99 +415,6 @@ function renderProductLinks(products) {
     .join("");
 }
 
-function loadRecipesFromSheet() {
-  const callbackName = `harukazeRecipeCallback_${Date.now()}`;
-  const query = new URLSearchParams({
-    tqx: `responseHandler:${callbackName}`,
-    sheet: recipeSheet.name,
-    tq: "select A,B,C,D,E,F,G,H",
-  });
-  const url = `https://docs.google.com/spreadsheets/d/${recipeSheet.id}/gviz/tq?${query.toString()}`;
-
-  return new Promise((resolve) => {
-    const script = document.createElement("script");
-    let settled = false;
-
-    window[callbackName] = (response) => {
-      settled = true;
-      cleanup();
-      if (response?.status !== "ok") {
-        resolve([]);
-        return;
-      }
-      resolve(parseRecipeSheetRows(response.table?.rows || []));
-    };
-
-    script.onerror = () => {
-      if (settled) {
-        return;
-      }
-      settled = true;
-      cleanup();
-      resolve([]);
-    };
-
-    function cleanup() {
-      delete window[callbackName];
-      script.remove();
-    }
-
-    script.src = url;
-    document.head.appendChild(script);
-  });
-}
-
-function parseRecipeSheetRows(rows) {
-  return rows
-    .map((row, index) => {
-      if (index === 0) {
-        return null;
-      }
-
-      const cells = row.c || [];
-      const status = readSheetCell(cells[5]);
-      const url = readSheetCell(cells[4]);
-
-      if (status !== "公開" || !url) {
-        return null;
-      }
-
-      return {
-        title: readSheetCell(cells[0]),
-        seasons: splitSheetList(readSheetCell(cells[1])).map(normalizeSeason),
-        seasonLabels: splitSheetList(readSheetCell(cells[1])),
-        tags: splitSheetList(readSheetCell(cells[2])),
-        scene: readSheetCell(cells[3]),
-        pdfUrl: url,
-        priority: Number(readSheetCell(cells[6])) || 9999,
-        memo: readSheetCell(cells[7]),
-      };
-    })
-    .filter((recipe) => recipe?.title);
-}
-
-function readSheetCell(cell) {
-  return String(cell?.v ?? cell?.f ?? "").trim();
-}
-
-function splitSheetList(value) {
-  return String(value || "")
-    .split(/[、,]/)
-    .map((item) => item.trim())
-    .filter(Boolean);
-}
-
-function normalizeSeason(value) {
-  const seasonMap = {
-    春: "spring",
-    初夏: "summer",
-    夏: "summer",
-    秋: "autumn",
-    冬: "winter",
-  };
-  return seasonMap[value] || value;
-}
-
 function renderFoodRecipes(type) {
   const recipes = Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [];
   const recommended = pickRecipes(type, recipes);
@@ -555,7 +457,6 @@ function buildRecipeTags(recipes) {
   const tagCounts = new Map();
   const manualTags = [
     "春奈さん",
-    "GOUさん",
     "タンパク質",
     "シミ",
     "乾燥",
@@ -670,14 +571,7 @@ function searchRecipesByKeywords(recipes, selectedKeywords) {
 
 function getRecipeSourceFilter(keywords) {
   const sourceKeywords = keywords.map(normalizeRecipeSourceKeyword).filter(Boolean);
-  const wantsHaruna = sourceKeywords.includes("haruna");
-  const wantsGou = sourceKeywords.includes("gou");
-
-  if (wantsHaruna === wantsGou) {
-    return "";
-  }
-
-  return wantsHaruna ? "haruna" : "gou";
+  return sourceKeywords.includes("haruna") ? "haruna" : "";
 }
 
 function removeRecipeSourceKeywords(keywords) {
@@ -719,10 +613,6 @@ function normalizeRecipeSourceKeyword(keyword) {
     return "haruna";
   }
 
-  if (["gou\u3055\u3093", "gou"].includes(value)) {
-    return "gou";
-  }
-
   return "";
 }
 
@@ -731,7 +621,7 @@ function matchesRecipeSourceFilter(recipe, sourceFilter) {
     return true;
   }
 
-  return sourceFilter === "haruna" ? isHarunaRecipe(recipe) : !isHarunaRecipe(recipe);
+  return sourceFilter === "haruna" ? isHarunaRecipe(recipe) : false;
 }
 
 function expandRecipeKeyword(keyword) {
@@ -739,8 +629,6 @@ function expandRecipeKeyword(keyword) {
   const aliases = {
     春奈さん: ["春奈さん", "春奈", "Word形式から統一PDF化"],
     春奈: ["春奈さん", "春奈", "Word形式から統一PDF化"],
-    GOUさん: ["GOUさん", "Gouさん", "GOU", "Gou", "菜園男子GOU", "菜園男子Gou"],
-    GOU: ["GOUさん", "Gouさん", "GOU", "Gou", "菜園男子GOU", "菜園男子Gou"],
     シミ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
     しみ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
     タンパク質: ["タンパク質", "たんぱく質", "蛋白質"],
@@ -759,7 +647,7 @@ function isKeywordMatch(value, keyword) {
 }
 
 function getRecipeSourceLabel(recipe) {
-  return isHarunaRecipe(recipe) ? "春奈さん" : "GOUさん";
+  return "春奈さん";
 }
 
 function pickRecipes(type, recipes) {
@@ -889,18 +777,6 @@ window.harukazeRecipes = mergeRecipes(
   Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [],
   Array.isArray(window.harukazeFormattedRecipes) ? window.harukazeFormattedRecipes : []
 );
-
-loadRecipesFromSheet().then((recipes) => {
-  window.harukazeRecipes = mergeRecipes(
-    Array.isArray(window.harukazeRecipes) ? window.harukazeRecipes : [],
-    Array.isArray(window.harukazeFormattedRecipes) ? window.harukazeFormattedRecipes : [],
-    recipes
-  );
-
-  if (!result.classList.contains("hidden")) {
-    renderRecipeTagSearch();
-  }
-});
 
 if (recipeSearchInput) {
   recipeSearchInput.addEventListener("input", () => {
