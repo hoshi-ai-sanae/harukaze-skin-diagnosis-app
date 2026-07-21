@@ -457,6 +457,7 @@ function buildRecipeTags(recipes) {
   const tagCounts = new Map();
   const manualTags = [
     "春奈さん",
+    "GOUさん",
     "タンパク質",
     "シミ",
     "乾燥",
@@ -571,7 +572,14 @@ function searchRecipesByKeywords(recipes, selectedKeywords) {
 
 function getRecipeSourceFilter(keywords) {
   const sourceKeywords = keywords.map(normalizeRecipeSourceKeyword).filter(Boolean);
-  return sourceKeywords.includes("haruna") ? "haruna" : "";
+  const wantsHaruna = sourceKeywords.includes("haruna");
+  const wantsGou = sourceKeywords.includes("gou");
+
+  if (wantsHaruna === wantsGou) {
+    return "";
+  }
+
+  return wantsHaruna ? "haruna" : "gou";
 }
 
 function removeRecipeSourceKeywords(keywords) {
@@ -613,6 +621,10 @@ function normalizeRecipeSourceKeyword(keyword) {
     return "haruna";
   }
 
+  if (["gou\u3055\u3093", "gou"].includes(value)) {
+    return "gou";
+  }
+
   return "";
 }
 
@@ -621,7 +633,7 @@ function matchesRecipeSourceFilter(recipe, sourceFilter) {
     return true;
   }
 
-  return sourceFilter === "haruna" ? isHarunaRecipe(recipe) : false;
+  return sourceFilter === "haruna" ? isHarunaRecipe(recipe) : !isHarunaRecipe(recipe);
 }
 
 function expandRecipeKeyword(keyword) {
@@ -629,6 +641,8 @@ function expandRecipeKeyword(keyword) {
   const aliases = {
     春奈さん: ["春奈さん", "春奈", "Word形式から統一PDF化"],
     春奈: ["春奈さん", "春奈", "Word形式から統一PDF化"],
+    GOUさん: ["GOUさん", "Gouさん", "GOU", "Gou", "菜園男子GOU", "菜園男子Gou"],
+    GOU: ["GOUさん", "Gouさん", "GOU", "Gou", "菜園男子GOU", "菜園男子Gou"],
     シミ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
     しみ: ["シミ", "しみ", "くすみ", "紫外線", "UV", "抗酸化", "ビタミンC"],
     タンパク質: ["タンパク質", "たんぱく質", "蛋白質"],
@@ -647,7 +661,7 @@ function isKeywordMatch(value, keyword) {
 }
 
 function getRecipeSourceLabel(recipe) {
-  return "春奈さん";
+  return isHarunaRecipe(recipe) ? "春奈さん" : "GOUさん";
 }
 
 function pickRecipes(type, recipes) {
