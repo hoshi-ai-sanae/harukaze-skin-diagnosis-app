@@ -18,7 +18,7 @@ window.harukazeRecipes = [
       "肌の透明感"
     ],
     "scene": "体を温める、胃腸にやさしい、栄養補給、寒い季節の滋養",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/1xswrEqAaZIdnEn0nKoyeLFool-eWC2Rj/view?usp=sharing"
   },
   {
     "title": "ふわふわトロロのひとくちドーナツ",
@@ -38,7 +38,7 @@ window.harukazeRecipes = [
       "ストレスケア"
     ],
     "scene": "寒い日の間食、冬のおやつ、子ども向けおやつ、イベント菓子、バレンタイン前後",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/1dLDCe4HGcF_VFOFvliSW3z2dwIBtQu5G/view?usp=sharing"
   },
   {
     "title": "茄子のインヴォルティーニ",
@@ -76,7 +76,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "体を温める、滋養感、満足感、疲れた日の栄養補給、秋冬のエネルギーチャージ",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/13b2I63C5ax4rS1Dn3PaFH4eQZ8NmBGE-/view?usp=sharing"
   },
   {
     "title": "イワシの葱味噌チーズ焼き",
@@ -132,7 +132,7 @@ window.harukazeRecipes = [
       "疲労感ケア"
     ],
     "scene": "さっぱり整える、食欲サポート、箸休め、年末年始の食べすぎリセット、胃もたれ対策",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/17jYbcJIkGctN0wLKHdpvpPzA8shJj0J0/view?usp=sharing"
   },
   {
     "title": "とろとろ卵のトマト丼",
@@ -205,7 +205,7 @@ window.harukazeRecipes = [
       "むくみ対策"
     ],
     "scene": "夏バテ対策、食欲サポート、軽めの主食、栄養補給、見た目で気分が上がる一皿",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/13DoOYpJDCrn9XUs8hqiWogP63LPU9ap0/view?usp=sharing"
   },
   {
     "title": "本格チキンシチュー",
@@ -242,7 +242,7 @@ window.harukazeRecipes = [
       "抗酸化ケア"
     ],
     "scene": "春のデトックス感、さっぱり整える、胃腸にやさしい、軽めの栄養補給、食欲サポート",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/1WJnr7Q7xjcwwTNVNIpbxQiy256APvbm2/view?usp=sharing"
   },
   {
     "title": "ベジムースサラダ",
@@ -395,7 +395,7 @@ window.harukazeRecipes = [
       "満足感"
     ],
     "scene": "体を温める、疲れた日の栄養補給、満足感、寒い日の主食、胃腸をいたわる和風グラタン",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/1VimypknzKQ-LUA1lScqjOJc9e5MN-sft/view?usp=sharing"
   },
   {
     "title": "フレッシュ野菜ジュースのリゾット",
@@ -486,7 +486,7 @@ window.harukazeRecipes = [
       "腸内環境サポート"
     ],
     "scene": "胃腸をいたわる、体を温める、食欲がない時にも食べやすい、軽めの栄養補給、春先の整え食",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/11SibKluoE2zKb3usW3jdtUPUN7UWVpOO/view?usp=sharing"
   },
   {
     "title": "ピーマンと大葉の醤油麹チャーハン",
@@ -734,7 +734,7 @@ window.harukazeRecipes = [
       "低脂質副菜"
     ],
     "scene": "さっぱり整える、箸休め、年末年始の食べすぎリセット、胃もたれ対策、華やかな前菜",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/17jYbcJIkGctN0wLKHdpvpPzA8shJj0J0/view?usp=sharing"
   },
   {
     "title": "茄子とベーコンのミルフィーユ",
@@ -1243,7 +1243,7 @@ window.harukazeRecipes = [
       "満足感"
     ],
     "scene": "胃腸にやさしい、食べすぎ調整、秋の栄養補給、軽めの主菜、疲れた日のたんぱく質補給",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/1xbiQrfYXBtOwswfDaJ-2s-AY9PnqINpn/view?usp=sharing"
   },
   {
     "title": "高野豆腐の生キャラメル風 ハチミツ味",
