@@ -787,7 +787,7 @@ function pickRecipes(type, recipes) {
       return;
     }
 
-    if (!selected.some((selectedItem) => selectedItem.recipe.pdfUrl === item.recipe.pdfUrl)) {
+    if (!selected.some((selectedItem) => normalizeRecipeTitle(selectedItem.recipe.title) === normalizeRecipeTitle(item.recipe.title))) {
       selected.push(item);
     }
   });
@@ -875,7 +875,7 @@ function mergeRecipes(...recipeGroups) {
         return false;
       }
 
-      const key = `${recipe.title}::${recipe.pdfUrl || "pending"}`;
+      const key = normalizeRecipeTitle(recipe.title);
       if (seen.has(key)) {
         return false;
       }

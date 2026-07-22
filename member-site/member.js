@@ -252,7 +252,7 @@ function getAllRecipes() {
 
   return sourceRecipes.filter((recipe) => {
     if (!recipe?.title || !recipe?.pdfUrl) return false;
-    const key = `${recipe.title}::${recipe.pdfUrl}`;
+    const key = normalizeRecipeTitle(recipe.title);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -262,10 +262,12 @@ function getAllRecipes() {
 function renderMemberRecipes(season) {
   if (!memberRecipeList) return;
 
-  const recipes = getAllRecipes()
+  const rankedRecipes = getAllRecipes()
     .filter((recipe) => recipe.seasons?.includes(season))
-    .sort((a, b) => (Number(a.priority) || 9999) - (Number(b.priority) || 9999))
-    .slice(0, 6);
+    .sort((a, b) => (Number(a.priority) || 9999) - (Number(b.priority) || 9999));
+  const harunaRecipes = rankedRecipes.filter(isHarunaRecipe).slice(0, 3);
+  const gouRecipes = rankedRecipes.filter((recipe) => !isHarunaRecipe(recipe)).slice(0, 3);
+  const recipes = [...harunaRecipes, ...gouRecipes];
 
   const activeTab = document.querySelector(`[data-recipe-season="${season}"]`);
   if (activeTab) {
@@ -306,10 +308,25 @@ function renderMemberRecipeCard(recipe) {
 
 function getRecipeUrl(recipe) {
   if (!recipe?.pdfUrl) return "";
+  if (isHarunaRecipe(recipe)) {
+    return `https://docs.google.com/viewer?url=${encodeURIComponent(recipe.pdfUrl)}`;
+  }
+  return recipe.pdfUrl;
   if (recipe.pdfUrl.includes("/assets/recipes/formatted/") || recipe.memo?.includes("Word形式から統一PDF化")) {
     return `https://docs.google.com/viewer?url=${encodeURIComponent(recipe.pdfUrl)}`;
   }
   return recipe.pdfUrl;
+}
+
+function isHarunaRecipe(recipe) {
+  return recipe?.pdfUrl?.includes("/assets/recipes/formatted/") || recipe?.memo?.includes("Word");
+}
+
+function normalizeRecipeTitle(title) {
+  return String(title || "")
+    .replace(/[☆★〜～・\s　!！]/g, "")
+    .replace(/[\u30a1-\u30f6]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0x60))
+    .toLowerCase();
 }
 
 function escapeHtml(value) {
