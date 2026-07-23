@@ -150,7 +150,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "夏バテ対策、スタミナ補給、満足感、食欲サポート、栄養バランス丼",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/17zyuKRUKkGLlSY09AsCGq696KO9kfgTJ/view?usp=sharing"
   },
   {
     "title": "メープル風味のカリカリ芋けんぴ",
@@ -522,7 +522,7 @@ window.harukazeRecipes = [
       "食欲サポート"
     ],
     "scene": "夏バテ対策、スタミナ補給、活動前のエネルギーチャージ、食欲が落ちる時の主食、彩りごはん",
-    "pdfUrl": ""
+    "pdfUrl": "https://drive.google.com/file/d/1ZPEO1fBKC5jS2wOXakY0bwuyPcGh2HxL/view?usp=sharing"
   },
   {
     "title": "カボチャのカレーグラタン",
@@ -717,26 +717,6 @@ window.harukazeRecipes = [
     "pdfUrl": "https://drive.google.com/file/d/1QRlhnPKRG1Cg4CylwZXKeyjCRJoZzoaR/view?usp=sharing"
   },
   {
-    "title": "花蓮根の明太胡瓜",
-    "seasons": [
-      "autumn",
-      "winter"
-    ],
-    "seasonLabels": [
-      "秋",
-      "冬"
-    ],
-    "tags": [
-      "腸内環境サポート",
-      "むくみ対策",
-      "抗酸化ケア",
-      "肌コンディション維持",
-      "低脂質副菜"
-    ],
-    "scene": "さっぱり整える、箸休め、年末年始の食べすぎリセット、胃もたれ対策、華やかな前菜",
-    "pdfUrl": "https://drive.google.com/file/d/17jYbcJIkGctN0wLKHdpvpPzA8shJj0J0/view?usp=sharing"
-  },
-  {
     "title": "茄子とベーコンのミルフィーユ",
     "seasons": [
       "summer",
@@ -829,24 +809,6 @@ window.harukazeRecipes = [
     ],
     "scene": "冬の栄養補給、胃腸にやさしい、冷めても食べやすい、年末年始の作り置き、軽めのたんぱく質おかず",
     "pdfUrl": "https://drive.google.com/file/d/1PftZ7tDhzL7fERmJ3FGBMw8InP5L2w7T/view?usp=sharing"
-  },
-  {
-    "title": "トマトのホイル焼き",
-    "seasons": [
-      "summer"
-    ],
-    "seasonLabels": [
-      "夏"
-    ],
-    "tags": [
-      "抗酸化ケア",
-      "紫外線対策",
-      "たんぱく質補給",
-      "うるおいサポート",
-      "むくみ対策"
-    ],
-    "scene": "夏バテ時の栄養補給、食欲サポート、軽めの主菜、朝食・ランチ向き、満足感のある副菜",
-    "pdfUrl": "https://drive.google.com/file/d/1ULGrAFaHIsS4QscJflyllE_dT7J9IVst/view?usp=sharing"
   },
   {
     "title": "カラフル野菜のフライパンパエリア",
@@ -1603,5 +1565,26 @@ window.harukazeRecipes = [
     ],
     "scene": "春の疲れ対策、季節の変わり目の整え食、軽めの主菜、胃腸にやさしい、春の栄養補給",
     "pdfUrl": "https://drive.google.com/file/d/1LWjce-CZxdafs8EHejOvZ8Ii96FaEvU6/view?usp=sharing"
+  },
+  {
+    "title": "チーズタルタルのサンドイッチ",
+    "seasons": [
+      "summer",
+      "初夏"
+    ],
+    "seasonLabels": [
+      "初夏",
+      "夏"
+    ],
+    "tags": [
+      "うるおい",
+      "ツヤ感サポート",
+      "抗酸化ケア",
+      "腸内環境サポート",
+      "野菜不足対策",
+      "満足感サポート"
+    ],
+    "scene": "食欲がない時の軽食、夏の野菜補給、肌の乾燥対策、紫外線対策、朝食・ランチ、手軽に栄養を摂りたい時",
+    "pdfUrl": "https://drive.google.com/file/d/137V8nEV7htbt5pzWxKkhGL7p3Fxsvayp/view?usp=sharing"
   }
 ];
