@@ -1,17 +1,8 @@
 const memberConfig = {
-  currentPassword: "harukaze2026",
-  storageKey: "harukaze-member-access-2026-07",
-  displayMonth: 7,
+  displayMonth: 8,
 };
 
-const lockScreen = document.querySelector("#lockScreen");
 const memberSite = document.querySelector("#memberSite");
-const passwordForm = document.querySelector("#passwordForm");
-const passwordInput = document.querySelector("#passwordInput");
-const passwordToggle = document.querySelector("#passwordToggle");
-const passwordToggleText = document.querySelector("#passwordToggleText");
-const formMessage = document.querySelector("#formMessage");
-const logoutButton = document.querySelector("#logoutButton");
 const memberRecipeList = document.querySelector("#memberRecipeList");
 const recipeSeasonTabs = document.querySelectorAll(".recipe-season-tab");
 const currentMonthLabel = document.querySelector("#currentMonthLabel");
@@ -157,55 +148,11 @@ const fallbackRecipesBySeason = {
 
 function showMemberSite() {
   updateMonthlyContent();
-  lockScreen.classList.add("hidden");
   memberSite.classList.remove("hidden");
   renderMemberRecipes(getCurrentCalendarSeason());
-  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function showLockScreen() {
-  memberSite.classList.add("hidden");
-  lockScreen.classList.remove("hidden");
-  passwordInput.value = "";
-  passwordInput.focus();
-}
-
-if (localStorage.getItem(memberConfig.storageKey) === "ok") {
-  showMemberSite();
-}
-
-passwordForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const enteredPassword = passwordInput.value.trim();
-
-  if (enteredPassword === memberConfig.currentPassword) {
-    localStorage.setItem(memberConfig.storageKey, "ok");
-    formMessage.textContent = "";
-    showMemberSite();
-    return;
-  }
-
-  formMessage.textContent = "パスワードが違います。今月のご案内をご確認ください。";
-});
-
-if (logoutButton) {
-  logoutButton.addEventListener("click", () => {
-    localStorage.removeItem(memberConfig.storageKey);
-    showLockScreen();
-  });
-}
-
-if (passwordToggle) {
-  passwordToggle.addEventListener("click", () => {
-    const isVisible = passwordInput.type === "text";
-    passwordInput.type = isVisible ? "password" : "text";
-    passwordToggle.classList.toggle("is-visible", !isVisible);
-    passwordToggle.setAttribute("aria-label", isVisible ? "パスワードを表示" : "パスワードを非表示");
-    if (passwordToggleText) {
-      passwordToggleText.textContent = isVisible ? "表示" : "非表示";
-    }
-  });
-}
+showMemberSite();
 
 recipeSeasonTabs.forEach((button) => {
   button.addEventListener("click", () => {
@@ -230,11 +177,11 @@ function updateMonthlyContent() {
   const label = seasonLabels[season] || "";
 
   if (currentMonthLabel) {
-    currentMonthLabel.textContent = `${month}月の会員ページ・${label}のお手入れ`;
+    currentMonthLabel.textContent = `${month}月のお肌だより・${label}のお手入れ`;
   }
 
   if (seasonDiagnosisLink) {
-    seasonDiagnosisLink.href = `../app/?season=${season}&v=20260612a`;
+    seasonDiagnosisLink.href = `../app/index.html?season=${season}&v=20260612a`;
   }
 }
 
@@ -252,7 +199,7 @@ function getAllRecipes() {
 
   return sourceRecipes.filter((recipe) => {
     if (!recipe?.title || !recipe?.pdfUrl) return false;
-    const key = normalizeRecipeTitle(recipe.title);
+    const key = `${recipe.title}::${recipe.pdfUrl}`;
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -262,12 +209,10 @@ function getAllRecipes() {
 function renderMemberRecipes(season) {
   if (!memberRecipeList) return;
 
-  const rankedRecipes = getAllRecipes()
+  const recipes = getAllRecipes()
     .filter((recipe) => recipe.seasons?.includes(season))
-    .sort((a, b) => (Number(a.priority) || 9999) - (Number(b.priority) || 9999));
-  const harunaRecipes = rankedRecipes.filter(isHarunaRecipe).slice(0, 3);
-  const gouRecipes = rankedRecipes.filter((recipe) => !isHarunaRecipe(recipe)).slice(0, 3);
-  const recipes = [...harunaRecipes, ...gouRecipes];
+    .sort((a, b) => (Number(a.priority) || 9999) - (Number(b.priority) || 9999))
+    .slice(0, 6);
 
   const activeTab = document.querySelector(`[data-recipe-season="${season}"]`);
   if (activeTab) {
@@ -308,25 +253,10 @@ function renderMemberRecipeCard(recipe) {
 
 function getRecipeUrl(recipe) {
   if (!recipe?.pdfUrl) return "";
-  if (isHarunaRecipe(recipe)) {
-    return `https://docs.google.com/viewer?url=${encodeURIComponent(recipe.pdfUrl)}`;
-  }
-  return recipe.pdfUrl;
   if (recipe.pdfUrl.includes("/assets/recipes/formatted/") || recipe.memo?.includes("Word形式から統一PDF化")) {
     return `https://docs.google.com/viewer?url=${encodeURIComponent(recipe.pdfUrl)}`;
   }
   return recipe.pdfUrl;
-}
-
-function isHarunaRecipe(recipe) {
-  return recipe?.pdfUrl?.includes("/assets/recipes/formatted/") || recipe?.memo?.includes("Word");
-}
-
-function normalizeRecipeTitle(title) {
-  return String(title || "")
-    .replace(/[☆★〜～・\s　!！]/g, "")
-    .replace(/[\u30a1-\u30f6]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0x60))
-    .toLowerCase();
 }
 
 function escapeHtml(value) {

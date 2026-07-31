@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>石けん工房 春風 | 定期購入者限定ページ</title>
+    <title>石けん工房 春風 | 季節のお肌だより</title>
     <meta
       name="description"
-      content="石けん工房 春風の定期購入者様だけがご覧いただける、季節のお手入れメッセージと限定コンテンツです。"
+      content="石けん工房 春風の季節のお手入れメッセージ、レシピ、お肌診断をお届けします。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="石けん工房 春風" />
-    <meta property="og:title" content="石けん工房 春風 | 定期購入者限定ページ" />
+    <meta property="og:title" content="石けん工房 春風 | 季節のお肌だより" />
     <meta
       property="og:description"
-      content="石けん工房 春風の定期購入者様だけがご覧いただける、季節のお手入れメッセージと限定コンテンツです。"
+      content="石けん工房 春風の季節のお手入れメッセージ、レシピ、お肌診断をお届けします。"
     />
     <meta property="og:url" content="https://hoshi-ai-sanae.github.io/harukaze-skin-diagnosis-app/member-site/" />
     <meta
@@ -27,12 +27,12 @@
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="石けん工房 春風 会員限定様サイト" />
+    <meta property="og:image:alt" content="石けん工房 春風 季節のお肌だより" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="石けん工房 春風 | 定期購入者限定ページ" />
+    <meta name="twitter:title" content="石けん工房 春風 | 季節のお肌だより" />
     <meta
       name="twitter:description"
-      content="石けん工房 春風の定期購入者様だけがご覧いただける、季節のお手入れメッセージと限定コンテンツです。"
+      content="石けん工房 春風の季節のお手入れメッセージ、レシピ、お肌診断をお届けします。"
     />
     <meta
       name="twitter:image"
@@ -42,53 +42,12 @@
   </head>
   <body>
     <main>
-      <section class="lock-screen" id="lockScreen" aria-labelledby="lockTitle">
-        <div class="lock-media">
-          <img src="../assets/member-hero.png" alt="石けん工房 春風 会員限定サイト" />
-        </div>
-        <div class="lock-panel">
-          <img class="brand-logo" src="../assets/logo.jpg" alt="Sekken-kobo Harukaze" />
-          <p class="eyebrow">定期購入者様 限定</p>
-          <h1 id="lockTitle">
-            <span class="brand-title">石けん工房 春風</span>
-            <span>季節のお肌だより</span>
-          </h1>
-          <p class="lead">
-            季節のメッセージ、商品のやさしい使い方、限定レシピやお肌診断への入口をお届けします。
-          </p>
-
-          <form class="password-form" id="passwordForm">
-            <label for="passwordInput">今月のパスワード</label>
-            <div class="password-row">
-              <div class="password-input-wrap">
-                <input
-                  id="passwordInput"
-                  type="password"
-                  autocomplete="current-password"
-                  placeholder="パスワードを入力"
-                  required
-                />
-                <button class="password-toggle" type="button" id="passwordToggle" aria-label="パスワードを表示">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
-                  <span id="passwordToggleText">表示</span>
-                </button>
-              </div>
-              <button type="submit">入室する</button>
-            </div>
-            <p class="form-message" id="formMessage" aria-live="polite"></p>
-          </form>
-        </div>
-      </section>
-
-      <section class="member-site hidden" id="memberSite" aria-live="polite">
+      <section class="member-site" id="memberSite" aria-live="polite">
         <header class="member-header">
           <div>
-            <p class="eyebrow">Monthly Members</p>
-            <p class="month-badge" id="currentMonthLabel">今月の会員ページ</p>
-            <h1>石けん工房 春風 定期便のお客様へ</h1>
+            <p class="eyebrow">Monthly Letter</p>
+            <p class="month-badge" id="currentMonthLabel">今月のお肌だより</p>
+            <h1>石けん工房 春風 季節のお肌だより</h1>
             <p>
               いつものお手入れが少し楽しみになるように、季節に合わせたメッセージと使い方のヒントをまとめました。
             </p>
@@ -98,40 +57,57 @@
         <section class="season-message">
           <div class="season-copy">
             <p class="eyebrow">Season Message</p>
-            <h2>今月の肌をやさしくととのえる</h2>
+            <h2>夏のスペシャルケア</h2>
             <p>
-              一般的には、肌老化の約80％は紫外線による「光老化」だと言われています。
-              「紫外線を浴びた後にケアする」よりも、まず「浴びる量を減らす」ことが、肌老化予防にはとても大切です。
+              今年の夏も猛暑、酷暑が予想されますね。<br />
+              当然、紫外線も強く、<br />
+              家の中にいても日に焼けて、<br />
+              冷房もガンガンかけるから<br />
+              お肌の角質は乱れてボロボロ、<br />
+              乾燥肌になってUVしているにもかかわらず、<br />
+              乾燥肌になってシミができやすいお肌に。。。💦<br />
+              なんてことも心配されます。<br />
+              そんなことにならないように<br />
+              何もない日ごろからしっかりお手入れしておきましょう。
             </p>
             <p>
-              帽子をかぶる・日傘をさす、そんな小さな習慣だけでも、紫外線を浴びる量はかなり変わります。
-              環境省の紫外線対策でも、紫外線の浴びすぎを防ぐ方法として「日陰を利用する」「日傘を使う、帽子をかぶる」「衣服で覆う」「日焼け止めを使う」ことが挙げられています。
+              そこで<br />
+              この季節を上手に乗り切るためのスペシャルケアをご提案。<br />
+              是非、お試しください。
             </p>
             <p>
-              ただし、紫外線は真上からの直射だけではありません。空気中で散乱した紫外線や、地面・建物から反射した紫外線もあります。
-              はるほのかBBクリームに加えて、帽子や日傘を上手に取り入れ、未来のお肌をしっかりやさしく守っていきましょう。
+              スペシャルケアのガイドはこちらから<br />
+              <a class="guide-button" href="https://haru-honoka.com/shop/information/faq7" target="_blank" rel="noreferrer">スペシャルケアのガイドを見る</a>
             </p>
           </div>
           <img src="../assets/summer-banner.png" alt="季節のお肌ケアイメージ" />
         </section>
 
-        <section class="content-grid" aria-label="限定コンテンツ">
+        <section class="content-grid" aria-label="季節のコンテンツ">
           <article class="member-card feature-card">
             <p class="eyebrow">Skin Check</p>
             <h2>季節のお肌診断</h2>
             <p>今のお肌状態に合わせて、ケアのヒント・おすすめ商品・レシピを確認できます。</p>
-            <a id="seasonDiagnosisLink" href="../app/">お肌診断を開く</a>
+            <a id="seasonDiagnosisLink" href="../app/index.html">お肌診断を開く</a>
           </article>
 
           <article class="member-card">
             <p class="eyebrow">How to Use</p>
             <h2>今月のおすすめの使い方</h2>
             <ul>
-              <li>洗顔は泡を転がすように、こすらず短時間で行う</li>
-              <li>化粧水は肌が乾ききる前に、手のひらでやさしく重ね付け</li>
-              <li>乾燥を感じなくても、クリームを薄く重ねてうるおいを守る（最重要！）</li>
+              <li>
+                はるほのかの石鹸での洗顔で撫でるように優しく洗顔。<br />
+                色素沈着が起こりにくいお肌を作っていきましょう。
+              </li>
+              <li>
+                夏でも必ず、Extraモイスチャークリームを取り入れる。<br />
+                ピュアエッセンスローションを塗布するときに、ほんのちょっとでもいいので必ずExtraモイスチャークリームを取り入れてみて！保湿と潤いがしっかりされて、角質が傷まないようにしっかり防御、肌年齢が若々しく保てます。
+              </li>
+              <li>
+                BBクリームは毎日つける<br />
+                BBクリームにはUVが配合されていると同時に生椿オイルが配合されています。紫外線予防とともに紫外線による乾燥もしっかり守ってくれるのです。家の中にいても紫外線は入ってきます。だから毎日のBBクリームが必要です。
+              </li>
             </ul>
-            <a href="https://haru-honoka.com/shop/products" target="_blank" rel="noreferrer">商品ページを見る</a>
           </article>
 
           <article class="member-card">
@@ -156,8 +132,8 @@
             <p>季節を選ぶと、その季節に合うレシピが表示されます。</p>
           </div>
           <div class="recipe-season-tabs" role="tablist" aria-label="レシピの季節を選択">
-            <button class="recipe-season-tab active" type="button" data-recipe-season="spring">春</button>
-            <button class="recipe-season-tab" type="button" data-recipe-season="summer">夏</button>
+            <button class="recipe-season-tab" type="button" data-recipe-season="spring">春</button>
+            <button class="recipe-season-tab active" type="button" data-recipe-season="summer">夏</button>
             <button class="recipe-season-tab" type="button" data-recipe-season="autumn">秋</button>
             <button class="recipe-season-tab" type="button" data-recipe-season="winter">冬</button>
           </div>
@@ -167,20 +143,9 @@
         <section class="monthly-guests" aria-labelledby="monthlyGuestsTitle">
           <div class="monthly-heading">
             <p class="eyebrow">Guest Introduction</p>
-            <h2 id="monthlyGuestsTitle">GOUさんと春奈さんのご紹介</h2>
+            <h2 id="monthlyGuestsTitle">春奈さんのご紹介</h2>
           </div>
           <div class="guest-list">
-            <article class="guest-card">
-              <div>
-                <p class="eyebrow">GOUさん</p>
-                <h3>和cheese TENSAI オーナー</h3>
-                <p>
-                  祐成陽子クッキングアートセミナー卒業後、フードコーディネーターとして活躍。
-                  チーズ専門レストラン「和cheese TENSAI（ワチーズテンサイ）」オーナー。
-                </p>
-                <a href="https://tabelog.com/tokyo/A1303/A130302/13219803/" target="_blank" rel="noreferrer">店舗情報を見る</a>
-              </div>
-            </article>
             <article class="guest-card guest-card-with-photo">
               <img src="../assets/monthly/haruna-profile-webp-20260620.svg" alt="宮本春奈さん" />
               <div>
@@ -205,13 +170,13 @@
             <article>
               <span>01</span>
               <h3>今月のお知らせ</h3>
-              <p>送料無料キャンペーンを開催中。7/15（水）発送分までです。ご注文は14日（火）までにお願いします。</p>
+              <p>8月は、夏のスペシャルケアをテーマにしたお手入れ情報をお届けします。</p>
             </article>
             <article>
               <span>02</span>
-              <h3>会員限定のウェブサイトを開始します</h3>
+              <h3>パスワードなしでお楽しみいただけます</h3>
               <p>
-                パスワードは毎月変更され、定期購入の方のみにお送りいたします。来月のパスワードは定期購入の方のみにお送りします。
+                今月からパスワードなしでどなたにもアプリを楽しんでいただけるようになりました。
               </p>
             </article>
           </div>
@@ -232,15 +197,10 @@
             個人での閲覧および調理目的に限りご利用ください。
           </p>
         </section>
-
-        <div class="member-footer-actions">
-          <button class="logout-button" type="button" id="logoutButton">退出する</button>
-        </div>
       </section>
     </main>
 
-    <script src="../app/recipes-data.js?v=20260723a"></script>
-    <script src="../app/formatted-recipes-data.js?v=20260723a"></script>
-    <script src="./member.js?v=20260723a"></script>
+    <script src="../app/formatted-recipes-data.js?v=20260612a"></script>
+    <script src="./member.js?v=20260801a"></script>
   </body>
 </html>

@@ -227,7 +227,8 @@ h3 {
 }
 
 .password-row > button,
-.member-card a {
+.member-card a,
+.guide-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -632,6 +633,7 @@ h3 {
 
   .password-row > button,
   .member-card a,
+  .guide-button,
   .logout-button {
     width: 100%;
   }
