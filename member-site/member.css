@@ -141,6 +141,16 @@ h3 {
   line-height: 1.85;
 }
 
+.content-rights p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.content-rights p:last-child {
+  margin-bottom: 0;
+}
+
 .password-form {
   display: grid;
   gap: 10px;
@@ -217,7 +227,8 @@ h3 {
 }
 
 .password-row > button,
-.member-card a {
+.member-card a,
+.guide-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -365,16 +376,6 @@ h3 {
 .monthly-guests,
 .monthly-area {
   padding: clamp(24px, 4vw, 42px);
-}
-
-.content-rights p {
-  margin: 0 0 14px;
-  color: var(--muted);
-  line-height: 1.85;
-}
-
-.content-rights p:last-child {
-  margin-bottom: 0;
 }
 
 .monthly-recipes,
@@ -526,6 +527,10 @@ h3 {
   object-position: center;
 }
 
+.guest-card-with-photo img {
+  content: url("../assets/monthly/haruna-profile-webp-20260620.svg");
+}
+
 .guest-card h3 {
   color: var(--ink);
   line-height: 1.45;
@@ -550,6 +555,13 @@ h3 {
   font-size: 0.92rem;
   font-weight: 700;
   text-decoration: none;
+}
+
+.recipe-source-label {
+  margin: -4px 0 0;
+  color: var(--leaf-deep);
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
 .empty-message {
@@ -628,6 +640,7 @@ h3 {
 
   .password-row > button,
   .member-card a,
+  .guide-button,
   .logout-button {
     width: 100%;
   }
