@@ -802,6 +802,7 @@ function renderFoodRecipeCard(recipe) {
     .join("");
   const seasonLabels = (recipe.seasonLabels || []).map(escapeHtml).join("・");
   const recipeUrl = getRecipeViewerUrl(recipe);
+  const sourceLabel = isHarunaRecipe(recipe) ? "" : `<p class="recipe-source-label">GOUさんのレシピ</p>`;
   const link = recipeUrl
     ? `<a class="recipe-link" href="${escapeAttribute(recipeUrl)}" target="_blank" rel="noreferrer">レシピを見る</a>`
     : `<span class="recipe-link disabled">PDF準備中</span>`;
@@ -811,6 +812,7 @@ function renderFoodRecipeCard(recipe) {
       <div class="food-card-main">
         <p class="recipe-season">${seasonLabels}</p>
         <h4>${escapeHtml(recipe.title)}</h4>
+        ${sourceLabel}
         <p>${escapeHtml(recipe.scene || "季節の食事のヒントとしてご覧ください。")}</p>
       </div>
       <div class="tag-list">${tagChips}</div>
