@@ -557,6 +557,13 @@ h3 {
   text-decoration: none;
 }
 
+.recipe-source-label {
+  margin: -4px 0 0;
+  color: var(--leaf-deep);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 .empty-message {
   color: var(--muted);
 }

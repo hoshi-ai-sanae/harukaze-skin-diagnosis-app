@@ -181,7 +181,7 @@ function updateMonthlyContent() {
   }
 
   if (seasonDiagnosisLink) {
-    seasonDiagnosisLink.href = `../app/index.html?season=${season}&v=20260612a`;
+    seasonDiagnosisLink.href = `../app/index.html?season=${season}&v=20260823gou`;
   }
 }
 
@@ -209,10 +209,16 @@ function getAllRecipes() {
 function renderMemberRecipes(season) {
   if (!memberRecipeList) return;
 
-  const recipes = getAllRecipes()
+  const seasonRecipes = getAllRecipes()
     .filter((recipe) => recipe.seasons?.includes(season))
-    .sort((a, b) => (Number(a.priority) || 9999) - (Number(b.priority) || 9999))
-    .slice(0, 6);
+    .sort((a, b) => (Number(a.priority) || 9999) - (Number(b.priority) || 9999));
+
+  const selectedRecipes = [
+    ...seasonRecipes.filter(isHarunaRecipe).slice(0, 3),
+    ...seasonRecipes.filter((recipe) => !isHarunaRecipe(recipe)).slice(0, 3),
+  ];
+
+  const recipes = fillRecipeSlots(selectedRecipes, seasonRecipes, 6);
 
   const activeTab = document.querySelector(`[data-recipe-season="${season}"]`);
   if (activeTab) {
@@ -239,10 +245,12 @@ function renderMemberRecipeCard(recipe) {
     .join("");
   const seasons = (recipe.seasonLabels || []).join("・");
   const href = getRecipeUrl(recipe);
+  const sourceLabel = isHarunaRecipe(recipe) ? "春奈さんのレシピ" : "GOUさんのレシピ";
 
   return `
     <article class="member-recipe-card">
       <p class="recipe-season-label">${escapeHtml(seasons)}</p>
+      <p class="recipe-source-label">${escapeHtml(sourceLabel)}</p>
       <h3>${escapeHtml(recipe.title)}</h3>
       <p>${escapeHtml(recipe.scene || "季節に合わせたレシピです。")}</p>
       <div class="recipe-tags">${tags}</div>
@@ -251,12 +259,78 @@ function renderMemberRecipeCard(recipe) {
   `;
 }
 
+function fillRecipeSlots(selectedRecipes, allRecipes, limit) {
+  const selected = [...selectedRecipes];
+
+  allRecipes.forEach((recipe) => {
+    if (selected.length >= limit) {
+      return;
+    }
+
+    if (!selected.some((selectedRecipe) => normalizeRecipeTitle(selectedRecipe.title) === normalizeRecipeTitle(recipe.title))) {
+      selected.push(recipe);
+    }
+  });
+
+  return selected.slice(0, limit);
+}
+
 function getRecipeUrl(recipe) {
   if (!recipe?.pdfUrl) return "";
-  if (recipe.pdfUrl.includes("/assets/recipes/formatted/") || recipe.memo?.includes("Word形式から統一PDF化")) {
-    return `https://docs.google.com/viewer?url=${encodeURIComponent(recipe.pdfUrl)}`;
+  const resolvedUrl = convertGoogleDrivePdfUrl(recipe.pdfUrl);
+
+  if (isPdfUrl(resolvedUrl)) {
+    return `https://docs.google.com/viewer?url=${encodeURIComponent(resolveRecipeUrl(resolvedUrl))}`;
   }
-  return recipe.pdfUrl;
+
+  return resolvedUrl;
+}
+
+function isPdfUrl(url) {
+  return /\.pdf(?:$|[?#])/i.test(String(url || ""));
+}
+
+function resolveRecipeUrl(url) {
+  try {
+    const resolvedUrl = new URL(url, window.location.href);
+
+    if (resolvedUrl.protocol === "file:") {
+      return url;
+    }
+
+    return resolvedUrl.href;
+  } catch (error) {
+    return url;
+  }
+}
+
+function convertGoogleDrivePdfUrl(url) {
+  const fileId = extractGoogleDriveFileId(url);
+
+  if (!fileId) {
+    return url;
+  }
+
+  return `https://drive.google.com/uc?export=download&id=${fileId}`;
+}
+
+function extractGoogleDriveFileId(url) {
+  const value = String(url || "");
+  const fileMatch = value.match(/\/file\/d\/([^/]+)/);
+  const idMatch = value.match(/[?&]id=([^&]+)/);
+
+  return fileMatch?.[1] || idMatch?.[1] || "";
+}
+
+function isHarunaRecipe(recipe) {
+  return recipe?.pdfUrl?.includes("/assets/recipes/formatted/") || recipe?.memo?.includes("Word形式から統一PDF化");
+}
+
+function normalizeRecipeTitle(title) {
+  return String(title || "")
+    .replace(/[☆★〜～−–—!！&＆\s]/g, "")
+    .replace(/[\u30a1-\u30f6]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0x60))
+    .toLowerCase();
 }
 
 function escapeHtml(value) {

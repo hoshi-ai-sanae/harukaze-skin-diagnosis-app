@@ -301,7 +301,7 @@ function resetDiagnosis() {
 function getInitialSeason() {
   const params = new URLSearchParams(window.location.search);
   const season = params.get("season");
-  return seasons[season] ? season : "spring";
+  return seasons[season] ? season : "autumn";
 }
 
 function syncSeasonTabs() {
@@ -839,11 +839,49 @@ function getRecipeViewerUrl(recipe) {
     return "";
   }
 
-  if (isHarunaRecipe({ ...recipe, pdfUrl })) {
-    return `https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}`;
+  const resolvedUrl = convertGoogleDrivePdfUrl(pdfUrl);
+
+  if (isPdfUrl(resolvedUrl)) {
+    return `https://docs.google.com/viewer?url=${encodeURIComponent(resolveRecipeUrl(resolvedUrl))}`;
   }
 
-  return pdfUrl;
+  return resolvedUrl;
+}
+
+function isPdfUrl(url) {
+  return /\.pdf(?:$|[?#])/i.test(String(url || ""));
+}
+
+function resolveRecipeUrl(url) {
+  try {
+    const resolvedUrl = new URL(url, window.location.href);
+
+    if (resolvedUrl.protocol === "file:") {
+      return url;
+    }
+
+    return resolvedUrl.href;
+  } catch (error) {
+    return url;
+  }
+}
+
+function convertGoogleDrivePdfUrl(url) {
+  const fileId = extractGoogleDriveFileId(url);
+
+  if (!fileId) {
+    return url;
+  }
+
+  return `https://drive.google.com/uc?export=download&id=${fileId}`;
+}
+
+function extractGoogleDriveFileId(url) {
+  const value = String(url || "");
+  const fileMatch = value.match(/\/file\/d\/([^/]+)/);
+  const idMatch = value.match(/[?&]id=([^&]+)/);
+
+  return fileMatch?.[1] || idMatch?.[1] || "";
 }
 
 function isHarunaRecipe(recipe) {

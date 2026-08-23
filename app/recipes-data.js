@@ -18,7 +18,7 @@ window.harukazeRecipes = [
       "肌の透明感"
     ],
     "scene": "体を温める、胃腸にやさしい、栄養補給、寒い季節の滋養",
-    "pdfUrl": "https://drive.google.com/file/d/1xswrEqAaZIdnEn0nKoyeLFool-eWC2Rj/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-001.pdf"
   },
   {
     "title": "ふわふわトロロのひとくちドーナツ",
@@ -38,7 +38,7 @@ window.harukazeRecipes = [
       "ストレスケア"
     ],
     "scene": "寒い日の間食、冬のおやつ、子ども向けおやつ、イベント菓子、バレンタイン前後",
-    "pdfUrl": "https://drive.google.com/file/d/1dLDCe4HGcF_VFOFvliSW3z2dwIBtQu5G/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-002.pdf"
   },
   {
     "title": "茄子のインヴォルティーニ",
@@ -56,7 +56,7 @@ window.harukazeRecipes = [
       "腸内環境サポート"
     ],
     "scene": "夏バテ時の食欲サポート、栄養補給、満足感、軽めの主菜、冷えすぎ対策",
-    "pdfUrl": "https://drive.google.com/file/d/1dpg9vRkvtGaYnvMGSg5rf_BZ0Svg7GO5/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-003.pdf"
   },
   {
     "title": "パリパリチキンのカボチャソース",
@@ -76,7 +76,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "体を温める、滋養感、満足感、疲れた日の栄養補給、秋冬のエネルギーチャージ",
-    "pdfUrl": "https://drive.google.com/file/d/13b2I63C5ax4rS1Dn3PaFH4eQZ8NmBGE-/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-004.pdf"
   },
   {
     "title": "イワシの葱味噌チーズ焼き",
@@ -94,7 +94,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "夏バテ対策、栄養補給、疲れた日の回復食、食欲サポート、さっぱり高たんぱく",
-    "pdfUrl": "https://drive.google.com/file/d/1CZJkhpRVhdlaQUxBudbz4JHWauYfQSze/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-005.pdf"
   },
   {
     "title": "イワシのちぎりトルティーヤピザ",
@@ -112,7 +112,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "夏バテ対策、栄養補給、疲れた日の回復食、食欲サポート、さっぱり高たんぱく",
-    "pdfUrl": "https://drive.google.com/file/d/1WrAykxstF5o4pNLdeZBi5U45Gi9VY7c7/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-006.pdf"
   },
   {
     "title": "花蓮根の明太胡瓜",
@@ -132,7 +132,7 @@ window.harukazeRecipes = [
       "疲労感ケア"
     ],
     "scene": "さっぱり整える、食欲サポート、箸休め、年末年始の食べすぎリセット、胃もたれ対策",
-    "pdfUrl": "https://drive.google.com/file/d/17jYbcJIkGctN0wLKHdpvpPzA8shJj0J0/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-007.pdf"
   },
   {
     "title": "とろとろ卵のトマト丼",
@@ -150,7 +150,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "夏バテ対策、スタミナ補給、満足感、食欲サポート、栄養バランス丼",
-    "pdfUrl": "https://drive.google.com/file/d/17zyuKRUKkGLlSY09AsCGq696KO9kfgTJ/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-008.pdf"
   },
   {
     "title": "メープル風味のカリカリ芋けんぴ",
@@ -169,7 +169,7 @@ window.harukazeRecipes = [
       "満足感サポート"
     ],
     "scene": "お腹をすっきりさせたい時、甘いものが食べたい時、疲れを感じる時、むくみが気になる時、冷えが気になる時、秋のおやつを楽しみたい時、子ども向けのおやつ",
-    "pdfUrl": "https://drive.google.com/file/d/16i9OSg5M21Ji09K1bBLdmSCMy3C6ol_n/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-009.pdf"
   },
   {
     "title": "ホクホク新じゃがのアヒージョ",
@@ -187,7 +187,7 @@ window.harukazeRecipes = [
       "巡りサポート"
     ],
     "scene": "春の栄養補給、冷え対策、疲れた日の回復食、食欲サポート、満足感のあるおつまみ",
-    "pdfUrl": "https://drive.google.com/file/d/1DrRanmRCEL33a5DvW-6R1lMSv7yZV1lE/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-010.pdf"
   },
   {
     "title": "カップトマトのリゾット",
@@ -205,7 +205,7 @@ window.harukazeRecipes = [
       "むくみ対策"
     ],
     "scene": "夏バテ対策、食欲サポート、軽めの主食、栄養補給、見た目で気分が上がる一皿",
-    "pdfUrl": "https://drive.google.com/file/d/13DoOYpJDCrn9XUs8hqiWogP63LPU9ap0/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-011.pdf"
   },
   {
     "title": "本格チキンシチュー",
@@ -224,7 +224,7 @@ window.harukazeRecipes = [
       "温活"
     ],
     "scene": "体を温める、疲労回復サポート、栄養補給、満足感、寒い日の滋養食",
-    "pdfUrl": "https://drive.google.com/file/d/14lUVnKSMSg0qD3ALEuL7lvgh9d-pywXw/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-012.pdf"
   },
   {
     "title": "新玉ねぎの豆腐ステーキ",
@@ -242,7 +242,7 @@ window.harukazeRecipes = [
       "抗酸化ケア"
     ],
     "scene": "春のデトックス感、さっぱり整える、胃腸にやさしい、軽めの栄養補給、食欲サポート",
-    "pdfUrl": "https://drive.google.com/file/d/1WJnr7Q7xjcwwTNVNIpbxQiy256APvbm2/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-013.pdf"
   },
   {
     "title": "ベジムースサラダ",
@@ -262,7 +262,7 @@ window.harukazeRecipes = [
       "腸内環境サポート"
     ],
     "scene": "彩りで食欲アップ、軽い前菜、リフレッシュ感、野菜補給、華やかなご褒美サラダ",
-    "pdfUrl": "https://drive.google.com/file/d/1fQeKAYeQ3AACdLkTOA0phPCDbtfA9vcK/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-014.pdf"
   },
   {
     "title": "旨辛マーボー干し茄子",
@@ -282,7 +282,7 @@ window.harukazeRecipes = [
       "たんぱく質補給"
     ],
     "scene": "夏バテ対策、食欲サポート、疲労回復、温活、スタミナ補給、冷えすぎ対策",
-    "pdfUrl": "https://drive.google.com/file/d/1uOEIDwTmip9rKEfdwFPMljrcA-3HFkvJ/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-015.pdf"
   },
   {
     "title": "タラの西京焼",
@@ -301,7 +301,7 @@ window.harukazeRecipes = [
       "低脂質美容食"
     ],
     "scene": "胃腸にやさしい、体を温める、疲労回復サポート、冬の栄養補給、軽めの主菜",
-    "pdfUrl": "https://drive.google.com/file/d/1j7INB9Ya08HZdbDLssBO9G2sOTB6Vteh/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-016.pdf"
   },
   {
     "title": "桜ご飯の肉巻きおにぎり",
@@ -319,7 +319,7 @@ window.harukazeRecipes = [
       "満足感"
     ],
     "scene": "春の行楽弁当、疲れた日の栄養補給、活動前のエネルギーチャージ、食欲サポート",
-    "pdfUrl": "https://drive.google.com/file/d/1QJVaWXZxVZerRC1XIiSESoyF56Gnm0-t/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-017.pdf"
   },
   {
     "title": "菜の花と新じゃがの美々っとペペロンチーノ",
@@ -337,7 +337,7 @@ window.harukazeRecipes = [
       "巡りサポート"
     ],
     "scene": "春のデトックス感、野菜不足対策、疲労回復サポート、食欲サポート、軽めの栄養補給",
-    "pdfUrl": "https://drive.google.com/file/d/1FduNv0-H9ObhKIOx0mFtmGEPIsZfabUa/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-018.pdf"
   },
   {
     "title": "ナムル蕎麦",
@@ -355,7 +355,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "夏バテ対策、さっぱり食べやすい、野菜不足対策、軽めの主食、食欲サポート",
-    "pdfUrl": "https://drive.google.com/file/d/1BbT1RqS4HgE0bmYuUG7G2pyrA8lr2Rnq/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-019.pdf"
   },
   {
     "title": "ブリのなめろう 柑橘おろし",
@@ -374,7 +374,7 @@ window.harukazeRecipes = [
       "消化サポート"
     ],
     "scene": "さっぱり整える、冬の栄養補給、食欲サポート、年末年始の前菜、魚を軽く食べたい時",
-    "pdfUrl": "https://drive.google.com/file/d/1WVCrL11EIa6aNYMhgT4w_hh1wGN72nzw/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-020.pdf"
   },
   {
     "title": "赤飯のふわふわトロログラタン",
@@ -395,7 +395,7 @@ window.harukazeRecipes = [
       "満足感"
     ],
     "scene": "体を温める、疲れた日の栄養補給、満足感、寒い日の主食、胃腸をいたわる和風グラタン",
-    "pdfUrl": "https://drive.google.com/file/d/1VimypknzKQ-LUA1lScqjOJc9e5MN-sft/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-021.pdf"
   },
   {
     "title": "フレッシュ野菜ジュースのリゾット",
@@ -413,7 +413,7 @@ window.harukazeRecipes = [
       "たんぱく質補給"
     ],
     "scene": "夏バテ対策、食欲サポート、野菜不足対策、軽めの主食、疲労回復サポート",
-    "pdfUrl": "https://drive.google.com/file/d/1dQ5IuxEWoLMBawPXnMnNTcZsuN9P9Rqx/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-022.pdf"
   },
   {
     "title": "トマトのホイル焼き",
@@ -431,7 +431,7 @@ window.harukazeRecipes = [
       "むくみ対策"
     ],
     "scene": "夏バテ時の栄養補給、食欲サポート、軽めの主菜、朝食・ランチ向き、満足感のある副菜",
-    "pdfUrl": "https://drive.google.com/file/d/1ULGrAFaHIsS4QscJflyllE_dT7J9IVst/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-023.pdf"
   },
   {
     "title": "豆乳ティラミス シャンパン仕立て",
@@ -449,7 +449,7 @@ window.harukazeRecipes = [
       "ご褒美美容"
     ],
     "scene": "気分を上げる、イベント感、疲れた日のご褒美、食後の満足感、リラックス",
-    "pdfUrl": "https://drive.google.com/file/d/1jxLfYcaVNl5WARPOeZlLLfbV7LV8YIrs/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-024.pdf"
   },
   {
     "title": "苺で美白パワー!丸ごと苺のカップケーキ",
@@ -466,7 +466,7 @@ window.harukazeRecipes = [
       "気分を上げるご褒美美容"
     ],
     "scene": "春のイベント菓子、気分転換、疲れた日の甘い補給、華やかな手作りスイーツ",
-    "pdfUrl": "https://drive.google.com/file/d/1yavN9Yxv7AmHWMUMVVW7Aa0mcuh1S2qz/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-025.pdf"
   },
   {
     "title": "豆乳でカップ茶碗蒸し",
@@ -486,7 +486,7 @@ window.harukazeRecipes = [
       "腸内環境サポート"
     ],
     "scene": "胃腸をいたわる、体を温める、食欲がない時にも食べやすい、軽めの栄養補給、春先の整え食",
-    "pdfUrl": "https://drive.google.com/file/d/11SibKluoE2zKb3usW3jdtUPUN7UWVpOO/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-026.pdf"
   },
   {
     "title": "ピーマンと大葉の醤油麹チャーハン",
@@ -504,7 +504,7 @@ window.harukazeRecipes = [
       "たんぱく質補給"
     ],
     "scene": "夏バテ対策、食欲サポート、スタミナ補給、冷房冷え対策、手軽な主食",
-    "pdfUrl": "https://drive.google.com/file/d/1VJY5dYSzN-S3guxaE3nUDj2MC0qqm0De/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-027.pdf"
   },
   {
     "title": "焼き肉ちらし寿司",
@@ -522,7 +522,7 @@ window.harukazeRecipes = [
       "食欲サポート"
     ],
     "scene": "夏バテ対策、スタミナ補給、活動前のエネルギーチャージ、食欲が落ちる時の主食、彩りごはん",
-    "pdfUrl": "https://drive.google.com/file/d/1ZPEO1fBKC5jS2wOXakY0bwuyPcGh2HxL/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-028.pdf"
   },
   {
     "title": "カボチャのカレーグラタン",
@@ -543,7 +543,7 @@ window.harukazeRecipes = [
       "腸内環境サポート"
     ],
     "scene": "体を温める、満足感、秋冬の栄養補給、疲れた日の回復食、冷え対策",
-    "pdfUrl": "https://drive.google.com/file/d/1EM4niILVdlkxf2Qt3pCDASr17Ss8alel/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-029.pdf"
   },
   {
     "title": "リンゴと春雨のヘルシー黒酢あんかけ",
@@ -563,7 +563,7 @@ window.harukazeRecipes = [
       "抗酸化ケア"
     ],
     "scene": "体を温める、胃腸にやさしい、疲労回復サポート、食欲サポート、軽めの主菜",
-    "pdfUrl": "https://drive.google.com/file/d/1g12y8l143W2cIXEdQCemqIVWXH3oyaHp/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-030.pdf"
   },
   {
     "title": "マグロのステーキ甘辛野菜ソース",
@@ -583,7 +583,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "夏バテ対策、スタミナ補給、さっぱり高たんぱく、野菜不足対策、疲れた日の栄養補給",
-    "pdfUrl": "https://drive.google.com/file/d/1V6WqjQr643hYA_UGk2TxB9_8WmI_o4ll/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-031.pdf"
   },
   {
     "title": "メイソンジャーのサラダパスタ",
@@ -601,7 +601,7 @@ window.harukazeRecipes = [
       "たんぱく質補給"
     ],
     "scene": "野菜不足対策、夏バテ時の栄養補給、さっぱり主食サラダ、ランチ向き、作り置き向き",
-    "pdfUrl": "https://drive.google.com/file/d/1Zuv2rNF5Hi3r6shmGgOMVQGfEOqc3rxT/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-032.pdf"
   },
   {
     "title": "もやしとパプリカのナムル",
@@ -619,7 +619,7 @@ window.harukazeRecipes = [
       "低カロリー副菜"
     ],
     "scene": "野菜不足対策、夏バテ時の副菜、食欲サポート、軽めに整える、あと一品",
-    "pdfUrl": "https://drive.google.com/file/d/1dg-KSN2-M98n90Z0ESMBKZrNRuklz4x9/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-033.pdf"
   },
   {
     "title": "レモン風味の爽やかサラダ",
@@ -639,7 +639,7 @@ window.harukazeRecipes = [
       "食欲サポート"
     ],
     "scene": "さっぱり整える、春夏の野菜補給、食欲がない時、むくみが気になる時、リフレッシュ",
-    "pdfUrl": "https://drive.google.com/file/d/1zpRjx8_NFPIrKsT4ov2_S_L_IrtuFM4N/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-034.pdf"
   },
   {
     "title": "ローストビーフの香味巻き わさびソース",
@@ -658,7 +658,7 @@ window.harukazeRecipes = [
       "食欲サポート"
     ],
     "scene": "夏バテ対策、さっぱり栄養補給、香味野菜でリフレッシュ、疲れた日の軽めの主菜、お酒に合う前菜",
-    "pdfUrl": "https://drive.google.com/file/d/1TReUNRntGoZnAn9AWKaaeEEf__BH_iS-/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-035.pdf"
   },
   {
     "title": "わさび風味のネバネバ野菜丼",
@@ -676,7 +676,7 @@ window.harukazeRecipes = [
       "たんぱく質補給"
     ],
     "scene": "夏バテ対策、食欲がない時、さっぱり栄養補給、朝食・ランチ向き、時短美容ごはん",
-    "pdfUrl": "https://drive.google.com/file/d/1xog0rqEzZEl33q79b2c1kKSb4IzVzjGq/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-036.pdf"
   },
   {
     "title": "塩レモンのさっぱり鍋",
@@ -696,7 +696,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "体を温める、さっぱり整える、野菜不足対策、春先のリセット鍋、疲れた日の栄養補給",
-    "pdfUrl": "https://drive.google.com/file/d/185Htu6ywmf3GmkdnyU0VJc73RdvoTwU4/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-037.pdf"
   },
   {
     "title": "夏野菜の焼き浸し",
@@ -714,7 +714,7 @@ window.harukazeRecipes = [
       "肌コンディション維持"
     ],
     "scene": "夏バテ対策、さっぱり整える、野菜不足対策、食欲サポート、冷やしておいしい副菜",
-    "pdfUrl": "https://drive.google.com/file/d/1QRlhnPKRG1Cg4CylwZXKeyjCRJoZzoaR/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-038.pdf"
   },
   {
     "title": "茄子とベーコンのミルフィーユ",
@@ -734,7 +734,7 @@ window.harukazeRecipes = [
       "腸内環境サポート"
     ],
     "scene": "夏バテ時の食欲サポート、野菜不足対策、軽めの主菜、温かい夏野菜料理、満足感のある副菜",
-    "pdfUrl": "https://drive.google.com/file/d/10DjWi4JN7V_NtSQa-wYfIyis02Cifx5V/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-039.pdf"
   },
   {
     "title": "海老とアーモンドのコチュマヨ炒め",
@@ -754,7 +754,7 @@ window.harukazeRecipes = [
       "巡りサポート"
     ],
     "scene": "夏バテ対策、スタミナ補給、食欲サポート、満足感、しっかり味のおかず",
-    "pdfUrl": "https://drive.google.com/file/d/1Bk1niEuOKz3EPDUKpgyiw_2I5cH7QQ-N/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-040.pdf"
   },
   {
     "title": "空豆のスタミナソテー",
@@ -772,7 +772,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "春の疲れ対策、食欲サポート、野菜不足対策、冷え対策、軽いスタミナ補給",
-    "pdfUrl": "https://drive.google.com/file/d/1Y0Ehe-ZpnyJDIoDPUsVW3rm5AC24jXuC/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-041.pdf"
   },
   {
     "title": "空豆のミルクポタージュ",
@@ -790,7 +790,7 @@ window.harukazeRecipes = [
       "肌コンディション維持"
     ],
     "scene": "春の疲れ対策、軽めの栄養補給、朝食向き、胃腸にやさしい、野菜不足対策",
-    "pdfUrl": "https://drive.google.com/file/d/1s0QrRNJXHr9yxsRErfX1xwE8kazMq1V4/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-042.pdf"
   },
   {
     "title": "鶏の松風焼き",
@@ -808,7 +808,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "冬の栄養補給、胃腸にやさしい、冷めても食べやすい、年末年始の作り置き、軽めのたんぱく質おかず",
-    "pdfUrl": "https://drive.google.com/file/d/1PftZ7tDhzL7fERmJ3FGBMw8InP5L2w7T/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-043.pdf"
   },
   {
     "title": "カラフル野菜のフライパンパエリア",
@@ -829,7 +829,7 @@ window.harukazeRecipes = [
       "エネルギー補給"
     ],
     "scene": "野菜不足対策、春の疲労回復サポート、食欲サポート、彩りで気分を上げる、満足感のある主食",
-    "pdfUrl": "https://drive.google.com/file/d/1M7xdYY87r7woLcBP6D6j3ufJCzejlO4W/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-044.pdf"
   },
   {
     "title": "野菜たっぷりヘルシー餃子",
@@ -847,7 +847,7 @@ window.harukazeRecipes = [
       "抗酸化ケア"
     ],
     "scene": "春のデトックス感、野菜不足対策、軽めの餃子、疲労回復、食欲サポート",
-    "pdfUrl": "https://drive.google.com/file/d/1zVFJvgO_NMhh3ksLmmBatxUQOikyIyrR/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-045.pdf"
   },
   {
     "title": "アスパラのあんかけ茶碗蒸し",
@@ -866,7 +866,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "胃腸にやさしい、体を温める、春の疲れ対策、食欲がない時の栄養補給、軽めの主菜",
-    "pdfUrl": "https://drive.google.com/file/d/1VZXuQbJ-mYRhIR5hC2OfKu54GpLP3VrC/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-046.pdf"
   },
   {
     "title": "アボカド&キウイスムージー",
@@ -884,7 +884,7 @@ window.harukazeRecipes = [
       "エネルギー補給"
     ],
     "scene": "朝の栄養補給、夏バテ対策、食欲がない時、疲労回復サポート、軽い朝食代わり",
-    "pdfUrl": "https://drive.google.com/file/d/1C37e9pMpgqs1NCdEdug667UkOeUmgT1j/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-047.pdf"
   },
   {
     "title": "おもちで 明太子カルボナーラ",
@@ -902,7 +902,7 @@ window.harukazeRecipes = [
       "満足感"
     ],
     "scene": "寒い日のエネルギー補給、満足感、冬の軽食、餅のアレンジ、疲れた日のご褒美ごはん",
-    "pdfUrl": "https://drive.google.com/file/d/1eB-_fZ6D9qRUdDH_QLbTWUteEjMy_0IP/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-048.pdf"
   },
   {
     "title": "お手軽ジャーサラダ",
@@ -920,7 +920,7 @@ window.harukazeRecipes = [
       "うるおい・ツヤ感サポート"
     ],
     "scene": "野菜不足対策、夏バテ時の軽食、さっぱり整える、ランチ向き、作り置き向き",
-    "pdfUrl": "https://drive.google.com/file/d/1en5QQ9TjbThOQ56-vthYiZh_-Gl6TZFu/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-049.pdf"
   },
   {
     "title": "お餅の白菜ロール",
@@ -938,7 +938,7 @@ window.harukazeRecipes = [
       "エネルギー補給"
     ],
     "scene": "寒い日の温活、正月明けの餅アレンジ、食べすぎ後の整え食、軽めの主食、胃腸をいたわる",
-    "pdfUrl": "https://drive.google.com/file/d/12IGvU9thdFxbshozkY9YfttsP6PomHzO/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-050.pdf"
   },
   {
     "title": "かぼちゃのお月見団子",
@@ -958,7 +958,7 @@ window.harukazeRecipes = [
       "エネルギー補給"
     ],
     "scene": "秋のほっこりおやつ、疲れた日の甘い補給、冷えが気になる時、乾燥対策、満足感のある和スイーツ",
-    "pdfUrl": "https://drive.google.com/file/d/1EROhw3fNzoWqHcNiFaJUGkMv-DMQYdI7/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-051.pdf"
   },
   {
     "title": "カマンベールチーズと香味鯛の和風おかか",
@@ -976,7 +976,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "春の栄養補給、軽めの魚メイン、疲れた日のたんぱく質補給、お祝い感のある一皿、満足感",
-    "pdfUrl": "https://drive.google.com/file/d/1HebPLROPG4UBuoj3Hs5vkXTFOi5EZLtw/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-052.pdf"
   },
   {
     "title": "シャキシャキ野菜の冷やし中華",
@@ -994,7 +994,7 @@ window.harukazeRecipes = [
       "食欲サポート"
     ],
     "scene": "夏バテ対策、食欲がない時、火照りを冷ます、軽めの主食、野菜不足対策",
-    "pdfUrl": "https://drive.google.com/file/d/149D-SmZrCbNv88EzQQ_2nwdIZ_YiGuBn/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-053.pdf"
   },
   {
     "title": "スモークサーモンの味噌シチュー",
@@ -1015,7 +1015,7 @@ window.harukazeRecipes = [
       "肌コンディション維持"
     ],
     "scene": "体を温める、冬の栄養補給、疲れた日のやさしい食事、満足感、胃腸にやさしい",
-    "pdfUrl": "https://drive.google.com/file/d/1c6V-r3JSYKQW1g4v5ZkXCHvjBG62hlEQ/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-054.pdf"
   },
   {
     "title": "そば団子",
@@ -1035,7 +1035,7 @@ window.harukazeRecipes = [
       "エネルギー補給"
     ],
     "scene": "ほっとする和のおやつ、疲れた日の甘い補給、冷えが気になる時、腹持ちのよい間食、秋冬の甘味",
-    "pdfUrl": "https://drive.google.com/file/d/1o8mzrOBckm91anic0Q9kL-CIm7ITa04i/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-055.pdf"
   },
   {
     "title": "たけのこと厚揚げの和風グラタン",
@@ -1053,7 +1053,7 @@ window.harukazeRecipes = [
       "抗酸化ケア"
     ],
     "scene": "春の疲れ対策、野菜不足対策、満足感、胃腸を整える、冷えが残る時期の温かい主菜",
-    "pdfUrl": "https://drive.google.com/file/d/12hkaTEAgoLG6WBn1eDPEMTc4xLgFr9mR/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-056.pdf"
   },
   {
     "title": "タケノコのガーリックバターライス",
@@ -1071,7 +1071,7 @@ window.harukazeRecipes = [
       "食欲サポート"
     ],
     "scene": "春の疲れ対策、スタミナ補給、食欲アップ、活動前のエネルギー補給、満足感のある主食",
-    "pdfUrl": "https://drive.google.com/file/d/1yWA4YAQu0dj2IbtmXKhLEXpDdAuX-4ZV/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-057.pdf"
   },
   {
     "title": "たっぷりお豆のもっちりおこわ稲荷",
@@ -1089,7 +1089,7 @@ window.harukazeRecipes = [
       "抗酸化ケア"
     ],
     "scene": "春の栄養補給、行楽弁当、季節の変わり目の整え食、腹持ちのよい主食、華やかな祝い膳",
-    "pdfUrl": "https://drive.google.com/file/d/1Hc7rljbLN6u1S5YVnlKnuoPuG0NIFfrN/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-058.pdf"
   },
   {
     "title": "トマトと彩り野菜の梅酢豚",
@@ -1107,7 +1107,7 @@ window.harukazeRecipes = [
       "むくみ対策"
     ],
     "scene": "夏バテ対策、食欲サポート、疲れた日の栄養補給、スタミナ補給、さっぱり満足おかず",
-    "pdfUrl": "https://drive.google.com/file/d/1MkvNvbbWdfpsTqsuSgBdA0SAP1UI9jkf/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-059.pdf"
   },
   {
     "title": "なますの冷製カッペリーニ",
@@ -1125,7 +1125,7 @@ window.harukazeRecipes = [
       "うるおいサポート"
     ],
     "scene": "年末年始のさっぱり副菜、食べすぎリセット、胃もたれ対策、華やかな前菜、気分を整える柚子香る一品",
-    "pdfUrl": "https://drive.google.com/file/d/1eRdn6NWHPGqUrji_wSlRacxXb1CLNOTe/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-060.pdf"
   },
   {
     "title": "ニンニク香る塩麹の鶏じゃが",
@@ -1146,7 +1146,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "体を温める、冬の栄養補給、胃腸にやさしい、疲れた日の回復食、ほっとする家庭料理",
-    "pdfUrl": "https://drive.google.com/file/d/11XngLBQmkteSrWJqObQg8lHenBWlUTPD/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-061.pdf"
   },
   {
     "title": "フレッシュ夏野菜のヨーグルトペッパーソース",
@@ -1164,7 +1164,7 @@ window.harukazeRecipes = [
       "食欲サポート"
     ],
     "scene": "夏バテ時の副菜、さっぱり整える、野菜不足対策、リフレッシュ、冷たい前菜",
-    "pdfUrl": "https://drive.google.com/file/d/1-3u3E0nQ7jNziz8EU94Mwb9rxB20cnNH/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-062.pdf"
   },
   {
     "title": "ブロッコリーと海苔の豆乳クリームパスタ",
@@ -1185,7 +1185,7 @@ window.harukazeRecipes = [
       "葉酸補給"
     ],
     "scene": "春の疲れ対策、野菜不足対策、胃腸を整える、満足感のある主食、冷えが残る時期の温かいパスタ",
-    "pdfUrl": "https://drive.google.com/file/d/1p--25BAVyDXO-L0EEvAmJQ9pU8HHXull/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-063.pdf"
   },
   {
     "title": "ふわふわ!きのこ豆腐ハンバーグ",
@@ -1205,7 +1205,7 @@ window.harukazeRecipes = [
       "満足感"
     ],
     "scene": "胃腸にやさしい、食べすぎ調整、秋の栄養補給、軽めの主菜、疲れた日のたんぱく質補給",
-    "pdfUrl": "https://drive.google.com/file/d/1xbiQrfYXBtOwswfDaJ-2s-AY9PnqINpn/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-064.pdf"
   },
   {
     "title": "高野豆腐の生キャラメル風 ハチミツ味",
@@ -1225,7 +1225,7 @@ window.harukazeRecipes = [
       "乾燥時期のうるおいサポート"
     ],
     "scene": "ほっとする甘いおやつ、冬の栄養補給、疲れた日のご褒美、腹持ちのよい間食、温かい飲み物に合うデザート",
-    "pdfUrl": "https://drive.google.com/file/d/1J21PasZ24nTy1k98MPfGcYNVmBZdcEM8/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-065.pdf"
   },
   {
     "title": "自家製トマトケチャップ",
@@ -1245,7 +1245,7 @@ window.harukazeRecipes = [
       "腸内環境サポート"
     ],
     "scene": "夏野菜の栄養を保存、食欲がない時の味付け、作り置き、疲れた日の時短調味料",
-    "pdfUrl": "https://drive.google.com/file/d/1o5fW1Zw_zAn6Uv-PTpGgrKRvYPLHAtwM/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-066.pdf"
   },
   {
     "title": "秋茄子の一口ピザ",
@@ -1265,7 +1265,7 @@ window.harukazeRecipes = [
       "満足感サポート"
     ],
     "scene": "夏野菜の栄養補給、食欲サポート、軽めのピザ風おかず、野菜不足対策、おつまみ・副菜",
-    "pdfUrl": "https://drive.google.com/file/d/1Ol8CbQh2CDdiRCkKqmCg_P0zGI5SDxrt/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-067.pdf"
   },
   {
     "title": "出しジュレのしゃきしゃきそうめん",
@@ -1283,7 +1283,7 @@ window.harukazeRecipes = [
       "夏バテ対策"
     ],
     "scene": "食欲がない時、暑さでだるい時、さっぱり主食、火照りを冷ます、夏の軽食",
-    "pdfUrl": "https://drive.google.com/file/d/11W1XzXiYD1hVtGeFGyOxiPimFbFtRMFQ/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-068.pdf"
   },
   {
     "title": "春キャベツのカニ玉丼",
@@ -1301,7 +1301,7 @@ window.harukazeRecipes = [
       "巡りサポート"
     ],
     "scene": "春の疲れ対策、軽めの栄養補給、胃腸にやさしい、食欲サポート、満足感のある主食",
-    "pdfUrl": "https://drive.google.com/file/d/1b6DKLCiKsfHZ-5AYPrLWMLA6bKTgiW9p/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-069.pdf"
   },
   {
     "title": "春キャベツのミートサンド",
@@ -1319,7 +1319,7 @@ window.harukazeRecipes = [
       "満足感"
     ],
     "scene": "春の栄養補給、野菜をしっかり食べたい時、軽めの肉料理、胃腸にやさしい、満足感のある主菜",
-    "pdfUrl": "https://drive.google.com/file/d/1JLGbIQLH5wQZQO4sgt__hhVuXAG8WNBV/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-070.pdf"
   },
   {
     "title": "初夏のひんやり野菜ゼリー",
@@ -1337,7 +1337,7 @@ window.harukazeRecipes = [
       "たんぱく質補給"
     ],
     "scene": "夏バテ時の軽食、食欲がない時、火照りを冷ます、見た目で涼む、胃腸にやさしい前菜",
-    "pdfUrl": "https://drive.google.com/file/d/1qcuQF7ZIJjhOWyGyGh_-QJSXxnHmv4CZ/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-071.pdf"
   },
   {
     "title": "焼き野菜のハートカプレーゼ",
@@ -1355,7 +1355,7 @@ window.harukazeRecipes = [
       "むくみ対策"
     ],
     "scene": "夏バテ時の軽食、野菜不足対策、食欲サポート、華やかな前菜、気分を上げたい時",
-    "pdfUrl": "https://drive.google.com/file/d/1zFGZ-kB1fW6lM7S9eFiBeJegQ0W3ozdG/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-072.pdf"
   },
   {
     "title": "鯛のグリル 桜あんかけ",
@@ -1373,7 +1373,7 @@ window.harukazeRecipes = [
       "春のデトックス感"
     ],
     "scene": "春の栄養補給、胃腸にやさしい魚料理、季節の変わり目の整え食、お祝い膳、軽めの主菜",
-    "pdfUrl": "https://drive.google.com/file/d/1eHd66EQaGZrWMmkO16w-anHIdQp61aKQ/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-073.pdf"
   },
   {
     "title": "長芋のさっぱりポテトサラダ",
@@ -1391,7 +1391,7 @@ window.harukazeRecipes = [
       "美肌サポート"
     ],
     "scene": "夏バテ対策、食欲がない時、胃腸を整える、さっぱり副菜、軽い栄養補給",
-    "pdfUrl": "https://drive.google.com/file/d/15JL9bT3VjsEQmXQmSDoEl_qDkfk9QKMW/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-074.pdf"
   },
   {
     "title": "豚バラ肉と連根の南蛮漬け",
@@ -1409,7 +1409,7 @@ window.harukazeRecipes = [
       "食欲サポート"
     ],
     "scene": "秋の疲れ対策、さっぱり主菜、作り置き、食欲がない時、脂っこさを軽くしたい時",
-    "pdfUrl": "https://drive.google.com/file/d/16CHqsZ4POWDsnGI6e0qkON73_H49k-cB/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-075.pdf"
   },
   {
     "title": "豚肉と大豆の一口つくね",
@@ -1429,7 +1429,7 @@ window.harukazeRecipes = [
       "満足感"
     ],
     "scene": "冬の栄養補給、疲れた日の主菜、腹持ちのよいおかず、作り置き、冷えやすい季節のしっかりごはん",
-    "pdfUrl": "https://drive.google.com/file/d/18eTpAyJ6EkwsryUhGpY-PNGC9w-RKsvQ/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-076.pdf"
   },
   {
     "title": "梅おろしの牛ステーキ",
@@ -1447,7 +1447,7 @@ window.harukazeRecipes = [
       "疲労回復サポート"
     ],
     "scene": "夏バテ対策、スタミナ補給、食欲サポート、疲れた日の主菜、さっぱり肉料理",
-    "pdfUrl": "https://drive.google.com/file/d/1U6L9MBxAzr9anHOpENB328WqPpzw3QYA/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-077.pdf"
   },
   {
     "title": "白胡麻スムージー",
@@ -1467,7 +1467,7 @@ window.harukazeRecipes = [
       "エネルギー補給"
     ],
     "scene": "朝の栄養補給、便通ケア、乾燥対策、疲れた日の甘い補給、腹持ちのよい間食",
-    "pdfUrl": "https://drive.google.com/file/d/1MGR4RCesYnBthbjYquKzJcfsL4_FYxfo/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-078.pdf"
   },
   {
     "title": "木の子のサムゲタン風粥",
@@ -1486,7 +1486,7 @@ window.harukazeRecipes = [
       "肌コンディション維持"
     ],
     "scene": "冷え対策、胃腸をいたわる、疲れた日の回復食、風邪気味の時のやさしい食事、食欲がない時",
-    "pdfUrl": "https://drive.google.com/file/d/10XH4Od6Jgdbd-x25ypTWjaGMfP-vvSr8/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-079.pdf"
   },
   {
     "title": "野菜たっぷり!美人ポタージュ",
@@ -1506,7 +1506,7 @@ window.harukazeRecipes = [
       "肌コンディション維持"
     ],
     "scene": "冷え対策、胃腸をいたわる、野菜不足対策、乾燥時期の栄養補給、軽めの朝食・昼食",
-    "pdfUrl": "https://drive.google.com/file/d/10aDLqnRKdU3jZUNxky9u7INwyMom2JlM/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-080.pdf"
   },
   {
     "title": "里芋まんじゅう きのこあんかけ",
@@ -1526,7 +1526,7 @@ window.harukazeRecipes = [
       "肌コンディション維持"
     ],
     "scene": "体を温める、胃腸をいたわる、秋冬の整え食、ほっとする副菜、満足感のある和食",
-    "pdfUrl": "https://drive.google.com/file/d/1HU0Yf1SeVg1cl8z8pb2IjOoCwZJ8oyJF/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-081.pdf"
   },
   {
     "title": "里芋団子のみたらしあん",
@@ -1546,7 +1546,7 @@ window.harukazeRecipes = [
       "エネルギー補給"
     ],
     "scene": "ほっとする和のおやつ、秋冬の甘味、腹持ちのよい間食、疲れた日の甘い補給",
-    "pdfUrl": "https://drive.google.com/file/d/1TK9LF2_6RuPAYkK4ABmLCcZazCT9cyEq/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-082.pdf"
   },
   {
     "title": "和風あんかけオムレツ",
@@ -1564,7 +1564,7 @@ window.harukazeRecipes = [
       "肌コンディション維持"
     ],
     "scene": "春の疲れ対策、季節の変わり目の整え食、軽めの主菜、胃腸にやさしい、春の栄養補給",
-    "pdfUrl": "https://drive.google.com/file/d/1LWjce-CZxdafs8EHejOvZ8Ii96FaEvU6/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-083.pdf"
   },
   {
     "title": "チーズタルタルのサンドイッチ",
@@ -1585,6 +1585,6 @@ window.harukazeRecipes = [
       "満足感サポート"
     ],
     "scene": "食欲がない時の軽食、夏の野菜補給、肌の乾燥対策、紫外線対策、朝食・ランチ、手軽に栄養を摂りたい時",
-    "pdfUrl": "https://drive.google.com/file/d/137V8nEV7htbt5pzWxKkhGL7p3Fxsvayp/view?usp=sharing"
+    "pdfUrl": "../assets/recipes/gou/gou-084.pdf"
   }
 ];
