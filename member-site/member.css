@@ -308,6 +308,7 @@ h3 {
 .season-message {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
   overflow: hidden;
 }
 
@@ -330,12 +331,157 @@ h3 {
   font-weight: 700;
 }
 
+.message-jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.guide-button-soft {
+  background: #f0f6da;
+  color: var(--leaf-deep);
+  border: 1px solid rgba(120, 148, 34, 0.3);
+}
+
+.september-care-card {
+  min-height: auto;
+}
+
+.september-care-card p,
+.september-care-card ul {
+  flex: initial;
+}
+
+.september-care-card h3 {
+  margin: 0 0 14px;
+  color: var(--leaf-deep);
+  font-size: clamp(1.12rem, 2vw, 1.35rem);
+}
+
+.care-block {
+  width: 100%;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.care-steps {
+  margin: 0 0 16px;
+  padding-left: 1.3rem;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.product-link-list {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.product-link-list a,
+.product-unlinked {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 38px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.product-unlinked {
+  border: 1px solid var(--leaf);
+  background: #fff;
+  color: var(--leaf-deep);
+  cursor: default;
+}
+
+.member-card.september-care-card p,
+.member-card.september-care-card ul,
+.member-card.september-care-card ol {
+  flex: 0 0 auto;
+}
+
+.contact-mini-box {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(120, 148, 34, 0.24);
+  border-radius: 8px;
+  background: #fbfdf4;
+}
+
+.contact-mini-box-centered {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 680px;
+  text-align: center;
+}
+
+.contact-mini-box p {
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.contact-mini-box a {
+  color: var(--leaf-deep);
+  font-weight: 700;
+}
+
+.contact-mini-box .contact-mini-label {
+  margin-bottom: 6px;
+  color: var(--leaf-deep);
+  font-weight: 700;
+}
+
+.contact-mini-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  margin-top: 10px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: #fff !important;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.recipe-source-label {
+  margin: -4px 0 0;
+  color: var(--leaf-deep);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.september-closing-message {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.september-closing-message p {
+  max-width: 880px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
 .season-message img {
   width: 100%;
-  height: 100%;
-  min-height: 320px;
+  height: auto;
+  min-height: 0;
   object-fit: contain;
-  object-position: center;
+  object-position: center top;
   background: #f5fbfb;
   display: block;
 }
@@ -557,13 +703,6 @@ h3 {
   text-decoration: none;
 }
 
-.recipe-source-label {
-  margin: -4px 0 0;
-  color: var(--leaf-deep);
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
 .empty-message {
   color: var(--muted);
 }
@@ -612,6 +751,7 @@ h3 {
   .lock-screen,
   .season-message,
   .content-grid,
+  .september-care-grid,
   .guest-list,
   .guest-card-with-photo,
   .member-recipe-list {
@@ -628,6 +768,7 @@ h3 {
 
   .lock-media img,
   .season-message img {
+    order: -1;
     height: auto;
     min-height: 0;
     object-fit: contain;
@@ -641,6 +782,7 @@ h3 {
   .password-row > button,
   .member-card a,
   .guide-button,
+  .product-link-list a,
   .logout-button {
     width: 100%;
   }

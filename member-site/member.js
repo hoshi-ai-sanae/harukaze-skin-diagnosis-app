@@ -1,5 +1,5 @@
 const memberConfig = {
-  displayMonth: 8,
+  displayMonth: 9,
 };
 
 const memberSite = document.querySelector("#memberSite");
@@ -181,7 +181,7 @@ function updateMonthlyContent() {
   }
 
   if (seasonDiagnosisLink) {
-    seasonDiagnosisLink.href = `../app/index.html?season=${season}&v=20260823gou`;
+    seasonDiagnosisLink.href = `../app/index.html?season=${season}&v=20260901a`;
   }
 }
 
