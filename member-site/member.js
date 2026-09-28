@@ -1,5 +1,5 @@
 const memberConfig = {
-  displayMonth: 9,
+  displayMonth: 10,
 };
 
 const memberSite = document.querySelector("#memberSite");
@@ -13,6 +13,21 @@ const seasonLabels = {
   summer: "夏",
   autumn: "秋",
   winter: "冬",
+};
+
+const monthlyRecipePriorityByMonth = {
+  10: {
+    haruna: [
+      "体ぽかぽか 鶏団子と野菜のお味噌汁",
+      "黒キクラゲ入り蓮根ボール",
+      "鶏肉と根菜の豆乳カレースープ",
+    ],
+    gou: [
+      "カボチャのカレーグラタン",
+      "ふわふわ!きのこ豆腐ハンバーグ",
+      "里芋まんじゅう きのこあんかけ",
+    ],
+  },
 };
 
 const fallbackRecipesBySeason = {
@@ -181,7 +196,7 @@ function updateMonthlyContent() {
   }
 
   if (seasonDiagnosisLink) {
-    seasonDiagnosisLink.href = `../app/index.html?season=${season}&v=20260901a`;
+    seasonDiagnosisLink.href = `../app/index.html?season=${season}&v=20261001a`;
   }
 }
 
@@ -213,9 +228,19 @@ function renderMemberRecipes(season) {
     .filter((recipe) => recipe.seasons?.includes(season))
     .sort((a, b) => (Number(a.priority) || 9999) - (Number(b.priority) || 9999));
 
+  const monthlyPriority = monthlyRecipePriorityByMonth[getDisplayMonth()] || {};
+  const harunaRecipes = sortRecipesForMonth(
+    seasonRecipes.filter(isHarunaRecipe),
+    monthlyPriority.haruna,
+  );
+  const gouRecipes = sortRecipesForMonth(
+    seasonRecipes.filter((recipe) => !isHarunaRecipe(recipe)),
+    monthlyPriority.gou,
+  );
+
   const selectedRecipes = [
-    ...seasonRecipes.filter(isHarunaRecipe).slice(0, 3),
-    ...seasonRecipes.filter((recipe) => !isHarunaRecipe(recipe)).slice(0, 3),
+    ...harunaRecipes.slice(0, 3),
+    ...gouRecipes.slice(0, 3),
   ];
 
   const recipes = fillRecipeSlots(selectedRecipes, seasonRecipes, 6);
@@ -273,6 +298,21 @@ function fillRecipeSlots(selectedRecipes, allRecipes, limit) {
   });
 
   return selected.slice(0, limit);
+}
+
+function sortRecipesForMonth(recipes, preferredTitles = []) {
+  if (!preferredTitles?.length) {
+    return recipes;
+  }
+
+  const order = new Map(preferredTitles.map((title, index) => [normalizeRecipeTitle(title), index]));
+
+  return [...recipes].sort((a, b) => {
+    const aOrder = order.has(normalizeRecipeTitle(a.title)) ? order.get(normalizeRecipeTitle(a.title)) : 9999;
+    const bOrder = order.has(normalizeRecipeTitle(b.title)) ? order.get(normalizeRecipeTitle(b.title)) : 9999;
+
+    return aOrder - bOrder || (Number(a.priority) || 9999) - (Number(b.priority) || 9999);
+  });
 }
 
 function getRecipeUrl(recipe) {

@@ -228,6 +228,15 @@ const recipeTagRules = {
   balance: ["腸内環境", "腸内環境サポート", "むくみ対策", "肌コンディション維持", "たんぱく質補給"],
 };
 
+const monthlyRecipePriorityTitles = [
+  "体ぽかぽか 鶏団子と野菜のお味噌汁",
+  "黒キクラゲ入り蓮根ボール",
+  "鶏肉と根菜の豆乳カレースープ",
+  "カボチャのカレーグラタン",
+  "ふわふわ!きのこ豆腐ハンバーグ",
+  "里芋まんじゅう きのこあんかけ",
+];
+
 const recipeSheet = {
   id: "1hBSj2vgTit_B9fgUp1gSDD8mBprdwhQd7Te2G3D5L3Y",
   name: "harukaze-recipe-management",
@@ -775,8 +784,9 @@ function pickRecipes(type, recipes) {
       }, 0);
 
       const priorityScore = Math.max(0, 1000 - (Number(recipe.priority) || index + 1)) / 1000;
+      const monthScore = currentSeason === "autumn" && isMonthlyPriorityRecipe(recipe) ? 20 : 0;
 
-      return { recipe, score: seasonScore + tagScore + priorityScore, index };
+      return { recipe, score: seasonScore + tagScore + priorityScore + monthScore, index };
     })
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score || a.index - b.index);
@@ -793,6 +803,12 @@ function pickRecipes(type, recipes) {
   });
 
   return selected.map((item) => item.recipe);
+}
+
+function isMonthlyPriorityRecipe(recipe) {
+  const title = normalizeRecipeTitle(recipe?.title);
+
+  return monthlyRecipePriorityTitles.some((preferredTitle) => normalizeRecipeTitle(preferredTitle) === title);
 }
 
 function renderFoodRecipeCard(recipe) {
